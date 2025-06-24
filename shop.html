@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Digital Downloads & Tools | NEXA</title>
+  <meta name="description" content="Shop top-selling digital tools, templates, and creator assets from NEXA. Designed to help you grow your brand and scale your business online." />
+  <meta name="keywords" content="digital downloads, creator tools, social media templates, ecommerce, business PDFs, NEXA" />
+  <meta name="author" content="NEXA Creative Labs" />
+  <link rel="canonical" href="https://yourdomain.com/shop.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    header {
+      background-color: black;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .shop-container {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: space-between;
+    }
+
+    .filters select,
+    .filters input[type="text"] {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 1rem;
+    }
+
+    .product-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      font-size: 1rem;
+      color: #FFA600;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .new { background-color: #10B981; }
+    .popular { background-color: #EF4444; }
+    .social { background-color: #f59e0b; }
+
+    .buy-now {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 0.5rem 1rem;
+      background-color: #1D4ED8;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+
+    .buy-now:hover {
+      background-color: #1749b4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: #eee;
+      margin-top: 2rem;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "NEXA Shop",
+    "url": "https://nexacreativelabs.netlify.app/shop.html",
+    "description": "Discover curated digital products from NEXA — templates, downloads, and growth tools for modern creators.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NEXA",
+      "url": "https://yourdomain.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://yourdomain.com/assets/logo.png"
+      }
+    }
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-LNM66V8R71');
+  </script>
+</head>
+<body>
+
+  <!-- Reused Header -->
+  <header>
+    <div class="logo">NEXA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- (The rest of your body content stays unchanged) -->
+  <div class="shop-container">
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Search products..." onkeyup="filterProducts()" />
+      <select id="categoryFilter" onchange="filterProducts()">
+        <option value="all">All Categories</option>
+        <option value="social">Social Media</option>
+        <option value="new">New</option>
+        <option value="popular">Popular</option>
+      </select>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Product 1 -->
+      <div class="product-card" data-category="social new">
+        <img src="https://i.postimg.cc/g2L2JryY/Chat-GPT-Image-Jun-15-2025-03-35-39-PM.png" alt="Product 1" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <span class="badge new">New</span>
+          <h3>365 Hooks + 50 CTAs</h3>
+          <p class="price">$4.00</p>
+          <a href="https://nexacreativelabs.gumroad.com/l/wqzmk?_gl=1*1lx221x*_ga*MzMxNTg3MDU2LjE3NDk5ODM2NTM.*_ga_6LJN6D94N6*czE3NTA1ODA2MTIkbzI3JGcxJHQxNzUwNTkzMzU1JGoxNyRsMCRoMA.." class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" data-category="popular">
+        <img src="https://i.postimg.cc/BvCLkCfX/s45eqm1bx344xfxcxztbc6uxb4jc.webp" alt="Product 2" />
+        <div class="product-info">
+          <span class="badge popular">Popular</span>
+          <h3>Creator Brain: The Ultimate Second Brain for Notion + One-Person Business PDFs</h3>
+          <p class="price">$37.00</p>
+          <a href="https://creatorkarro.gumroad.com/?a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/0Q2fBQF1/image-png.webp" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>Notion Money Academy</h3>
+          <p class="price">$497.00</p>
+          <a href="https://pascio.gumroad.com/?recommended_by=search&section=d0V-IA7u10NBw57byqgjsg%3D%3D&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+      
+      
+          <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/QCcvXV8Y/hw1fcsgfibqgep7e19dzt2r71kvy.jpg" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>Legendary Brand Maker - Get Clients and Build a Brand On LinkedIn</h3>
+          <p class="price">$229.00</p>
+          <a href="https://rohitvirkud.gumroad.com/?recommended_by=search&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+      
+      
+          <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/0QHMn27Q/t2r9iixck3hltdk8l7ugu32gqdaa.png" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>Hitting Your First $100k Freelancing Using Upwork</h3>
+          <p class="price">$9.00</p>
+          <a href="https://louisseosmith.gumroad.com/?recommended_by=search&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+      
+                <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/mDRGt0kg/tqcf6pukjn56g3p969u0z7pd55kf.webp" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>Undated Digital Planner 2025, iPad Goodnotes, Hyperlinked Boys Girls, Notability, High-Quality Monthly Planner</h3>
+          <p class="price">$2.00</p>
+          <a href="https://bookandpencil.gumroad.com/?recommended_by=search&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+      
+      
+      
+                <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/cHdpB23k/x1sht7xixsnr4o4ourhsdsoj032d.jpg" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>50+ Viral Beauty Affiliate Prompts for Reels, TikTok & YouTube Shorts</h3>
+          <p class="price">$4.00</p>
+          <a href="https://aldigumilar.gumroad.com/l/zshapc?a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    
+    
+                    <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/SxfRQFmD/cxng6vf22cnrsj1cwo5nm2sf2xtp.webp" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>100 Canva Instagram Templates</h3>
+          <p class="price">$9.80</p>
+          <a href="https://keikoya.gumroad.com/?recommended_by=search&_gl=1*1gqi4lc*_ga*MzMxNTg3MDU2LjE3NDk5ODM2NTM.*_ga_6LJN6D94N6*czE3NTA1ODA2MTIkbzI3JGcxJHQxNzUwNTk0MDQ3JGozOSRsMCRoMA..&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    
+    
+                    <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/pdvjkJL1/w7c8urithrhs556czy51lrunei38.webp" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>Brand Identity Design Bundle Kit</h3>
+          <p class="price">$129.90</p>
+          <a href="https://47thegreat.gumroad.com/?recommended_by=search&_gl=1*6qc4se*_ga*MzMxNTg3MDU2LjE3NDk5ODM2NTM.*_ga_6LJN6D94N6*czE3NTA1ODA2MTIkbzI3JGcxJHQxNzUwNTk0NjUxJGo2MCRsMCRoMA..&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    
+    
+                        <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/5yf1RjCJ/o1692je4ziup8fm5zoi4lma298gf.webp" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>Launch your product in 1 day! Next.js + Stripe boilerplate kit (Javascript and Typescript)</h3>
+          <p class="price">$99.00</p>
+          <a href="https://reliccart.gumroad.com/?recommended_by=more_like_this&_gl=1*1x9pz25*_ga*MzMxNTg3MDU2LjE3NDk5ODM2NTM.*_ga_6LJN6D94N6*czE3NTA1ODA2MTIkbzI3JGcxJHQxNzUwNTk1NDY4JGoyNiRsMCRoMA..&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+
+
+                    <!-- Product 3 -->
+      <div class="product-card" data-category="social">
+        <img src="https://i.postimg.cc/gk9Bd1Sw/17pd39nggvtu3kkteuxy72tc11wc.webp" alt="Product 3" />
+        <div class="product-info">
+          <span class="badge social">Social Media</span>
+          <h3>100 Caption Ideas</h3>
+          <p class="price">$1.00</p>
+          <a href="https://treverdigital.gumroad.com/?recommended_by=search&a=112278675" class="buy-now" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <footer>
+    <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
+    <div class="socials">
+      <a href="https://www.instagram.com/nex.africa" aria-label="Instagram">
+        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram icon">
+      </a>
+      <a href="https://www.instagram.com/nex.africa" aria-label="Twitter">
+        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter icon">
+      </a>
+    </div>
+  </footer>
+
+  <!-- JS for Filters & Navigation -->
+  <script>
+    function filterProducts() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const category = document.getElementById('categoryFilter').value;
+      const cards = document.querySelectorAll('.product-card');
+
+      cards.forEach(card => {
+        const matchesSearch = card.innerText.toLowerCase().includes(search);
+        const matchesCategory = category === 'all' || card.dataset.category.includes(category);
+        card.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
+      });
+    }
+
+    // Nav drawer toggle
+    const hamburger = document.getElementById('hamburger');
+    const navDrawer = document.getElementById('navDrawer');
+    const overlay = document.getElementById('overlay');
+
+    hamburger?.addEventListener('click', () => {
+      navDrawer?.classList.add('active');
+      overlay?.classList.add('active');
+    });
+
+    window.closeDrawer = function () {
+      navDrawer?.classList.remove('active');
+      overlay?.classList.remove('active');
+    };
+  </script>
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-LNM66V8R71');
+  </script>
+
+
+
+</body>
+</html>
