@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://gumroad.com/js/gumroad.js"></script>
   <style>
+  
     :root {
       --bg: #f7f9fb;
       --text: #222;
@@ -173,6 +174,18 @@
       font-size: 0.9rem;
       color: #999;
     }
+    
+    
+    
+    
+  .countdown {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
   </style>
 </head>
 <body>
@@ -202,6 +215,8 @@
   <section class="featured">
     <h2> The Ultimate Creator Pack</h2>
     <p>Everything you need to launch, post, and grow.</p>
+    
+     <div class="countdown" id="countdown"></div>
     <a class="gumroad-button" href="https://gumroad.com/discover?a=112278675" data-gumroad-single>Discover More Products</a>
   </section>
 
@@ -266,6 +281,38 @@
         card.style.display = title.includes(input) ? 'block' : 'none';
       });
     }
+    
+    
+    // Countdown Timer
+const countdown = document.getElementById('countdown');
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 3); // Set for 3 days from now
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = targetDate.getTime() - now;
+
+  if (distance < 0) {
+    countdown.innerHTML = "🔥 Deal ended!";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+}
+
+updateCountdown(); // Initial call
+setInterval(updateCountdown, 1000);
+
+    
+    
+    
+    
+    
   </script>
 </body>
 </html>
