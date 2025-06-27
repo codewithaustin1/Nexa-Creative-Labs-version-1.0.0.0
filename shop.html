@@ -285,14 +285,15 @@
     
     // Countdown Timer
 const countdown = document.getElementById('countdown');
-const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 3); // Set for 3 days from now
+
+// Fixed deadline: change this to your real end time
+const targetDate = new Date("2025-06-29T23:59:59");
 
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate.getTime() - now;
 
-  if (distance < 0) {
+  if (distance <= 0) {
     countdown.innerHTML = "🔥 Deal ended!";
     return;
   }
@@ -305,8 +306,9 @@ function updateCountdown() {
   countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
 }
 
-updateCountdown(); // Initial call
+updateCountdown();
 setInterval(updateCountdown, 1000);
+
 
     
     
