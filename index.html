@@ -6,63 +6,69 @@
   <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
   <meta name="author" content="NEXA Creative Labs" />
   <title>NEXA | Empowering Digital Commerce</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --primary: #1D4ED8;
+      --card-bg: #fff;
+      --card-shadow: rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg: #1d1f23;
+      --text: #f0f0f0;
+      --primary: #4a90e2;
+      --card-bg: #2a2d34;
+      --card-shadow: rgba(255, 255, 255, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      color: #222;
-      background: #f9f9f9;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
     }
-
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #000;
-      color: #fff;
-      padding: 8px 16px;
-      z-index: 1000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 4px;
-      transition: top 0.3s ease;
-    }
-    .skip-link:focus { top: 10px; }
 
     header {
-      background-color: black;
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      background: var(--card-bg);
+      box-shadow: 0 2px 10px var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: white;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
     }
 
     nav a {
-      margin-left: 20px;
-      color: white;
+      margin-left: 1.5rem;
       text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
+      color: var(--text);
+      font-weight: 600;
     }
 
-    nav a:hover { color: #1D4ED8; }
+    .toggle-darkmode {
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 1.5rem;
+    }
 
     .hero {
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.postimg.cc/wv75HV9g/2295.jpg') center/cover no-repeat;
@@ -85,7 +91,7 @@
 
     .hero a {
       padding: 0.75rem 1.5rem;
-      background: #1D4ED8;
+      background: var(--primary);
       color: white;
       font-weight: bold;
       border-radius: 30px;
@@ -115,7 +121,7 @@
     .section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
-      color: #1D4ED8;
+      color: var(--primary);
       text-align: center;
     }
 
@@ -129,10 +135,10 @@
 
     .feature-card {
       flex: 1 1 280px;
-      background: white;
+      background: var(--card-bg);
       border-radius: 12px;
       padding: 25px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 16px var(--card-shadow);
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s;
     }
@@ -155,21 +161,23 @@
     }
 
     .benefits li {
-      background: #fff;
+      background: var(--card-bg);
       padding: 18px 20px;
       border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px var(--card-shadow);
       list-style: none;
       transition: transform 0.3s ease;
     }
 
-    .benefits li:hover { transform: translateX(8px); }
+    .benefits li:hover {
+      transform: translateX(8px);
+    }
 
     .testimonial {
       text-align: center;
       font-style: italic;
       margin-top: 40px;
-      color: #444;
+      color: #888;
       padding: 0 20px;
     }
 
@@ -194,7 +202,7 @@
       display: inline-block;
       padding: 0.75rem 1.5rem;
       background: white;
-      color: #1D4ED8;
+      color: var(--primary);
       font-weight: bold;
       border-radius: 6px;
       text-decoration: none;
@@ -230,17 +238,10 @@
       opacity: 1;
     }
 
-    .powered-by {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      color: #e0e7ff;
-      opacity: 0.8;
-    }
-
     footer {
       text-align: center;
       padding: 1.5rem;
-      background: #f1f1f1;
+      background: var(--card-bg);
       font-size: 0.9rem;
       color: #555;
     }
@@ -268,14 +269,15 @@
   </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="logo">NEXA</div>
-    <nav role="navigation">
+    <nav>
       <a href="/shop.html">Shop</a>
-      <a href="about.html">About</a>
+      <a href="/about.html">About</a>
+      <span class="toggle-darkmode" onclick="toggleDarkMode()">🌓</span>
     </nav>
   </header>
+
   <main id="main-content">
     <section class="hero">
       <h1>Build. Launch. Sell.</h1>
@@ -310,8 +312,7 @@
       </div>
     </section>
 
-    <!-- ✅ Enhanced CTA with Secure Checkout and Gumroad Payment Logos -->
-    <section class="cta" aria-label="Call to action">
+    <section class="cta">
       <h3>Start Selling Smarter</h3>
       <p>Join 10,000+ satisfied creators. Get started in minutes.</p>
       <a href="/shop.html">
@@ -324,7 +325,6 @@
         <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay" />
         <img src="https://img.icons8.com/color/48/google-pay.png" alt="Google Pay" />
       </div>
-      <div class="powered-by">Payments processed securely via Gumroad</div>
     </section>
   </main>
 
@@ -332,15 +332,20 @@
     <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
     <div class="socials">
       <a href="https://www.instagram.com/nex.africa" aria-label="Instagram">
-        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram" loading="lazy">
+        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram" />
       </a>
       <a href="https://www.instagram.com/nex.africa" aria-label="Twitter">
-        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter" loading="lazy">
+        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter" />
       </a>
     </div>
   </footer>
 
-  <script defer>
+  <script>
+    function toggleDarkMode() {
+      const current = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
     const sections = document.querySelectorAll('.section');
     const showOnScroll = () => {
       sections.forEach(section => {
