@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://gumroad.com/js/gumroad.js"></script>
   <style>
-  
     :root {
       --bg: #f7f9fb;
       --text: #222;
@@ -49,21 +48,56 @@
       font-size: 1.5rem;
       color: var(--primary);
     }
+    nav {
+      display: flex;
+      align-items: center;
+    }
     nav a {
       margin-left: 1.5rem;
       text-decoration: none;
       color: var(--text);
       font-weight: 600;
     }
-    .toggle-darkmode {
-      cursor: pointer;
-      font-size: 1.2rem;
+    .darkmode-toggle {
       margin-left: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+    .darkmode-toggle input[type="checkbox"] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+    .toggle-label {
+      cursor: pointer;
+      width: 44px;
+      height: 24px;
+      background: #cbd5e1;
+      border-radius: 999px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .toggle-label::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    input:checked + .toggle-label {
+      background: #3B82F6;
+    }
+    input:checked + .toggle-label::after {
+      transform: translateX(20px);
     }
     .search-bar {
-  text-align: center;
-  margin: 1.5rem auto 0 auto;
-}
+      text-align: center;
+      margin: 1.5rem auto 0 auto;
+    }
     .search-bar input {
       width: 80%;
       max-width: 500px;
@@ -71,7 +105,6 @@
       border: 3px solid royalblue;
       border-radius: 10px;
       font-size: 1rem;
-      
     }
     .categories {
       display: flex;
@@ -79,7 +112,6 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       padding: 1rem;
-      margin-top: none;
     }
     .categories button {
       padding: 0.5rem 1rem;
@@ -92,13 +124,12 @@
     }
     .featured {
       background-image: url('https://i.postimg.cc/x8R3pHcr/40364.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: white;
       padding: 2rem;
-      margin-left: 12px;
-      margin-right: 12px;
+      margin: 0 12px;
       text-align: center;
       border-radius: 10px;
     }
@@ -174,18 +205,13 @@
       font-size: 0.9rem;
       color: #999;
     }
-    
-    
-    
-    
-  .countdown {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 1rem 0;
-  color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-}
-
+    .countdown {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
@@ -194,34 +220,30 @@
     <nav>
       <a href="/index.html">Home</a>
       <a href="/about.html">About</a>
-      <span class="toggle-darkmode" onclick="toggleDarkMode()">🌓</span>
+      <div class="darkmode-toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <label for="theme-toggle" class="toggle-label"></label>
+      </div>
     </nav>
   </header>
-  
+
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="I'm searching for..." oninput="filterProducts()" />
   </div>
-  
-    <div class="categories">
+
+  <div class="categories">
     <button onclick="filterCategory('all')">All</button>
     <button onclick="filterCategory('social')">Social Kits</button>
     <button onclick="filterCategory('business')">Business</button>
     <button onclick="filterCategory('captions')">Captions</button>
   </div>
 
-  
-  
-  
   <section class="featured">
-    <h2> The Ultimate Creator Pack</h2>
+    <h2>The Ultimate Creator Pack</h2>
     <p>Everything you need to launch, post, and grow.</p>
-    
-     <div class="countdown" id="countdown"></div>
+    <div class="countdown" id="countdown"></div>
     <a class="gumroad-button" href="https://gumroad.com/discover?a=112278675" data-gumroad-single>Discover More Products</a>
   </section>
-
-
-
 
   <section class="section">
     <h2>️ Products</h2>
@@ -253,12 +275,11 @@
           <a class="gumroad-button" href="https://gumroad.com/l/captions" data-gumroad-single>Buy This</a>
         </div>
       </div>
-      
-      <div class="product-card" data-category="business" data-title="365 Captions">
-        <img src="https://i.postimg.cc/tJxWNK6c/Cropped-Image.png" alt="Captions">
+      <div class="product-card" data-category="business" data-title="Shopify Book">
+        <img src="https://i.postimg.cc/tJxWNK6c/Cropped-Image.png" alt="Shopify Book">
         <div class="content">
           <h3>Success with Shopify</h3>
-          <p>Grab your copy of this insightful book and skip years of trial and error.  </p>
+          <p>Grab your copy of this insightful book and skip years of trial and error.</p>
           <div class="price">$4</div>
           <a class="gumroad-button" href="https://nexacreativelabs.gumroad.com/l/efgce" data-gumroad-single>Buy This</a>
         </div>
@@ -271,11 +292,6 @@
   </footer>
 
   <script>
-    function toggleDarkMode() {
-      const current = document.documentElement.getAttribute('data-theme');
-      document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }
-
     function filterCategory(category) {
       const cards = document.querySelectorAll('.product-card');
       cards.forEach(card => {
@@ -291,40 +307,25 @@
         card.style.display = title.includes(input) ? 'block' : 'none';
       });
     }
-    
-    
-    // Countdown Timer
-const countdown = document.getElementById('countdown');
 
-// Fixed deadline: change this to your real end time
-const targetDate = new Date("2025-06-29T23:59:59");
-
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = targetDate.getTime() - now;
-
-  if (distance <= 0) {
-    countdown.innerHTML = "🔥 Deal ended!";
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-
-    
-    
-    
-    
-    
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date("2025-06-29T23:59:59");
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate.getTime() - now;
+      if (distance <= 0) {
+        countdown.innerHTML = "🔥 Deal ended!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
+  <script src="/theme.js" defer></script>
 </body>
 </html>
