@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About NEXA | Empowering Digital Creators & Businesses</title>
   <meta name="description" content="Learn about NEXA — our mission, values, and team powering intuitive digital tools for creators, entrepreneurs, and modern businesses." />
   <meta name="keywords" content="About NEXA, Digital Creator Tools, Ecommerce, Entrepreneur Resources, Team, Mission" />
   <meta name="author" content="NEXA Creative Labs" />
   <link rel="canonical" href="https://yourdomain.com/about.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script type="application/ld+json">
@@ -29,37 +32,79 @@
   }
   </script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #222;
-      background: #f9f9f9;
-      line-height: 1.6;
+    :root {
+      --bg: #f9f9f9;
+      --text: #222;
+      --primary: #1D4ED8;
+      --card-bg: #ffffff;
+      --card-shadow: rgba(0, 0, 0, 0.06);
+    }
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --text: #f1f1f1;
+      --primary: #3B82F6;
+      --card-bg: #262626;
+      --card-shadow: rgba(255, 255, 255, 0.05);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: top 0.3s ease;
+    }
+    .skip-link:focus { top: 10px; }
+
     header {
-      background-color: black;
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      background: var(--card-bg);
+      box-shadow: 0 2px 10px var(--card-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: white;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
     }
 
     nav a {
-      margin-left: 20px;
-      color: white;
+      margin-left: 1.5rem;
       text-decoration: none;
-      font-weight: 500;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .toggle-darkmode {
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-left: 1.5rem;
+    }
+
+    main {
+      padding-top: 1rem;
     }
 
     .hero {
@@ -70,7 +115,7 @@
 
     .hero h1 {
       font-size: 2.8rem;
-      color: #1D4ED8;
+      color: var(--primary);
       margin-bottom: 1rem;
     }
 
@@ -85,16 +130,24 @@
       padding: 60px 20px;
       max-width: 1000px;
       margin: 0 auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
-      color: #1D4ED8;
+      color: var(--primary);
     }
 
     .section p {
-      color: #444;
+      color: var(--text);
     }
 
     .values {
@@ -106,10 +159,10 @@
 
     .value-card {
       flex: 1 1 250px;
-      background: white;
+      background: var(--card-bg);
       border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px var(--card-shadow);
       transition: transform 0.2s ease;
     }
 
@@ -131,10 +184,10 @@
 
     .team-member {
       text-align: center;
-      background: white;
+      background: var(--card-bg);
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 6px var(--card-shadow);
     }
 
     .team-member img {
@@ -144,7 +197,7 @@
     }
 
     .cta {
-      background: #1D4ED8;
+      background: var(--primary);
       color: white;
       text-align: center;
       padding: 60px 20px;
@@ -155,28 +208,31 @@
       margin-bottom: 1rem;
     }
 
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
     .cta a {
       display: inline-block;
       margin-top: 10px;
       padding: 0.75rem 1.5rem;
       background: white;
-      color: #1D4ED8;
+      color: var(--primary);
       font-weight: bold;
       border-radius: 6px;
       text-decoration: none;
       transition: background 0.3s;
     }
 
-    .cta a:hover {
-      background: #e2e8f0;
-    }
+    .cta a:hover { background: #e2e8f0; }
 
     footer {
       text-align: center;
       padding: 1.5rem;
-      background: #f1f1f1;
+      background: var(--card-bg);
       font-size: 0.9rem;
-      color: #555;
+      color: #777;
     }
 
     .socials a {
@@ -184,73 +240,74 @@
       margin: 0 0.5rem;
     }
   </style>
-  
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="logo">NEXA</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
+      <span class="toggle-darkmode" onclick="toggleDarkMode()">🌓</span>
     </nav>
   </header>
 
-  <section class="hero" data-aos="fade-up">
-    <h1>About NEXA</h1>
-    <p>Empowering over 10,000 creators and digital sellers with tools that simplify growth, amplify branding, and accelerate online success.</p>
-  </section>
+  <main id="main-content">
+    <section class="hero" data-aos="fade-up">
+      <h1>About NEXA</h1>
+      <p>Empowering over 10,000 creators and digital sellers with tools that simplify growth, amplify branding, and accelerate online success.</p>
+    </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>Our Mission</h2>
-    <p>
-      NEXA was founded in 2025 to bridge the gap between creative freedom and smart commerce. Our mission is to give every entrepreneur — from side-hustler to startup — the digital leverage to grow confidently in today’s economy.
-    </p>
-  </section>
+    <section class="section">
+      <h2>Our Mission</h2>
+      <p>NEXA was founded in 2025 to bridge the gap between creative freedom and smart commerce. Our mission is to give every entrepreneur — from side-hustler to startup — the digital leverage to grow confidently in today’s economy.</p>
+    </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>What We Believe</h2>
-    <div class="values">
-      <div class="value-card">
-        <h3>🚀 Innovation</h3>
-        <p>We anticipate tomorrow’s needs with bold, adaptable digital products.</p>
+    <section class="section">
+      <h2>What We Believe</h2>
+      <div class="values">
+        <div class="value-card">
+          <h3>🚀 Innovation</h3>
+          <p>We anticipate tomorrow’s needs with bold, adaptable digital products.</p>
+        </div>
+        <div class="value-card">
+          <h3>💡 Simplicity</h3>
+          <p>Technology should empower — not overwhelm. Every tool we ship prioritizes clarity and ease of use.</p>
+        </div>
+        <div class="value-card">
+          <h3>🤝 Trust</h3>
+          <p>From customer service to checkout experience, transparency and trust are non-negotiables.</p>
+        </div>
       </div>
-      <div class="value-card">
-        <h3>💡 Simplicity</h3>
-        <p>Technology should empower — not overwhelm. Every tool we ship prioritizes clarity and ease of use.</p>
-      </div>
-      <div class="value-card">
-        <h3>🤝 Trust</h3>
-        <p>From customer service to checkout experience, transparency and trust are non-negotiables.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" data-aos="fade-up">
-    <h2>Meet the Team</h2>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="https://i.postimg.cc/nVWTwQ1B/My-Portrait-Photo-20240824-204325-0000.png" alt="Austin Makachola">
-        <h4>Austin Makachola</h4>
-        <p>Founder & CEO</p>
+    <section class="section">
+      <h2>Meet the Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://i.postimg.cc/nVWTwQ1B/My-Portrait-Photo-20240824-204325-0000.png" alt="Austin Makachola">
+          <h4>Austin Makachola</h4>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.pravatar.cc/100?img=32" alt="Omondi Evans">
+          <h4>Omondi Evans</h4>
+          <p>CTO</p>
+        </div>
+        <div class="team-member">
+          <img src="https://i.postimg.cc/1z6fPbxy/1750766018071.jpg" alt="Sabi Sandorova">
+          <h4>Sabi Sandorova</h4>
+          <p>Design Lead</p>
+        </div>
       </div>
-      <div class="team-member">
-        <img src="https://i.pravatar.cc/100?img=32" alt="Omondi Evans">
-        <h4>Omondi Evans</h4>
-        <p>CTO</p>
-      </div>
-      <div class="team-member">
-        <img src="https://i.postimg.cc/1z6fPbxy/1750766018071.jpg" alt="Sabi Sandorova">
-        <h4>Sabi Sandorova</h4>
-        <p>Design Lead</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta" data-aos="zoom-in">
-    <h3>Ready to build your vision?</h3>
-    <p>Join thousands of creators scaling with NEXA today.</p>
-    <a href="signup.html">Create Your Free Account</a>
-  </section>
+    <section class="cta">
+      <h3>Ready to build your vision?</h3>
+      <p>Join thousands of creators scaling with NEXA today.</p>
+      <a href="signup.html">Create Your Free Account</a>
+    </section>
+  </main>
 
   <footer>
     <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
@@ -267,8 +324,25 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+
+    function toggleDarkMode() {
+      const current = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    const sections = document.querySelectorAll('.section');
+    const revealOnScroll = () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
   </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
