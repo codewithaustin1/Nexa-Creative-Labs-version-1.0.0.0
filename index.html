@@ -4,16 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
-  <meta name="keywords" content="digital downloads, web development, ecommerce, templates, creators, NEXA" />
   <meta name="author" content="NEXA Creative Labs" />
   <title>NEXA | Empowering Digital Commerce</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image">
+  
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #222;
+      background: #f9f9f9;
+      line-height: 1.6;
+    }
 
-    /* Skip Link Styles */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -27,16 +35,7 @@
       border-radius: 4px;
       transition: top 0.3s ease;
     }
-    .skip-link:focus {
-      top: 10px;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: #222;
-      background: #f9f9f9;
-      line-height: 1.6;
-    }
+    .skip-link:focus { top: 10px; }
 
     header {
       background-color: black;
@@ -63,20 +62,17 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #1D4ED8;
-    }
+    nav a:hover { color: #1D4ED8; }
 
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)),
-                  url('https://i.postimg.cc/wv75HV9g/2295.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.postimg.cc/wv75HV9g/2295.jpg') center/cover no-repeat;
       text-align: center;
       padding: 120px 20px 100px;
       color: white;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 1rem;
       animation: fadeInDown 1s ease forwards;
     }
@@ -167,9 +163,7 @@
       transition: transform 0.3s ease;
     }
 
-    .benefits li:hover {
-      transform: translateX(8px);
-    }
+    .benefits li:hover { transform: translateX(8px); }
 
     .testimonial {
       text-align: center;
@@ -207,8 +201,40 @@
       transition: background 0.3s;
     }
 
-    .cta a:hover {
-      background: #e2e8f0;
+    .cta a:hover { background: #e2e8f0; }
+
+    .secure-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      color: #4B5563;
+      background: #E5E7EB;
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+
+    .payment-logos {
+      margin-top: 20px;
+    }
+
+    .payment-logos img {
+      height: 28px;
+      margin: 0 6px;
+      vertical-align: middle;
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    .payment-logos img:hover {
+      opacity: 1;
+    }
+
+    .powered-by {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #e0e7ff;
+      opacity: 0.8;
     }
 
     footer {
@@ -230,7 +256,6 @@
       }
     }
 
-    /* Animations */
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-40px); }
       to { opacity: 1; transform: translateY(0); }
@@ -241,43 +266,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "NEXA",
-    "url": "https://nexacreativelabs.netlify.app/",
-    "description": "NEXA empowers creators and businesses with digital downloads and custom web development for growth and global reach.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NEXA",
-      "url": "https://nexacreativelabs.netlify.app/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://yourdomain.com/path-to-your-logo.png"
-      }
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://yourdomain.com/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
 </head>
-
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
   <header>
     <div class="logo">NEXA</div>
-    <nav>
+    <nav role="navigation">
       <a href="/shop.html">Shop</a>
       <a href="about.html">About</a>
     </nav>
   </header>
-
   <main id="main-content">
     <section class="hero">
       <h1>Build. Launch. Sell.</h1>
@@ -312,10 +310,21 @@
       </div>
     </section>
 
-    <section class="cta">
+    <!-- ✅ Enhanced CTA with Secure Checkout and Gumroad Payment Logos -->
+    <section class="cta" aria-label="Call to action">
       <h3>Start Selling Smarter</h3>
       <p>Join 10,000+ satisfied creators. Get started in minutes.</p>
-      <a href="/shop.html">Explore Products</a>
+      <a href="/shop.html">
+        Explore Products <span class="secure-badge">🔒 Secure Checkout</span>
+      </a>
+      <div class="payment-logos">
+        <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" />
+        <img src="https://img.icons8.com/color/48/mastercard-logo.png" alt="Mastercard" />
+        <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" />
+        <img src="https://img.icons8.com/color/48/apple-pay.png" alt="Apple Pay" />
+        <img src="https://img.icons8.com/color/48/google-pay.png" alt="Google Pay" />
+      </div>
+      <div class="powered-by">Payments processed securely via Gumroad</div>
     </section>
   </main>
 
@@ -323,15 +332,15 @@
     <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
     <div class="socials">
       <a href="https://www.instagram.com/nex.africa" aria-label="Instagram">
-        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Follow NEXA on Instagram" loading="lazy">
+        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram" loading="lazy">
       </a>
       <a href="https://www.instagram.com/nex.africa" aria-label="Twitter">
-        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Follow NEXA on Twitter" loading="lazy">
+        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter" loading="lazy">
       </a>
     </div>
   </footer>
 
-  <script>
+  <script defer>
     const sections = document.querySelectorAll('.section');
     const showOnScroll = () => {
       sections.forEach(section => {
@@ -344,7 +353,6 @@
     window.addEventListener('scroll', showOnScroll);
     window.addEventListener('load', showOnScroll);
   </script>
-
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
