@@ -12,6 +12,25 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
+    /* Skip Link Styles */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: top 0.3s ease;
+    }
+    .skip-link:focus {
+      top: 10px;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       color: #222;
@@ -249,6 +268,8 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <header>
     <div class="logo">NEXA</div>
     <nav>
@@ -257,7 +278,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <h1>Build. Launch. Sell.</h1>
       <p>Premium digital assets and custom development for creators & online businesses.</p>
@@ -302,10 +323,10 @@
     <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
     <div class="socials">
       <a href="https://www.instagram.com/nex.africa" aria-label="Instagram">
-        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram icon">
+        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Follow NEXA on Instagram" loading="lazy">
       </a>
       <a href="https://www.instagram.com/nex.africa" aria-label="Twitter">
-        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter icon">
+        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Follow NEXA on Twitter" loading="lazy">
       </a>
     </div>
   </footer>
