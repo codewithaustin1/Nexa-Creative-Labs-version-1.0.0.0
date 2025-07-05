@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse premium digital downloads from NEXA Creative Labs — social kits, captions, templates & more." />
+  <meta name="author" content="NEXA Creative Labs" />
   <title>Shop | NEXA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://gumroad.com/js/gumroad.js"></script>
+  <script src="/theme.js" defer></script>
   <style>
     :root {
-      --bg: #f7f9fb;
+      --bg: #f9f9f9;
       --text: #222;
-      --primary: #0057d8;
+      --primary: #1D4ED8;
       --card-bg: #fff;
       --card-shadow: rgba(0, 0, 0, 0.05);
     }
@@ -43,10 +48,8 @@
       align-items: center;
       padding: 1rem 2rem;
     }
-    .logo {
-      font-weight: 800;
-      font-size: 1.5rem;
-      color: var(--primary);
+    .logo img {
+      height: 60px;
     }
     nav {
       display: flex;
@@ -63,7 +66,7 @@
       display: flex;
       align-items: center;
     }
-    .darkmode-toggle input[type="checkbox"] {
+    .darkmode-toggle input {
       height: 0;
       width: 0;
       visibility: hidden;
@@ -102,7 +105,7 @@
       width: 80%;
       max-width: 500px;
       padding: 0.75rem 1rem;
-      border: 3px solid royalblue;
+      border: 3px solid var(--primary);
       border-radius: 10px;
       font-size: 1rem;
     }
@@ -140,7 +143,7 @@
     .featured button {
       padding: 0.7rem 1.5rem;
       background: white;
-      color: #0057d8;
+      color: var(--primary);
       border: none;
       border-radius: 30px;
       font-weight: 600;
@@ -172,6 +175,7 @@
       width: 100%;
       height: 180px;
       object-fit: cover;
+      loading: lazy;
     }
     .product-card .content {
       padding: 1rem;
@@ -197,6 +201,9 @@
       border-radius: 10px;
       font-weight: 600;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
     }
     footer {
       background: var(--card-bg);
@@ -217,7 +224,7 @@
 <body>
   <header>
     <div class="logo">
-  <img src="assets/NEXA_20250702_062527_0000 (1).png" alt="NEXA Logo" style="height: 60px;" />
+      <img src="assets/NEXA_20250702_062527_0000 (1).png" alt="NEXA Logo" style="height: 60px;" />
     </div>
     <nav>
       <a href="/index.html">Home</a>
