@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&display=swap" rel="stylesheet">
+
   <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
   <meta name="author" content="NEXA Creative Labs" />
   <title>NEXA | Empowering Digital Commerce</title>
@@ -80,44 +82,63 @@
     }
 
     nav {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
+  display: flex;
+  justify-content: center;  /* center nav links on desktop */
+  flex-wrap: wrap;/* prevent overflow*/
+  gap: 1rem;
+}
 
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
+
+nav a {
+  text-decoration: none;
+  color: deeppink;
+  font-weight: 900;
+  font-family: 'Cinzel Decorative', serif;
+  transition: color 0.3s ease;
+  margin: 0 1rem; /* spacing between links */
+}
+
+
 
     nav a:hover {
       color: var(--primary);
     }
 
-    .darkmode-toggle {
-      display: flex;
-      align-items: center;
-    }
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    height: auto;
+    width: 100vw; /* translucent */
+    backdrop-filter: blur(6px); /* Optional: adds frosted glass effect */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
 
-    .darkmode-toggle input {
-      height: 0;
-      width: 0;
-      visibility: hidden;
-    }
+  nav a {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    padding-left: 40%;
+  }
+}
 
-    .toggle-label {
-      cursor: pointer;
+
+
+
+
+    .darkmode-toggle .toggle-switch {
       width: 44px;
       height: 24px;
-      background: #cbd5e1;
       border-radius: 999px;
+      background: #cbd5e1;
       position: relative;
-      transition: background 0.3s;
+      cursor: pointer;
     }
 
-    .toggle-label::after {
+    .toggle-switch::after {
       content: '';
       position: absolute;
       top: 2px;
@@ -126,14 +147,13 @@
       height: 20px;
       background: white;
       border-radius: 50%;
-      transition: 0.3s;
+      transition: transform 0.3s;
     }
 
-    input:checked + .toggle-label {
+    [data-theme="dark"] .toggle-switch {
       background: #3B82F6;
     }
-
-    input:checked + .toggle-label::after {
+    [data-theme="dark"] .toggle-switch::after {
       transform: translateX(20px);
     }
 
@@ -293,6 +313,7 @@
     .cta a:hover {
       background: #e2e8f0;
     }
+
     .secure-badge {
       display: inline-block;
       font-size: 0.75rem;
@@ -303,6 +324,7 @@
       margin-left: 10px;
       vertical-align: middle;
     }
+
     .payment-logos {
       margin-top: 20px;
     }
@@ -347,7 +369,6 @@
 </head>
 
 <body>
-  <!-- ✅ Fully inline header -->
   <header>
     <div class="header-container">
       <div class="logo">
@@ -363,43 +384,20 @@
         <a href="/shop.html">Shop</a>
         <a href="/about.html">About</a>
         <div class="darkmode-toggle">
-          <input type="checkbox" id="theme-toggle" />
-          <label for="theme-toggle" class="toggle-label" aria-label="Toggle dark mode"></label>
+          <div class="toggle-switch"
+               role="switch"
+               aria-checked="false"
+               tabindex="0"
+               aria-label="Toggle dark mode"
+               onclick="toggleDarkMode()"
+               onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); toggleDarkMode();}">
+          </div>
         </div>
       </nav>
     </div>
   </header>
 
-  <script>
-    // Apply saved theme early
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggle = document.getElementById("theme-toggle");
-      const menuToggle = document.getElementById("menu-toggle");
-      const navMenu = document.getElementById("nav-menu");
-
-      if (toggle) {
-        toggle.checked = document.documentElement.getAttribute('data-theme') === 'dark';
-        toggle.addEventListener("change", () => {
-          const mode = toggle.checked ? "dark" : "light";
-          document.documentElement.setAttribute("data-theme", mode);
-          localStorage.setItem("theme", mode);
-        });
-      }
-
-      if (menuToggle && navMenu) {
-        menuToggle.addEventListener("click", () => {
-          navMenu.classList.toggle("show");
-        });
-      }
-    });
-  </script>
-
-   <main id="main-content">
+  <main id="main-content">
     <section class="hero">
       <h1>Build. Launch. Sell.</h1>
       <p>Premium digital assets and custom development for creators & online businesses.</p>
@@ -461,17 +459,53 @@
     </div>
   </footer>
 
+  <!-- JS for accessibility and theme toggle -->
   <script>
-    const sections = document.querySelectorAll('.section');
-    function showOnScroll() {
-      sections.forEach(section => {
-        if (section.getBoundingClientRect().top < window.innerHeight - 80) {
-          section.classList.add('visible');
-        }
-      });
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
     }
-    window.addEventListener('scroll', showOnScroll);
-    window.addEventListener('load', showOnScroll);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.querySelector(".toggle-switch");
+      const menuToggle = document.getElementById("menu-toggle");
+      const navMenu = document.getElementById("nav-menu");
+
+      if (toggle) {
+        const theme = document.documentElement.getAttribute('data-theme');
+        toggle.setAttribute("aria-checked", theme === 'dark' ? 'true' : 'false');
+      }
+
+      window.toggleDarkMode = function () {
+        const html = document.documentElement;
+        const toggle = document.querySelector(".toggle-switch");
+        const current = html.getAttribute('data-theme');
+        const next = current === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        if (toggle) {
+          toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+        }
+      };
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("show");
+        });
+      }
+
+      // Reveal scroll sections
+      const sections = document.querySelectorAll('.section');
+      function showOnScroll() {
+        sections.forEach(section => {
+          if (section.getBoundingClientRect().top < window.innerHeight - 80) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', showOnScroll);
+      window.addEventListener('load', showOnScroll);
+    });
   </script>
 
   <!-- Google Analytics -->
