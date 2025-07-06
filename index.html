@@ -188,12 +188,62 @@ nav a {
       margin: 0 auto;
     }
 
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://i.postimg.cc/wv75HV9g/2295.jpg') center/cover no-repeat;
-      text-align: center;
-      padding: 120px 20px 100px;
-      color: white;
-    }
+   .hero {
+  position: relative;
+  text-align: center;
+  padding: 120px 20px 100px;
+  color: white;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: slideFade 15s infinite;
+}
+
+.bg-slide:nth-child(1) {
+  animation-delay: 0s;
+}
+.bg-slide:nth-child(2) {
+  animation-delay: 5s;
+}
+.bg-slide:nth-child(3) {
+  animation-delay: 10s;
+}
+
+@keyframes slideFade {
+  0%, 100% { opacity: 0; }
+  10%, 30% { opacity: 1; }
+  40%, 90% { opacity: 0; }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+  z-index: -1;
+}
+
+
+
+
+
+
     .hero h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 1rem;
@@ -398,11 +448,18 @@ nav a {
   </header>
 
   <main id="main-content">
-    <section class="hero">
-      <h1>Build. Launch. Sell.</h1>
-      <p>Premium digital assets and custom development for creators & online businesses.</p>
-      <a href="shop.html">Explore Products</a>
-    </section>
+   <section class="hero">
+  <div class="hero-bg">
+    <div class="bg-slide" style="background-image: url('https://i.postimg.cc/bwT2fRx9/2149160998.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('https://i.postimg.cc/VkFQ9KMM/1511.jpg');"></div>
+    <div class="bg-slide" style="background-image: url('https://i.postimg.cc/1tnjdBgv/2149333092.jpg');"></div>
+  </div>
+
+  <h1>Build. Launch. Sell.</h1>
+  <p>Premium digital assets and custom development for creators & online businesses.</p>
+  <a href="shop.html">Explore Products</a>
+</section>
+
 
     <section class="section scroll-fade">
       <h2>Explore Services & Products</h2>
