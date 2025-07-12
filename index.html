@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Inside your main HTML file -->
+<link rel="stylesheet" href="footer.css">
   <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
 
   <style>
@@ -384,11 +386,12 @@ nav a {
   
 
     .cta {
-      background: linear-gradient(90deg, #1D4ED8, #3B82F6);
-      color: white;
       text-align: center;
-      padding: 60px 20px;
+  padding: 5rem 1.5rem;
+  background: var(--primary);
+  color: white;
     }
+    
     .cta h3 {
       font-size: 2rem;
       margin-bottom: 1rem;
@@ -567,6 +570,9 @@ nav a {
 
 
 
+
+
+
     </section>
 
     <section class="cta">
@@ -586,17 +592,6 @@ nav a {
     </section>
   </main>
 
-  <footer>
-    <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
-    <div class="socials">
-      <a href="https://www.instagram.com/nex.africa" aria-label="Instagram">
-        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram" />
-      </a>
-      <a href="https://www.twitter.com/nexafrica" aria-label="Twitter">
-        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter" />
-      </a>
-    </div>
-  </footer>
 
   <!-- JS for accessibility and theme toggle -->
   <script>
@@ -714,5 +709,18 @@ nav a {
     gtag('js', new Date());
     gtag('config', 'G-LNM66V8R71');
   </script>
+  
+  <!-- main.html -->
+<div id="footer-container"></div>
+
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
+
 </body>
   </html>
