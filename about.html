@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   <link rel="stylesheet" href="/styles/theme.css" />
+<link rel="stylesheet" href="header.css">
+    <!-- Inside your main HTML file -->
+<link rel="stylesheet" href="footer.css">
 
   <!-- JSON-LD Schema Markup -->
   <script type="application/ld+json">
@@ -62,64 +65,7 @@
       transition: background 0.4s ease, color 0.4s ease;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--card-bg);
-      box-shadow: 0 1px 4px var(--card-shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      backdrop-filter: blur(10px);
-    }
-    .logo {
-      font-weight: 800;
-      font-size: 1.6rem;
-      color: var(--primary);
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    .toggle-switch {
-      width: 44px;
-      height: 24px;
-      border-radius: 999px;
-      background: #d1d5db;
-      position: relative;
-      cursor: pointer;
-    }
-    .toggle-switch::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border-radius: 50%;
-      transition: transform 0.3s;
-    }
-    [data-theme="dark"] .toggle-switch {
-      background: #3b82f6;
-    }
-    [data-theme="dark"] .toggle-switch::after {
-      transform: translateX(20px);
-    }
-
+    
     .hero {
       text-align: center;
       padding: 5rem 1.5rem;
@@ -196,16 +142,6 @@
       background: #f3f4f6;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      background: var(--card-bg);
-      color: #6b7280;
-    }
-    .socials a {
-      margin: 0 0.5rem;
-    }
     
    .team-grid {
   display: grid;
@@ -279,16 +215,41 @@
     transition: top 0.3s ease;
   ">Skip to main content</a>
 
-  <header>
-    <div class="logo">
-      <img src="assets/NEXA_20250702_062527_0000 (1).png" alt="NEXA Logo" style="height: 60px;" />
-</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <div class="toggle-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle dark mode" onclick="toggleDarkMode()" onkeydown="if(event.key==='Enter'||event.key===' '){toggleDarkMode();}"></div>
-    </nav>
-  </header>
+<div id="header-container"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+
+        // re-bind toggle functionality after injecting header
+        const toggle = document.querySelector(".toggle-switch");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (toggle) {
+          const current = document.documentElement.getAttribute('data-theme');
+          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
+
+          toggle.addEventListener('click', () => {
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggle.setAttribute("aria-checked", next === 'dark' ? 'true' : 'false');
+          });
+        }
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+          });
+        }
+      })
+      .catch(err => console.error('Failed to load header:', err));
+  });
+</script>
+
 
   <main id="main-content">
  <section class="hero" data-aos="fade-up">
@@ -365,33 +326,14 @@
     
   </main>
 
-  </main>
 
-  <footer>
-    <p><strong>&copy; 2025 NEXA. All rights reserved.</strong></p>
-    <div class="socials">
-      <a href="https://www.instagram.com/nex.africa" aria-label="Instagram">
-        <img src="https://img.icons8.com/ios-filled/20/000000/instagram-new.png" alt="Instagram icon">
-      </a>
-      <a href="https://www.twitter.com/nexafrica" aria-label="Twitter">
-        <img src="https://img.icons8.com/ios-filled/20/000000/twitter.png" alt="Twitter icon">
-      </a>
-    </div>
-  </footer>
 
   <!-- AOS Animation -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
 
-    function toggleDarkMode() {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      document.querySelector('.toggle-switch').setAttribute('aria-checked', next === 'dark');
-    }
-
+    
     document.addEventListener('DOMContentLoaded', () => {
       const savedTheme = localStorage.getItem('theme') || 'light';
       document.documentElement.setAttribute('data-theme', savedTheme);
@@ -417,5 +359,19 @@
     gtag('js', new Date());
     gtag('config', 'G-LNM66V8R71');
   </script>
+  
+  
+    <!-- main.html -->
+<div id="footer-container"></div>
+
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
+
 </body>
-  </html>
+      </html>
