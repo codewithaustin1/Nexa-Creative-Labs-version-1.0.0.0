@@ -1,0 +1,19 @@
+/* footer.css */ 
+footer { text-align: center; padding: 2rem 1rem; background: var(--card-bg); font-size: 0.9rem; color: #555; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+.footer-links a { text-decoration: none; color: #555; font-weight: 600; position: relative; transition: color 0.3s ease; }
+
+.footer-links a::after { content: ''; position: absolute; width: 100%; transform: scaleX(0); height: 2px; bottom: -2px; left: 0; background-color: var(--primary); transform-origin: right; transition: transform 0.3s ease-out; }
+
+.footer-links a:hover { color: var(--primary); }
+
+.footer-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+.socials { display: flex; justify-content: center; gap: 1rem; }
+
+.socials a img { transition: transform 0.3s ease, opacity 0.3s ease; }
+
+.socials a:hover img { transform: scale(1.2) rotate(5deg); opacity: 0.85; }
+
