@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="header.css">
+    <!-- Inside your main HTML file -->
+<link rel="stylesheet" href="footer.css">
   <script src="https://gumroad.com/js/gumroad.js"></script>
   <script src="/theme.js" defer></script>
   <style>
@@ -37,66 +40,7 @@
       color: var(--text);
       transition: background 0.3s ease, color 0.3s ease;
     }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--card-bg);
-      box-shadow: 0 2px 10px var(--card-shadow);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-    }
-    .logo img {
-      height: 60px;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    nav a {
-      margin-left: 1.5rem;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-    }
-    .darkmode-toggle {
-      margin-left: 1.5rem;
-      display: flex;
-      align-items: center;
-    }
-    .darkmode-toggle input {
-      height: 0;
-      width: 0;
-      visibility: hidden;
-    }
-    .toggle-label {
-      cursor: pointer;
-      width: 44px;
-      height: 24px;
-      background: #cbd5e1;
-      border-radius: 999px;
-      position: relative;
-      transition: background 0.3s ease;
-    }
-    .toggle-label::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border-radius: 50%;
-      transition: 0.3s;
-    }
-    input:checked + .toggle-label {
-      background: #3B82F6;
-    }
-    input:checked + .toggle-label::after {
-      transform: translateX(20px);
-    }
+    
     .search-bar {
       text-align: center;
       margin: 1.5rem auto 0 auto;
@@ -205,13 +149,7 @@
       text-decoration: none;
       display: inline-block;
     }
-    footer {
-      background: var(--card-bg);
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #999;
-    }
+    
     .countdown {
       font-size: 1.2rem;
       font-weight: 600;
@@ -222,19 +160,47 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="assets/NEXA_20250702_062527_0000 (1).png" alt="NEXA Logo" style="height: 60px;" />
-    </div>
-    <nav>
-      <a href="/index.html">Home</a>
-      <a href="/about.html">About</a>
-      <div class="darkmode-toggle">
-        <input type="checkbox" id="theme-toggle" />
-        <label for="theme-toggle" class="toggle-label"></label>
-      </div>
-    </nav>
-  </header>
+  
+  <div id="header-container"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+
+        // Re-bind header interactions after injection
+        const toggle = document.querySelector(".toggle-switch");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (toggle) {
+          const current = document.documentElement.getAttribute('data-theme');
+          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
+        }
+
+        window.toggleDarkMode = function () {
+          const html = document.documentElement;
+          const toggle = document.querySelector(".toggle-switch");
+          const current = html.getAttribute('data-theme');
+          const next = current === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          if (toggle) {
+            toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+          }
+        };
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+          });
+        }
+      })
+      .catch(err => console.error('Failed to load header:', err));
+  });
+</script>
+  
 
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="I'm searching for..." oninput="filterProducts()" />
@@ -309,9 +275,6 @@
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 NEXA Creative Labs — Built for confident creators.
-  </footer>
 
   <script>
     function filterCategory(category) {
@@ -336,7 +299,7 @@
       const now = new Date().getTime();
       const distance = targetDate.getTime() - now;
       if (distance <= 0) {
-        countdown.innerHTML = "Deal ended! Stay tuned";
+        countdown.innerHTML = "🔥 Deal ended! Stay tuned";
         return;
       }
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -349,5 +312,18 @@
     setInterval(updateCountdown, 1000);
   </script>
   <script src="/theme.js" defer></script>
+  
+  
+    <!-- main.html -->
+<div id="footer-container"></div>
+
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
 </body>
-        </html>
+  </html>
