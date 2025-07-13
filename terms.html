@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service | NEXA</title>
+  <meta name="description" content="Review the official Terms of Service for using NEXA's digital products and services." />
+  <link rel="stylesheet" href="footer.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding: 2rem 1.5rem;
+      line-height: 1.8;
+      background: var(--bg);
+      color: var(--text);
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: var(--primary);
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Terms of Service</h1>
+    <p>Effective Date: July 13, 2025</p>
+
+    <section>
+      <h2>1. Introduction</h2>
+      <p>Welcome to NEXA Creative Labs. These Terms of Service govern your access to and use of our website and digital products. By using our site or purchasing any product, you agree to these terms.</p>
+    </section>
+
+    <section>
+      <h2>2. Use of Digital Products</h2>
+      <p>All digital products sold are licensed, not sold. You may not resell, distribute, or modify our products for commercial purposes without written permission.</p>
+    </section>
+
+    <section>
+      <h2>3. Refund Policy</h2>
+      <p>Due to the nature of digital goods, all sales are final. However, if you encounter any issues, please <a href="/contact.html">contact us</a> for support.</p>
+    </section>
+
+    <section>
+      <h2>4. Intellectual Property</h2>
+      <p>All content, logos, and materials on this site are the intellectual property of NEXA unless otherwise stated. Unauthorized use is strictly prohibited.</p>
+    </section>
+
+    <section>
+      <h2>5. Modifications</h2>
+      <p>We reserve the right to update these terms at any time. Changes will be posted on this page with an updated effective date.</p>
+    </section>
+
+    <section>
+      <h2>6. Contact</h2>
+      <p>If you have any questions about these Terms, please <a href="/contact.html">get in touch</a>.</p>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('footer-container').innerHTML = html;
+      })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+</body>
+</html>
