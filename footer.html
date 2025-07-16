@@ -20,14 +20,8 @@
     </a>
   </div>
 
-  <div class="footer-donation">
-    <p><strong>Support Our Work</strong></p>
-    <p>Your donation helps us build tools and resources for creators and entrepreneurs.</p>
-
-    <!-- PayPal Form -->
-
-<p class="donate-message">
-  Give $5, $10, or $25 to keep Nexa Creative Labs running strong and empowering creators.
+ <p class="donate-message">
+  Give $5, $10, or $25 — or enter your own amount — to keep Nexa Creative Labs running strong.
 </p>
 
 <div class="donation-buttons">
@@ -43,6 +37,16 @@
      target="_blank"
      class="donate-cta-btn">💛 Give $25</a>
 </div>
+
+<form action="https://www.paypal.com/donate" method="get" target="_blank" class="custom-donation-form">
+  <input type="hidden" name="business" value="upfrontretaile@gmail.com">
+  <input type="hidden" name="item_name" value="Help Keep Nexa Creative Labs Running Strong">
+  <input type="hidden" name="currency_code" value="USD">
+
+  <label for="amount" class="custom-label">Or enter a custom amount:</label>
+  <input type="number" name="amount" id="amount" min="1" step="0.01" placeholder="$10" required>
+  <button type="submit" class="donate-cta-btn">💛 Donate Custom Amount</button>
+</form>
 
 
   
