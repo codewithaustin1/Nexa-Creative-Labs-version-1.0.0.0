@@ -264,3 +264,42 @@ footer {
   background-color: #ffcc00;
 }
 
+.custom-donation-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.custom-donation-form input[type="number"] {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  width: 120px;
+}
+
+.custom-label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.donate-cta-btn {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: bold;
+  padding: 0.7rem 1.3rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.donate-cta-btn:hover {
+  background-color: #ffcc00;
+}
+
+
