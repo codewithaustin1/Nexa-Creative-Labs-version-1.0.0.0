@@ -78,6 +78,48 @@
   </style>
 </head>
 <body>
+  
+   <div id="header-container"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+
+        // Re-bind header interactions after injection
+        const toggle = document.querySelector(".toggle-switch");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (toggle) {
+          const current = document.documentElement.getAttribute('data-theme');
+          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
+        }
+
+        window.toggleDarkMode = function () {
+          const html = document.documentElement;
+          const toggle = document.querySelector(".toggle-switch");
+          const current = html.getAttribute('data-theme');
+          const next = current === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          if (toggle) {
+            toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+          }
+        };
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+          });
+        }
+      })
+      .catch(err => console.error('Failed to load header:', err));
+  });
+</script>
+
+  
   <main>
     <h1>Contact Us</h1>
     <p>Have questions or need support? We'd love to hear from you.</p>
