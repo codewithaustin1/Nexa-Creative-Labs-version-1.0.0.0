@@ -7,13 +7,11 @@
   <meta name="author" content="NEXA Creative Labs" />
   <title>Shop | NEXA</title>
   <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="header.css">
-    <!-- Inside your main HTML file -->
-<link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
   <script src="https://gumroad.com/js/gumroad.js"></script>
   <script src="/theme.js" defer></script>
   <style>
@@ -31,158 +29,113 @@
       --card-bg: #2a2d34;
       --card-shadow: rgba(255, 255, 255, 0.05);
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
+      margin: 0;
+      padding: 0;
       transition: background 0.3s ease, color 0.3s ease;
-    }
-    
-    .search-bar {
-      text-align: center;
-      margin: 1.5rem auto 0 auto;
-    }
-    .search-bar input {
-      width: 80%;
-      max-width: 500px;
-      padding: 0.75rem 1rem;
-      border: 3px solid var(--primary);
-      border-radius: 10px;
-      font-size: 1rem;
-    }
-    .categories {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      padding: 1rem;
-    }
-    .categories button {
-      padding: 0.5rem 1rem;
-      border: none;
-      background: var(--card-bg);
-      color: var(--text);
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .featured {
-      background-image: url('https://i.postimg.cc/x8R3pHcr/40364.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: white;
-      padding: 2rem;
-      margin: 0 12px;
-      text-align: center;
-      border-radius: 10px;
-    }
-    .featured h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .featured button {
-      padding: 0.7rem 1.5rem;
-      background: white;
-      color: var(--primary);
-      border: none;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
     }
     .section {
       padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
     .section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .product-card {
       background: var(--card-bg);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 8px 20px var(--card-shadow);
+      box-shadow: 0 4px 20px var(--card-shadow);
+      display: flex;
+      flex-direction: column;
       transition: transform 0.3s ease;
+      position: relative;
     }
     .product-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
     .product-card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
-      loading: lazy;
     }
-    .product-card .content {
-      padding: 1rem;
+    .tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--primary);
+      color: #fff;
+      padding: 0.3rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
     }
-    .product-card h3 {
-      font-size: 1.1rem;
+    .content {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .content h3 {
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
     }
-    .product-card p {
-      font-size: 0.9rem;
-      color: var(--text);
+    .content p {
+      flex-grow: 1;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
-    .product-card .price {
+    .price {
       font-weight: bold;
-      margin: 0.5rem 0;
+      font-size: 1.05rem;
+      margin-bottom: 0.8rem;
     }
-    .product-card .gumroad-button {
-      width: 100%;
-      padding: 0.6rem;
-      background: var(--primary);
-      color: white;
+    .gumroad-button {
+      padding: 0.7rem 1rem;
+      background-color: var(--primary);
+      color: #fff;
+      text-align: center;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 600;
       cursor: pointer;
-      text-align: center;
       text-decoration: none;
-      display: inline-block;
     }
-    
-    .countdown {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 1rem 0;
-      color: white;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    @media (max-width: 600px) {
+      .section {
+        padding: 1rem;
+      }
+      .content h3 {
+        font-size: 1rem;
+      }
+      .content p {
+        font-size: 0.85rem;
+      }
     }
   </style>
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-LNM66V8R71');
-</script>
-
-  
 </head>
 <body>
-  
   <div id="header-container"></div>
-<script>
+  <script>
   document.addEventListener('DOMContentLoaded', () => {
     fetch('header.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('header-container').innerHTML = html;
 
-        // Re-bind header interactions after injection
+        // re-bind toggle functionality after injecting header
         const toggle = document.querySelector(".toggle-switch");
         const menuToggle = document.getElementById("menu-toggle");
         const navMenu = document.getElementById("nav-menu");
@@ -190,19 +143,14 @@
         if (toggle) {
           const current = document.documentElement.getAttribute('data-theme');
           toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
-        }
 
-        window.toggleDarkMode = function () {
-          const html = document.documentElement;
-          const toggle = document.querySelector(".toggle-switch");
-          const current = html.getAttribute('data-theme');
-          const next = current === "dark" ? "light" : "dark";
-          html.setAttribute("data-theme", next);
-          localStorage.setItem("theme", next);
-          if (toggle) {
-            toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
-          }
-        };
+          toggle.addEventListener('click', () => {
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggle.setAttribute("aria-checked", next === 'dark' ? 'true' : 'false');
+          });
+        }
 
         if (menuToggle && navMenu) {
           menuToggle.addEventListener("click", () => {
@@ -214,71 +162,36 @@
   });
 </script>
   
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="I'm searching for..." oninput="filterProducts()" />
-  </div>
-
-  <div class="categories">
-    <button onclick="filterCategory('all')">All</button>
-    <button onclick="filterCategory('social')">Social Kits</button>
-    <button onclick="filterCategory('business')">Business</button>
-    <button onclick="filterCategory('captions')">Captions</button>
-  </div>
-
-  <section class="featured">
-    <h2>The Ultimate Creator Pack</h2>
-    <p>Everything you need to launch, post, and grow.</p>
-    <div class="countdown" id="countdown"></div>
-    <a class="gumroad-button" href="https://gumroad.com/discover?a=112278675" data-gumroad-single>Discover More Products</a>
-  </section>
-
+  
+  
+  
+  
   <section class="section">
-    <h2>️ Products</h2>
-    <div class="products" id="productGrid">
-
-     <div class="product-card" data-category="captions" data-title="Solo Creator Mindmap">
-        <img src="https://i.postimg.cc/vmt2xdck/side-view-smiley-teen-recording-video.jpg" alt="Captions">
-        <div class="content">
-          <h3>5 Rookie Mistakes of Content Creators</h3>
-          <p>
-
-This easy guide by expert creator Sabi Sandorova breaks down the 5 biggest mistakes beginners make. Whether you're building a YouTube channel, growing on Instagram, or starting a blog, you'll learn how to create better content, boost engagement, and grow your brand with confidence.</p>
-          <div class="price">$4.95</div>
-          <a class="gumroad-button" href="https://nexacreativelabs.gumroad.com/l/contentcreators" data-gumroad-single>Buy this</a>
-        </div>
-      </div>
-
-
-
-      
-       <div class="product-card" data-category="captions" data-title="Solo Creator Mindmap">
-        <img src="https://i.postimg.cc/Hn0TnV4f/file-0000000017d061f89bc0a9e42cd34f47.png" alt="Captions">
-        <div class="content">
-          <h3>Solo Creator Mindmap</h3>
-          <p>The Ultimate Mindmap for Solo Creators.</p>
-          <div class="price">$0.99</div>
-          <a class="gumroad-button" href="https://gum.new/gum/cmcwupiou002h04l56r4y603o" data-gumroad-single>Buy this</a>
-        </div>
-      </div>
-      
-      
-      
-      
-        <div class="product-card" data-category="captions" data-title="Solo Creator Mindmap">
-        <img src="https://i.postimg.cc/rz681qcB/psetu5qbccysx179w373po0s4fko.webp" alt="Captions">
-        <div class="content">
-          <h3>Tube Tactics: The Complete Blueprint To Making $5,000/mo With YouTube Automation</h3>
-          <p>
-
-Tube Tactics is your step-by-step blueprint to building a <strong>faceless, automated YouTube channel</strong> from scratch — even if you’ve never uploaded a single video.</p>
-          <div class="price">$97</div>
-          <a class="gumroad-button" href="https://adamdelduca.gumroad.com/?a=112278675" data-gumroad-single>Buy Now</a>
-        </div>
-      </div>
-      
-      
-      <div class="product-card" data-category="social" data-title="Instagram Kit">
+    <div style="margin: 1rem 0; display: flex; justify-content: center;">
+  <input
+    type="text"
+    id="productSearch"
+    placeholder="Search products..."
+    onkeyup="filterProducts()"
+    style="
+      width: 100%;
+      max-width: 500px;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: border 0.2s ease;
+    "
+  />
+</div>
+    
+    
+    <h2>️ Featured Products</h2>
+    <div class="products">
+      <div class="product-card">
+        <span class="tag">New</span>
         <img src="https://i.postimg.cc/Jn7ND0pP/ssuooufrcgi7zlgmclaot9p5lsmn.webp" alt="Instagram Kit">
         <div class="content">
           <h3>Instagram Growth Kit</h3>
@@ -287,25 +200,28 @@ Tube Tactics is your step-by-step blueprint to building a <strong>faceless, auto
           <a class="gumroad-button" href="https://gumroad.com/discover?query=Instagram+growth+kit&a=112278675" data-gumroad-single>Buy This</a>
         </div>
       </div>
-      <div class="product-card" data-category="business" data-title="Invoice Template">
-        <img src="https://i.postimg.cc/rs1fXswT/z6yeh5pdgffyux2idjwha5l2zd81.png" alt="Invoice">
-        <div class="content">
-          <h3>Smart Invoice Template</h3>
-          <p>Get paid faster with a pro invoice.</p>
-          <div class="price">$6.95</div>
-          <a class="gumroad-button" href="https://gumroad.com/discover?query=Smart+invoice+template&sort=curated&a=112278675" data-gumroad-single>Buy This</a>
-        </div>
-      </div>
-      <div class="product-card" data-category="captions" data-title="365 Captions">
+      <div class="product-card">
+        <span class="tag">Best Seller</span>
         <img src="https://i.postimg.cc/D03KPSN3/b8g61c09jonono2n2xfznpoxpa8m.png" alt="Captions">
         <div class="content">
           <h3>365 Viral Captions</h3>
-          <p>Never run out of things to say online.</p>
+          <p>Never run out of things to say online with this massive caption toolkit.</p>
           <div class="price">$15</div>
           <a class="gumroad-button" href="https://gumroad.com/l/captions" data-gumroad-single>Buy This</a>
         </div>
       </div>
-      <div class="product-card" data-category="business" data-title="Shopify Book">
+      <div class="product-card">
+        <span class="tag">Featured</span>
+        <img src="https://i.postimg.cc/rz681qcB/psetu5qbccysx179w373po0s4fko.webp" alt="Tube Tactics">
+        <div class="content">
+          <h3>Tube Tactics Blueprint</h3>
+          <p>Build a faceless, automated YouTube channel from scratch with this course.</p>
+          <div class="price">$97</div>
+          <a class="gumroad-button" href="https://adamdelduca.gumroad.com/?a=112278675" data-gumroad-single>Buy Now</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="tag">Hot</span>
         <img src="https://i.postimg.cc/tJxWNK6c/Cropped-Image.png" alt="Shopify Book">
         <div class="content">
           <h3>Success with Shopify</h3>
@@ -316,56 +232,14 @@ Tube Tactics is your step-by-step blueprint to building a <strong>faceless, auto
       </div>
     </div>
   </section>
-
-
+  <div id="footer-container"></div>
   <script>
-    function filterCategory(category) {
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
-      });
-    }
-
-    function filterProducts() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach(card => {
-        const title = card.dataset.title.toLowerCase();
-        card.style.display = title.includes(input) ? 'block' : 'none';
-      });
-    }
-
-    const countdown = document.getElementById('countdown');
-    const targetDate = new Date("2025-07-09T23:59:59");
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
-      if (distance <= 0) {
-        countdown.innerHTML = " Deal ended! Stay tuned";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left`;
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
-  <script src="/theme.js" defer></script>
-  
-  
-    <!-- main.html -->
-<div id="footer-container"></div>
-
-<script>
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(html => {
+    fetch('header.html').then(res => res.text()).then(html => {
+      document.getElementById('header-container').innerHTML = html;
+    });
+    fetch('footer.html').then(res => res.text()).then(html => {
       document.getElementById('footer-container').innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load footer:', err));
-</script>
+    });
+  </script>
 </body>
-  </html>
+</html>
