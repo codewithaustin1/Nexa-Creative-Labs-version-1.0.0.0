@@ -234,12 +234,33 @@
   </section>
   <div id="footer-container"></div>
   <script>
-    fetch('header.html').then(res => res.text()).then(html => {
-      document.getElementById('header-container').innerHTML = html;
-    });
+   
     fetch('footer.html').then(res => res.text()).then(html => {
       document.getElementById('footer-container').innerHTML = html;
     });
   </script>
+
+
+  <script>
+  function filterProducts() {
+    const input = document.getElementById('productSearch');
+    const filter = input.value.toLowerCase();
+    const products = document.querySelectorAll('.product-card');
+
+    products.forEach(card => {
+      const title = card.querySelector('h3').textContent.toLowerCase();
+      const description = card.querySelector('p').textContent.toLowerCase();
+
+      if (title.includes(filter) || description.includes(filter)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+
+  
 </body>
 </html>
