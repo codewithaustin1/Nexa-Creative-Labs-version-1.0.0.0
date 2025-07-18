@@ -5,23 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy | NEXA</title>
   <meta name="description" content="Learn how NEXA collects, uses, and protects your data through our Privacy Policy." />
+
+  <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="footer.css" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      padding: 2rem 1.5rem;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.8;
-      max-width: 800px;
-      margin: auto;
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --primary: #0055ff;
     }
+
+    [data-theme="dark"] {
+      --bg: #0d0d0d;
+      --text: #f0f0f0;
+      --primary: #66aaff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 2rem 1.5rem;
+      max-width: 800px;
+      margin-inline: auto;
+      line-height: 1.8;
+    }
+
     h1, h2 {
       color: var(--primary);
     }
+
     section {
       margin-bottom: 2rem;
     }
+
     a {
       color: var(--primary);
       text-decoration: underline;
@@ -29,6 +47,8 @@
   </style>
 </head>
 <body>
+  <div id="header-container"></div>
+
   <main>
     <h1>Privacy Policy</h1>
     <p>Effective Date: July 13, 2025</p>
@@ -41,85 +61,79 @@
     <section>
       <h2>2. Information We Collect</h2>
       <ul>
-        <li>Personal identifiers (e.g., name, email address) when you make a purchase or contact us.</li>
-        <li>Payment details are processed securely via our checkout partner (e.g., Gumroad) and never stored by NEXA.</li>
-        <li>Analytics data (e.g., IP address, device type, browsing behavior) collected via Google Analytics.</li>
+        <li>Personal identifiers (e.g., name, email address)</li>
+        <li>Payment details (handled by Gumroad, not stored by us)</li>
+        <li>Analytics data (IP address, device info, usage patterns)</li>
       </ul>
     </section>
 
     <section>
       <h2>3. How We Use Your Information</h2>
       <ul>
-        <li>To deliver purchased products and services.</li>
-        <li>To provide customer support.</li>
-        <li>To improve user experience and website performance.</li>
-        <li>To comply with legal obligations.</li>
+        <li>To fulfill orders and deliver products</li>
+        <li>To offer support and service updates</li>
+        <li>To improve performance and user experience</li>
       </ul>
     </section>
 
     <section>
-      <h2>4. Legal Bases for Processing (GDPR)</h2>
-      <p>We process your data only when we have a legal basis to do so, including:</p>
-      <ul>
-        <li>Your consent</li>
-        <li>Performance of a contract</li>
-        <li>Legal obligations</li>
-        <li>Legitimate interests</li>
-      </ul>
+      <h2>4. Legal Basis</h2>
+      <p>We only process your data if we have a valid legal reason such as consent, legal obligation, contract performance, or legitimate interest.</p>
     </section>
 
     <section>
-      <h2>5. Data Sharing</h2>
-      <p>We do not sell your personal data. We may share it only with trusted third parties (like payment processors and analytics providers) to help us run our business.</p>
+      <h2>5. Your Rights</h2>
+      <p>Depending on your location, you have rights such as access, correction, deletion, or objection to processing of your personal data. Contact us to exercise any of these rights.</p>
     </section>
 
     <section>
-      <h2>6. Your Rights</h2>
-      <p>If you are located in the EU, UK, or California, you have specific rights regarding your personal data, including the right to:</p>
-      <ul>
-        <li>Access or request a copy of your data</li>
-        <li>Request deletion of your data</li>
-        <li>Withdraw consent at any time</li>
-        <li>File a complaint with a supervisory authority</li>
-      </ul>
-      <p>To exercise these rights, please <a href="/contact.html">contact us</a>.</p>
-    </section>
-
-    <section>
-      <h2>7. Data Retention</h2>
-      <p>We retain personal data only as long as necessary to fulfill the purposes outlined in this policy or as required by law.</p>
-    </section>
-
-    <section>
-      <h2>8. Cookies</h2>
-      <p>We use cookies to enhance functionality and collect usage data. You can disable cookies through your browser settings.</p>
-    </section>
-
-    <section>
-      <h2>9. Children's Privacy</h2>
-      <p>NEXA does not knowingly collect personal data from children under the age of 13. If you believe a child has provided us with information, please contact us for immediate removal.</p>
-    </section>
-
-    <section>
-      <h2>10. Updates to This Policy</h2>
-      <p>This Privacy Policy may be updated from time to time. We will notify users of significant changes by updating this page and the "Effective Date" above.</p>
-    </section>
-
-    <section>
-      <h2>11. Contact</h2>
-      <p>If you have any questions about this Privacy Policy, please <a href="/contact.html">contact us</a>.</p>
+      <h2>6. Contact</h2>
+      <p>If you have questions, please <a href="contact.html">contact us</a>.</p>
     </section>
   </main>
 
   <div id="footer-container"></div>
 
   <script>
+    // Inject shared header
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+
+        // Re-bind dark mode toggle and menu behavior
+        const toggle = document.querySelector('.toggle-switch');
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (toggle) {
+          toggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+          });
+        }
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+          });
+        }
+      });
+
+    // Inject shared footer
     fetch('footer.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('footer-container').innerHTML = html;
-      })
-      .catch(err => console.error('Footer load failed:', err));
+      });
+
+    // Apply stored dark mode preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
   </script>
 </body>
 </html>
