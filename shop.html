@@ -160,6 +160,17 @@
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
   </style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-LNM66V8R71');
+</script>
+
+  
 </head>
 <body>
   
@@ -330,7 +341,7 @@ Tube Tactics is your step-by-step blueprint to building a <strong>faceless, auto
       const now = new Date().getTime();
       const distance = targetDate.getTime() - now;
       if (distance <= 0) {
-        countdown.innerHTML = "🔥 Deal ended! Stay tuned";
+        countdown.innerHTML = " Deal ended! Stay tuned";
         return;
       }
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
