@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service | NEXA</title>
   <meta name="description" content="Review the official Terms of Service for using NEXA's digital products and services." />
+  <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="footer.css" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
       padding: 2rem 1.5rem;
-      line-height: 1.8;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.8;
       max-width: 800px;
       margin: auto;
     }
@@ -29,6 +30,8 @@
   </style>
 </head>
 <body>
+  <div id="header-container"></div>
+
   <main>
     <h1>Terms of Service</h1>
     <p>Effective Date: July 13, 2025</p>
@@ -67,6 +70,40 @@
   <div id="footer-container"></div>
 
   <script>
+    // Load header
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+
+        // Rebind dark mode toggle
+        const toggle = document.querySelector(".toggle-switch");
+        if (toggle) {
+          toggle.addEventListener("click", () => {
+            const html = document.documentElement;
+            const isDark = html.getAttribute("data-theme") === "dark";
+            html.setAttribute("data-theme", isDark ? "light" : "dark");
+            localStorage.setItem("theme", isDark ? "light" : "dark");
+          });
+
+          const currentTheme = localStorage.getItem("theme");
+          if (currentTheme) {
+            document.documentElement.setAttribute("data-theme", currentTheme);
+          }
+        }
+
+        // Rebind mobile menu
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+          });
+        }
+      })
+      .catch(err => console.error("Header load failed:", err));
+
+    // Load footer
     fetch('footer.html')
       .then(res => res.text())
       .then(html => {
