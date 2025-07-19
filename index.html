@@ -96,6 +96,20 @@
   .bg-slide:nth-child(2) { animation-delay: 5s; }
   .bg-slide:nth-child(3) { animation-delay: 10s; }
 
+.hero-bg {
+  background: linear-gradient(-45deg, #1d4ed8, #9333ea, #06b6d4, #10b981);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+  
+
   @keyframes slideFade {
     0%, 100% { opacity: 0; }
     10%, 30% { opacity: 1; }
