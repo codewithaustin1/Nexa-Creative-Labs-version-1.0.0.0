@@ -73,47 +73,71 @@
     justify-content: center;
   }
 
-  .hero-bg {
+ <!-- Hero Section Start -->
+<section class="hero-section" style="position: relative; height: 100vh; width: 100%; overflow: hidden;">
+  <!-- Animated Gradient Background -->
+  <div class="gradient-bg" style="
     position: absolute;
-    inset: 0;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4f46e5, #0ea5e9);
+    background-size: 400% 400%;
+    animation: gradientShift 18s ease infinite;
+    z-index: 0;
+  "></div>
+
+  <!-- Hero Image with Ken Burns effect -->
+  <img
+    class="hero-image"
+    src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1600&q=80"
+    alt="NEXA Hero"
+    style="
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      animation: kenburns 20s ease-in-out infinite alternate;
+    "
+  />
+
+  <!-- Glassmorphic Overlay Text -->
+  <div class="overlay" style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 2;
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+  ">
+    NEXA
+    <span style="display: block; font-size: 1.2rem; font-weight: 400; margin-top: 0.5rem; color: #cbd5e1;">
+      Empowering Creators & Innovators
+    </span>
+  </div>
+</section>
+<!-- Hero Section End -->
+
+<!-- Animations -->
+<style>
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-
-  .bg-slide {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    animation: slideFade 15s infinite;
-    }
-
-      
-
-  
-  .bg-slide:nth-child(1) { animation-delay: 0s; }
-  .bg-slide:nth-child(2) { animation-delay: 5s; }
-  .bg-slide:nth-child(3) { animation-delay: 10s; }
-
-.hero-bg {
-  background: linear-gradient(-45deg, #1d4ed8, #9333ea, #06b6d4, #10b981);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-  
-
-  @keyframes slideFade {
-    0%, 100% { opacity: 0; }
-    10%, 30% { opacity: 1; }
-    40%, 90% { opacity: 0; }
+  @keyframes kenburns {
+    0%   { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.08) translate(-1%, -1%); }
   }
 
   .hero::before {
