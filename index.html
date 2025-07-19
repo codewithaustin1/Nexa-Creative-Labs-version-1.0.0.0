@@ -59,7 +59,8 @@
     margin: 0 auto;
   }
 
-  /* Hero Base Styles */
+  /* --- KEEP FROM HERE DOWN (Non-header styles) --- */
+
   .hero {
     position: relative;
     text-align: center;
@@ -72,100 +73,138 @@
     justify-content: center;
   }
 
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+
+
+.hero-bg {
+  background: linear-gradient(-45deg, #1d4ed8, #9333ea, #06b6d4, #10b981);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Base Styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient Background */
+.gradient-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4f46e5, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  z-index: 0;
+}
+
+/* Hero Image with Ken Burns effect */
+.hero-image {
+  background-image: url('https://i.postimg.cc/rphMnz10/Nexa-Creative-Labs-bg-img.png'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: kenburns 20s ease-in-out infinite alternate;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+  /* 🌐 Mobile Background Swap */
+@media (max-width: 768px) {
+  .hero {
+    background: url('assets/Nexa Creative Labs bg img mobile view.png') center center / cover no-repeat;
+  }
+}
+
+/* Glass Overlay */
+.glass-overlay {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.brand-name {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+/* Particle Container */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.2) translate(10px, 10px);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .glass-overlay {
+    padding: 1rem 2rem;
+  }
+  .brand-name {
+    font-size: 2rem;
+  }
+}
+
+
+  
+
+  
+
+  @keyframes slideFade {
+    0%, 100% { opacity: 0; }
+    10%, 30% { opacity: 1; }
+    40%, 90% { opacity: 0; }
+  }
+
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
     z-index: -1;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: linear-gradient(-45deg, #1d4ed8, #9333ea, #06b6d4, #10b981);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-  }
-
-  .gradient-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4f46e5, #0ea5e9);
-    background-size: 400% 400%;
-    animation: gradientShift 18s ease infinite;
-    z-index: 0;
-  }
-
-  .hero-image {
-    background-image: url('https://i.postimg.cc/rphMnz10/Nexa-Creative-Labs-bg-img.png');
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    animation: kenburns 20s ease-in-out infinite alternate;
-    z-index: 1;
-    opacity: 0.9;
-  }
-
-  @media (max-width: 768px) {
-    .hero-image {
-      background-image: url('assets/Nexa Creative Labs bg img mobile view.png');
-    }
-  }
-
-  .glass-overlay {
-    position: relative;
-    z-index: 3;
-    padding: 2rem 3rem;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-  }
-
-  .brand-name {
-    font-size: 3rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: 0.1em;
-  }
-
-  #particles-js {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-  }
-
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  @keyframes kenburns {
-    0% {
-      transform: scale(1) translate(0, 0);
-    }
-    100% {
-      transform: scale(1.2) translate(10px, 10px);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .glass-overlay {
-      padding: 1rem 2rem;
-    }
-
-    .brand-name {
-      font-size: 2rem;
-    }
   }
 
   .hero h1 {
@@ -247,7 +286,7 @@
     grid-template-columns: 1fr;
     gap: 20px;
     margin-top: 30px;
-    margin-bottom: 3rem;
+    margin-bottom: 3rem
   }
 
   .benefits li {
@@ -354,42 +393,43 @@
     vertical-align: middle;
   }
 
-  .payment-logos {
-    margin-top: 24px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 12px 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
+.payment-logos {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; /* Center horizontally */
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
 
-  [data-theme="dark"] .payment-logos {
-    border-color: rgba(255, 255, 255, 0.08);
-  }
+[data-theme="dark"] .payment-logos {
+  border-color: rgba(255, 255, 255, 0.08);
+}
 
-  .payment-logos img {
-    max-height: 32px;
-    width: auto;
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition:
-      filter 0.3s ease,
-      opacity 0.3s ease,
-      transform 0.3s ease;
-    vertical-align: middle;
-    user-select: none;
-    pointer-events: auto;
-    image-rendering: crisp-edges;
-  }
+.payment-logos img {
+  max-height: 32px;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: 
+    filter 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  vertical-align: middle;
+  user-select: none;
+  pointer-events: auto;
+  image-rendering: crisp-edges;
+}
 
-  .payment-logos img:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.06);
-  }
+.payment-logos img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.06);
+}
+
 
   footer {
     text-align: center;
