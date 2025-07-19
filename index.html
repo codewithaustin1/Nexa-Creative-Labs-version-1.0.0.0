@@ -107,6 +107,97 @@
   100% { background-position: 0% 50%; }
 }
 
+/* Hero Base Styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient Background */
+.gradient-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4f46e5, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  z-index: 0;
+}
+
+/* Hero Image with Ken Burns effect */
+.hero-image {
+  background-image: url('https://i.postimg.cc/wjb9g1mv/verified-hero-desktop.webp'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: kenburns 20s ease-in-out infinite alternate;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Glass Overlay */
+.glass-overlay {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.brand-name {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+/* Particle Container */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.2) translate(10px, 10px);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .glass-overlay {
+    padding: 1rem 2rem;
+  }
+  .brand-name {
+    font-size: 2rem;
+  }
+}
+
+
+  
 
   
 
@@ -427,17 +518,23 @@
   
 
   <main id="main-content">
-   <section class="hero">
-  <div class="hero-bg">
-    <div class="bg-slide" style="background-image: url('https://i.postimg.cc/vTyHXPkx/Chat-GPT-Image-Jul-18-2025-01-26-08-PM.png');"></div>
-    <div class="bg-slide" style="background-image: url('https://i.postimg.cc/QN7Tbw9C/Chat-GPT-Image-Jul-18-2025-01-24-22-PM.png');"></div>
-    <div class="bg-slide" style="background-image: url('https://i.postimg.cc/1tnjdBgv/2149333092.jpg');"></div>
-  </div>
+  <!-- Hero Section Start -->
+<section class="hero-section">
+  <!-- Gradient Background -->
+  <div class="gradient-bg"></div>
 
-  <h1>Build. Launch. Sell.</h1>
-  <p>Premium digital assets and custom development for creators & online businesses.</p>
-  <a href="shop.html">Explore Products</a>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Ken Burns Animated Image -->
+  <div class="hero-image"></div>
+
+  <!-- Glassmorphism Overlay -->
+  <div class="glass-overlay">
+    <h1 class="brand-name">NEXA</h1>
+  </div>
 </section>
+<!-- Hero Section End -->
 
 
     <section class="section scroll-fade">
@@ -638,6 +735,26 @@
     })
     .catch(err => console.error('Failed to load footer:', err));
 </script>
+
+<!-- Particles.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script>
+  tsParticles.load("particles-js", {
+    fullScreen: { enable: false },
+    background: { color: "transparent" },
+    particles: {
+      number: { value: 60 },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3 },
+      size: { value: 3 },
+      move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
+    },
+  });
+</script>
+
+
+  
 
 </body>
 </html>
