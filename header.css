@@ -130,13 +130,15 @@ nav a:hover {
 .hamburger {
   display: inline-flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 28px; /* Increased height for more spacing */
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
+  gap: 5px; /* Adds space between the bars */
 }
 
 .hamburger span {
@@ -149,9 +151,9 @@ nav a:hover {
   transform-origin: center;
 }
 
-/* Animation when menu is open */
+/* Open animation */
 .hamburger.open span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -159,6 +161,6 @@ nav a:hover {
 }
 
 .hamburger.open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
