@@ -1,5 +1,7 @@
 /* header.css */
 
+BEFORE MAJOR EDIT
+
 header {
   position: sticky;
   top: 0;
@@ -28,42 +30,14 @@ header {
   object-fit: contain;
 }
 
-/* Hamburger Button */
+/* Hamburger Button (mobile only) */
 .hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 35px;
+  display: none;
+  font-size: 1.8rem;
   background: none;
   border: none;
+  color: var(--text);
   cursor: pointer;
-  padding: 0;
-  gap: auto;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: currentColor;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  transform-origin: center;
-}
-
-/* Hamburger Open Animation */
-.hamburger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Navigation */
@@ -92,7 +66,7 @@ nav a:hover {
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .hamburger {
-    display: inline-flex;
+    display: block;
   }
 
   nav {
@@ -152,3 +126,43 @@ nav a:hover {
 [data-theme="dark"] .toggle-switch::after {
   transform: translateX(20px);
 }
+
+
+
+.hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 28px; /* Increased height for more spacing */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  gap: 5px; /* Adds space between the bars */
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Open animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
