@@ -141,5 +141,35 @@
         });
     });
   </script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Load shared header and footer
+    Promise.all([
+      fetch('/header.html').then(res => res.text()),
+      fetch('/footer.html').then(res => res.text())
+    ]).then(([headerHTML, footerHTML]) => {
+      document.getElementById('header-container').innerHTML = headerHTML;
+      document.getElementById('footer-container').innerHTML = footerHTML;
+
+      // Re-initialize dark mode toggle once header is loaded
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+
+      const toggleButton = document.querySelector('#theme-toggle');
+      if (toggleButton) {
+        toggleButton.addEventListener('click', () => {
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+        });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
