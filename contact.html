@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | NEXA</title>
   <meta name="description" content="Get in touch with NEXA for product support, partnerships, or general inquiries." />
-    <link rel="stylesheet" href="/styles/theme.css" />
-<link rel="stylesheet" href="header.css">
+  <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/styles/theme.css" />
+  <link rel="stylesheet" href="header.css" />
   <link rel="stylesheet" href="footer.css" />
   <style>
     body {
@@ -78,95 +78,105 @@
       color: var(--primary);
       text-decoration: underline;
     }
-  </style>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-LNM66V8R71');
-</script>
 
-  
+    /* Skip link accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      z-index: 1000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: top 0.3s ease;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-LNM66V8R71');
+  </script>
 </head>
 <body>
-    <!-- Accessibility: Skip Link -->
-  <a href="#main-content" class="skip-link" style="
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #000;
-    color: #fff;
-    padding: 8px 16px;
-    z-index: 1000;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: top 0.3s ease;
-  ">Skip to main content</a>
-  
-   <div id="header-container"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-container').innerHTML = html;
 
-        // Re-bind header interactions after injection
-        const toggle = document.querySelector(".toggle-switch");
-        const menuToggle = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
+  <!-- Accessibility: Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-        if (toggle) {
-          const current = document.documentElement.getAttribute('data-theme');
-          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
-        }
+  <!-- JavaScript Warning for Accessibility -->
+  <noscript>
+    <p style="color: red;">This site works best with JavaScript enabled.</p>
+  </noscript>
 
-        window.toggleDarkMode = function () {
-          const html = document.documentElement;
+  <div id="header-container"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-container').innerHTML = html;
+
           const toggle = document.querySelector(".toggle-switch");
-          const current = html.getAttribute('data-theme');
-          const next = current === "dark" ? "light" : "dark";
-          html.setAttribute("data-theme", next);
-          localStorage.setItem("theme", next);
+          const menuToggle = document.getElementById("menu-toggle");
+          const navMenu = document.getElementById("nav-menu");
+
           if (toggle) {
-            toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+            const current = document.documentElement.getAttribute('data-theme');
+            toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
           }
-        };
 
-        if (menuToggle && navMenu) {
-          menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-          });
-        }
-      })
-      .catch(err => console.error('Failed to load header:', err));
-  });
-</script>
+          window.toggleDarkMode = function () {
+            const html = document.documentElement;
+            const toggle = document.querySelector(".toggle-switch");
+            const current = html.getAttribute('data-theme');
+            const next = current === "dark" ? "light" : "dark";
+            html.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            if (toggle) {
+              toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+            }
+          };
 
-  
-  <main>
+          if (menuToggle && navMenu) {
+            menuToggle.addEventListener("click", () => {
+              navMenu.classList.toggle("show");
+            });
+          }
+        })
+        .catch(err => console.error('Failed to load header:', err));
+    });
+  </script>
+
+  <main id="main-content">
     <h1>Contact Us</h1>
     <p>Have questions or need support? We'd love to hear from you.</p>
 
-    <form name="contact-form" method="POST" data-netlify="true">
+    <form name="contact-form" role="form" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact-form" />
-      
+
       <div>
         <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required placeholder="Jane Doe" />
+        <input type="text" id="name" name="name" required placeholder="Jane Doe" aria-label="Full name" />
       </div>
 
       <div>
         <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required placeholder="you@example.com" />
+        <input type="email" id="email" name="email" required placeholder="you@example.com" aria-label="Email address" />
       </div>
 
       <div>
         <label for="message">Message</label>
-        <textarea id="message" name="message" required placeholder="How can we help?"></textarea>
+        <textarea id="message" name="message" required placeholder="How can we help?" aria-label="Your message"></textarea>
       </div>
 
       <button type="submit">Send Message</button>
@@ -178,7 +188,6 @@
   </main>
 
   <div id="footer-container"></div>
-
   <script>
     fetch('footer.html')
       .then(res => res.text())
@@ -187,6 +196,6 @@
       })
       .catch(err => console.error('Footer load failed:', err));
   </script>
-  
+
 </body>
 </html>
