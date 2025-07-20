@@ -1,130 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us | NEXA</title>
-  <meta name="description" content="Get in touch with NEXA for product support, partnerships, or general inquiries." />
-  <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
-   <link rel="stylesheet" href="header.css">
-  <link rel="stylesheet" href="footer.css">
-  <script src="https://gumroad.com/js/gumroad.js"></script>
-  <script src="/theme.js" defer></script>
+
+  <meta name="description" content="Get in touch with NEXA Creative Labs. Reach out for support, custom services, or collaborations." />
+  <meta name="author" content="NEXA Creative Labs" />
+  <meta name="keywords" content="contact, support, NEXA, web services, inquiries" />
+  <meta name="robots" content="index, follow" />
+
+  <title>Contact | NEXA Creative Labs</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
+  <link rel="stylesheet" href="/styles/darkmode.css" />
+
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111827;
+    }
+    [data-theme='dark'] {
+      --bg: #111827;
+      --text: #f3f4f6;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      padding: 2rem 1.5rem;
       background: var(--bg);
       color: var(--text);
       line-height: 1.8;
+      margin: 0;
+    }
+
+    .page-content {
+      padding: 2rem 1.5rem;
       max-width: 700px;
       margin: auto;
     }
 
-    h1 {
-      color: var(--primary);
+    @media (min-width: 768px) {
+      .page-content {
+        padding: 3rem;
+      }
+    }
+
+    main h1 {
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
-    /* Floating labels */
-    .form-group {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      padding: 1rem 1rem 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      width: 100%;
-      background: var(--card-bg);
-      color: var(--text);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-group label {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: var(--card-bg);
-      color: #777;
-      padding: 0 0.25rem;
-      font-size: 0.9rem;
-      transition: 0.2s ease;
-      pointer-events: none;
-    }
-
-    .form-group input:focus + label,
-    .form-group input:not(:placeholder-shown) + label,
-    .form-group textarea:focus + label,
-    .form-group textarea:not(:placeholder-shown) + label {
-      top: -0.6rem;
-      left: 0.75rem;
-      font-size: 0.75rem;
-      color: var(--primary);
-    }
-
-    /* Submit button with ripple animation */
-    button {
-      position: relative;
-      padding: 0.75rem 1.5rem;
-      background-color: var(--primary);
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-      max-width: 180px;
-      overflow: hidden;
-    }
-
-    button:hover {
-      background-color: #1749b4;
-    }
-
-    button::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.4);
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      transition: width 0.4s ease, height 0.4s ease;
-    }
-
-    button:active::after {
-      width: 200px;
-      height: 200px;
-      transition: 0s;
-    }
-
-    .alt-contact {
-      margin-top: 2rem;
-      font-size: 0.95rem;
-    }
-
-    .alt-contact a {
-      color: var(--primary);
-      text-decoration: underline;
-    }
-
-    #form-status {
-      margin-top: 1rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    /* Skip link accessibility */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -143,128 +69,77 @@
       top: 0;
     }
 
-    @media (min-width: 768px) {
-      body {
-        padding: 3rem;
-      }
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1e40af;
     }
   </style>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-LNM66V8R71');
-  </script>
 </head>
 <body>
-
   <!-- Accessibility: Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- JavaScript Fallback Notice -->
-  <noscript>
-    <p style="color: red;">This site works best with JavaScript enabled.</p>
-  </noscript>
-
+  <!-- Shared Header -->
   <div id="header-container"></div>
+
+  <!-- Main Page Content -->
+  <div class="page-content">
+    <main id="main-content">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you. Fill out the form below and we’ll get back to you soon.</p>
+
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </main>
+
+    <!-- Shared Footer -->
+    <div id="footer-container"></div>
+  </div>
+
+  <!-- Fetch Shared Header and Footer -->
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-container').innerHTML = html;
-
-        // re-bind toggle functionality after injecting header
-        const toggle = document.querySelector(".toggle-switch");
-        const menuToggle = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (toggle) {
-          const current = document.documentElement.getAttribute('data-theme');
-          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
-
-          toggle.addEventListener('click', () => {
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            toggle.setAttribute("aria-checked", next === 'dark' ? 'true' : 'false');
-          });
-        }
-
-        if (menuToggle && navMenu) {
-          menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-          });
-        }
-      })
-      .catch(err => console.error('Failed to load header:', err));
-  });
-</script>
-
-  <main id="main-content">
-    <h1>Contact Us</h1>
-    <p>Have questions or need support? We'd love to hear from you.</p>
-
-    <form name="contact-form" role="form" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
-      <input type="hidden" name="form-name" value="contact-form" />
-
-      <div class="form-group">
-        <input type="text" id="name" name="name" required placeholder=" " aria-label="Your Name" />
-        <label for="name">Your Name</label>
-      </div>
-
-      <div class="form-group">
-        <input type="email" id="email" name="email" required placeholder=" " aria-label="Your Email" />
-        <label for="email">Your Email</label>
-      </div>
-
-      <div class="form-group">
-        <textarea id="message" name="message" required placeholder=" " aria-label="Message"></textarea>
-        <label for="message">Message</label>
-      </div>
-
-      <button type="submit">Send Message</button>
-    </form>
-
-    <!-- ARIA Live Region -->
-    <div id="form-status" aria-live="polite"></div>
-
-    <div class="alt-contact">
-      <p>Prefer email? Reach us directly at <a href="mailto:hello@nexa.africa">hello@nexacreativelabs.io</a></p>
-    </div>
-  </main>
-
-  <div id="footer-container"></div>
-  <script>
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('footer-container').innerHTML = html;
-      })
-      .catch(err => console.error('Footer load failed:', err));
-
-    // Custom submission feedback
-    function handleSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-        .then(() => {
-          document.getElementById("form-status").textContent = "Message sent successfully!";
-          form.reset();
-        })
-        .catch(() => {
-          document.getElementById("form-status").textContent = "Something went wrong. Please try again.";
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('/header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-container').innerHTML = html;
         });
-    }
+
+      fetch('/footer.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        });
+    });
   </script>
 </body>
 </html>
