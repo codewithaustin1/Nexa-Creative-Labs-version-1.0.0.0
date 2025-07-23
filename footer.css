@@ -61,7 +61,6 @@ footer {
 .socials a:hover {
   transform: scale(1.5) rotate(3deg);
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
-background-color: rgba(255, 255, 255, 0.05); /* Soft white tint */
 }
 
 .socials img {
