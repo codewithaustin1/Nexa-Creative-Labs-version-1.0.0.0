@@ -40,15 +40,41 @@ footer {
   color: var(--primary);
 }
 
+.socials {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
 .socials a {
-  display: inline-block;
-  margin: 0 0.5rem;
-  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, filter 0.3s ease, background 0.3s ease;
+  background-color: transparent;
 }
 
 .socials a:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(3deg);
+  filter: drop-shadow(0 0 5px var(--primary));
+  background-color: rgba(59, 130, 246, 0.1); /* Light glow background */
 }
+
+.socials img {
+  width: 24px;
+  height: 24px;
+  transition: filter 0.3s ease;
+}
+
+/* Optional: if you want to color match hover state for icon types */
+.socials a:hover img {
+  filter: brightness(1.2) saturate(1.4);
+}
+
 
 .donate-message {
   font-size: 0.95rem;
