@@ -72,7 +72,7 @@ footer {
 
 /* Optional: if you want to color match hover state for icon types */
 .socials a:hover img {
-  filter: brightness(1.2) saturate(1.4);
+  filter: brightness(1.2) saturate(0.8);
 }
 
 
