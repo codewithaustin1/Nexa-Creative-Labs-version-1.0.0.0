@@ -135,3 +135,33 @@ footer {
     gap: 0.5rem;
   }
 }
+
+
+.footer-payments {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footer-payments p {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.payment-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.payment-logos img {
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.payment-logos img:hover {
+  transform: scale(1.1);
+}
+
