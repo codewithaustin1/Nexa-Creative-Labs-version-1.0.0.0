@@ -34,9 +34,12 @@
     }
 
     .logo-img {
-      height: 42px;
-      transition: transform 0.3s ease;
-    }
+  height: auto;
+  max-height: 8vh; /* or clamp(2rem, 5vw, 6rem) */
+  width: auto;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
 
     .logo-img:hover {
       transform: scale(1.05);
