@@ -22,6 +22,48 @@
 </head>
 
 <body>
+
+   <div id="header-container"></div>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
+
+        // re-bind toggle functionality after injecting header
+        const toggle = document.querySelector(".toggle-switch");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (toggle) {
+          const current = document.documentElement.getAttribute('data-theme');
+          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
+
+          toggle.addEventListener('click', () => {
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            toggle.setAttribute("aria-checked", next === 'dark' ? 'true' : 'false');
+          });
+        }
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+          });
+        }
+      })
+      .catch(err => console.error('Failed to load header:', err));
+  });
+</script>
+
+
+
+  
+
+
+  
 <form name="website-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" id="multistep-form">
   <input type="hidden" name="form-name" value="website-order" />
   <input type="hidden" name="bot-field" />
