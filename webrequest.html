@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
+  <meta name="author" content="NEXA Creative Labs" />
+  <title>NEXA | Digital Products for Passive Income</title>
+
+  <!-- Fonts and preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/styles/theme.css" />
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+
+<body>
+<form name="website-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" id="multistep-form">
+  <input type="hidden" name="form-name" value="website-order" />
+  <input type="hidden" name="bot-field" />
+
+  <div class="form-step active">
+    <h2>Contact Details</h2>
+    <label>Full Name<input type="text" name="name" required /></label>
+    <label>Email<input type="email" name="email" required /></label>
+    <label>Phone Number<input type="tel" name="phone" required /></label>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="form-step">
+    <h2>Project Info</h2>
+    <label>Business or Brand Name<input type="text" name="business" /></label>
+    <label>Type of Website
+      <select name="type" required>
+        <option value="">--Select--</option>
+        <option value="E-commerce">E-commerce</option>
+        <option value="Portfolio">Portfolio</option>
+        <option value="Company Website">Company Website</option>
+        <option value="Blog">Blog</option>
+      </select>
+    </label>
+    <label>Inspiration/Reference Links<textarea name="inspiration" rows="3"></textarea></label>
+    <button type="button" class="prev-btn">Back</button>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="form-step">
+    <h2>Budget & Timeline</h2>
+    <label>Estimated Budget (KES)<input type="number" name="budget" required /></label>
+    <label>Preferred Completion Date<input type="date" name="deadline" required /></label>
+    <label>Any Extra Notes<textarea name="notes" rows="3"></textarea></label>
+    <button type="button" class="prev-btn">Back</button>
+    <button type="button" class="next-btn">Next</button>
+  </div>
+
+  <div class="form-step">
+    <h2>Submit</h2>
+    <p>Review your answers then submit the form. We'll contact you within 24 hours.</p>
+    <div data-netlify-recaptcha="true"></div>
+    <button type="button" class="prev-btn">Back</button>
+    <button type="submit">Submit Order</button>
+  </div>
+</form>
+
+<style>
+  form {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: #f9f9f9;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  .form-step {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-step.active {
+    display: flex;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+  }
+
+  input, select, textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  button {
+    padding: 0.75rem 1.5rem;
+    margin-top: 1rem;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #2563eb;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+</style>
+
+<script>
+  const steps = document.querySelectorAll(".form-step");
+  const nextBtns = document.querySelectorAll(".next-btn");
+  const prevBtns = document.querySelectorAll(".prev-btn");
+  let step = 0;
+
+  function validateStep(currentStep) {
+    const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
+    for (const input of inputs) {
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  nextBtns.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      if (validateStep(step) && step < steps.length - 1) {
+        steps[step].classList.remove("active");
+        step++;
+        steps[step].classList.add("active");
+      }
+    })
+  );
+
+  prevBtns.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      if (step > 0) {
+        steps[step].classList.remove("active");
+        step--;
+        steps[step].classList.add("active");
+      }
+    })
+  );
+</script>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
+</body>
+</html>
