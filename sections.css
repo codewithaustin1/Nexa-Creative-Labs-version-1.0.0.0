@@ -110,3 +110,106 @@
   }
 }
 
+/* ABOUT NEXA EXTENDED */
+.about-nexa {
+  padding: 5rem 1.5rem;
+  background: var(--background);
+  color: var(--text);
+  scroll-margin-top: 4rem;
+}
+
+.about-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.about-text h2 span {
+  color: var(--primary);
+}
+
+.about-block {
+  margin-bottom: 2rem;
+}
+
+.about-block h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.about-block p {
+  line-height: 1.7;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.about-values {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.about-values li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.signature {
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--secondary);
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .about-block h3 {
+    font-size: 1.1rem;
+  }
+
+  .about-block p,
+  .about-values li {
+    font-size: 0.95rem;
+  }
+
+  .about-image {
+    margin-top: 2rem;
+  }
+
+  .about-image img {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+
+
+
+
