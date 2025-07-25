@@ -211,93 +211,91 @@
 
 
 
-/* Form container */
-.freebie-wrapper {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: var(--bg-color, #f9f9f9);
-  border-radius: 1rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
+ .freebie-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: var(--form-bg, #ffffff);
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: system-ui, sans-serif;
+  }
 
-/* Form label */
-.freebie-form label {
-  display: block;
-  font-weight: 600;
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: var(--primary, #333);
-}
-
-/* Input group */
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.freebie-form input[type="email"] {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 2px solid #ccc;
-  border-radius: 0.5rem;
-  transition: border-color 0.3s ease;
-  outline: none;
-}
-
-.freebie-form input[type="email"]:focus {
-  border-color: var(--primary, #3b82f6);
-}
-
-/* Submit button */
-.freebie-form button {
-  background: var(--primary, #3b82f6);
-  color: white;
-  font-size: 1rem;
-  padding: 0.75rem 1.25rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.freebie-form button:hover {
-  background: #2563eb;
-}
-
-/* Responsive tweaks */
-@media (min-width: 640px) {
-  .input-group {
-    flex-direction: row;
+ .freebie-form label {
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 
   .freebie-form input[type="email"] {
-    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .freebie-form button {
-    white-space: nowrap;
+.freebie-form button {
+    background: #2563eb;
+    color: white;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s ease;
   }
-}
+
+  .freebie-form button:hover {
+    background: #1e40af;
+  }
+
+ .success-message {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+  }
 
 
-html[data-theme='dark'] .freebie-form {
-  background: #1f2937;
-}
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
 
-html[data-theme='dark'] .freebie-form label {
-  color: #e5e7eb;
-}
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .freebie-form {
+      padding: 1rem;
+    }
+  }
+ /* Dark Mode Support */
+  @media (prefers-color-scheme: dark) {
+    .freebie-form {
+      --form-bg: #1f2937;
+      color: #f9fafb;
+    }
 
-html[data-theme='dark'] .freebie-form input[type="email"] {
-  background: #374151;
-  color: #f9fafb;
-  border-color: #4b5563;
-}
+    .freebie-form input,
+    .freebie-form button {
+      background-color: #374151;
+      color: #f9fafb;
+      border-color: #4b5563;
+    }
 
-
-
+    .success-message {
+      background-color: #065f46;
+      color: #d1fae5;
+    }
+  }
 
 
 
