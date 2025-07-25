@@ -868,28 +868,30 @@ Explore Digital Products
 
 
   <!-- Handling form success message onsubmit -->
+
 <script>
-  function handleSuccess(e) {
-    e.preventDefault();
-    const form = e.target;
+  function handleSuccess(event) {
+    event.preventDefault();
+    const form = event.target;
     const data = new FormData(form);
 
     fetch("/", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(data).toString()
+      body: data,
     })
-      .then(() => {
+    .then(() => {
+      const success = document.getElementById("successMessage");
+      success.style.display = "block";
+      setTimeout(() => {
+        success.style.display = "none";
         form.reset();
-        document.getElementById("freebie-success").classList.remove("hidden");
-        document.getElementById("freebie-success").classList.add("show");
-      })
-      .catch((error) => alert("Oops! Something went wrong."));
-    
+      }, 3000); // Auto-hide after 3 seconds
+    })
+      .catch((error) => alert("Form submission failed: " + error));
+
     return false;
   }
 </script>
-
   
 
 </body>
