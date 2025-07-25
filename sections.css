@@ -213,7 +213,7 @@
 
  .freebie-form {
     max-width: 500px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     padding: 1.5rem;
     border-radius: 1rem;
     background: var(--form-bg, #ffffff);
