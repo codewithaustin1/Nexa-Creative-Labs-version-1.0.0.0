@@ -290,6 +290,7 @@
 .powered-logos {
   display: flex;
   gap: 3rem;
+  width: max-content;
   animation: scroll-logos 30s linear infinite;
 }
 
@@ -298,10 +299,10 @@
   flex-shrink: 0;
 }
 
-/* Keyframes for scrolling */
+/* Keyframes for smooth horizontal scroll */
 @keyframes scroll-logos {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
