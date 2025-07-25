@@ -297,5 +297,83 @@
     }
   }
 
+.brand-logos-section {
+  padding: 4rem 1rem;
+  background-color: var(--section-bg, #f9f9f9);
+  text-align: center;
+}
+
+.brand-logos-section .section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--text-color, #111);
+}
+
+.logos-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.logos-track {
+  display: flex;
+  gap: 3rem;
+  animation: scroll-logos 30s linear infinite;
+  align-items: center;
+}
+
+.logos-track img {
+  height: 50px;
+  max-width: 140px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.8);
+  transition: filter 0.3s ease;
+  opacity: 0.8;
+}
+
+.logos-track img:hover {
+  filter: grayscale(0%) brightness(1.1);
+  opacity: 1;
+}
+
+/* Keyframes */
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .brand-logos-section {
+    background-color: #111;
+  }
+  .brand-logos-section .section-title {
+    color: #fff;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logos-track {
+    gap: 2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
