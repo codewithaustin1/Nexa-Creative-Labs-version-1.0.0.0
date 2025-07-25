@@ -29,52 +29,49 @@
     </nav>
   </div>
 
-  <script>
-    const menuToggle = document.getElementById('menu-toggle');
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
-    menuToggle.addEventListener('click', () => {
+    // Toggle menu
+    hamburger.addEventListener('click', (e) => {
       navMenu.classList.toggle('show');
-      menuToggle.classList.toggle('open');
+      hamburger.classList.toggle('open');
+      e.stopPropagation();
     });
 
-    function toggleDarkMode() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('show') &&
+          !navMenu.contains(e.target) &&
+          !hamburger.contains(e.target)) {
+        navMenu.classList.remove('show');
+        hamburger.classList.remove('open');
       }
     });
-  </script>
 
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('nav');
-
-  // Toggle menu open/close
-  hamburger.addEventListener('click', (e) => {
-    navMenu.classList.toggle('show');
-    e.stopPropagation(); // Prevent click from bubbling to document
-  });
-
-  // Close menu when clicking outside of it
-  document.addEventListener('click', (e) => {
-    if (navMenu.classList.contains('show') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-      navMenu.classList.remove('show');
-    }
-  });
-
-  // Optional: Close menu on nav link click (mobile experience)
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('show');
+    // Close on link click (optional for mobile UX)
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('show');
+        hamburger.classList.remove('open');
+      });
     });
+
+    // Dark mode load
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+
+    // Toggle dark mode
+    window.toggleDarkMode = function () {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    };
   });
 </script>
 
