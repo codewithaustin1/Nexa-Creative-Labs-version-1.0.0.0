@@ -305,6 +305,7 @@
 .powered-logos {
   display: flex;
   flex-wrap: nowrap;
+  white-space: nowrap;
   gap: 3rem;
   animation: scroll-logos 40s linear infinite;
   width: max-content;
