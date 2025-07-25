@@ -280,105 +280,67 @@
     }
   }
 
-.brand-logos-section {
-  padding: 4rem 1rem;
+/* Section Container */
+.powered-by {
+  padding: 4rem 1.5rem;
   background-color: var(--section-bg, #f9f9f9);
   text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.brand-logos-section .section-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  color: var(--text-color, #111);
-}
-
-.logos-carousel {
-  overflow: hidden;
-  position: relative;
-}
-
-.logos-track {
-  display: flex;
-  gap: 3rem;
-  animation: scroll-logos 30s linear infinite;
-  align-items: center;
-}
-
-.logos-track img {
-  height: 50px;
-  max-width: 140px;
-  object-fit: contain;
-  filter: grayscale(100%) brightness(0.8);
-  transition: filter 0.3s ease;
-  opacity: 0.8;
-}
-
-.logos-track img:hover {
-  filter: grayscale(0%) brightness(1.1);
-  opacity: 1;
-}
-
-/* Keyframes */
-@keyframes scroll-logos {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .brand-logos-section {
-    background-color: #111;
-  }
-  .brand-logos-section .section-title {
-    color: #fff;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .logos-track {
-    gap: 2rem;
-  }
-}
-
-
-.powered-by {
-  padding: 3rem 1rem;
-  background: var(--section-bg, #f9f9f9);
-  text-align: center;
-}
-
+/* Heading */
 .powered-by h2 {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text-color, #222);
 }
 
+/* Logos Container */
 .powered-logos {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 2.5rem;
   justify-content: center;
   align-items: center;
 }
 
+/* Logo Images */
 .powered-logos img {
-  height: 40px;
+  height: 45px;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.8);
   transition: transform 0.3s ease, filter 0.3s ease;
-  filter: grayscale(100%) brightness(0.7);
+  opacity: 0.85;
 }
 
+/* Hover Effects */
 .powered-logos img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
   filter: grayscale(0%) brightness(1);
+  opacity: 1;
 }
 
+/* Dark mode support */
+[data-theme="dark"] .powered-by {
+  background-color: #121212;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .powered-by h2 {
+  color: #f5f5f5;
+}
+
+[data-theme="dark"] .powered-logos img {
+  filter: grayscale(100%) brightness(1.2);
+}
+
+[data-theme="dark"] .powered-logos img:hover {
+  filter: grayscale(0%) brightness(1.5);
+}
 
 
 
