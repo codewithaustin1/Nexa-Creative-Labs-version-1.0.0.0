@@ -931,6 +931,13 @@ Explore Digital Products
   }
 </script>
   
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const logos = document.querySelector(".powered-logos");
+    const clone = logos.cloneNode(true);
+    logos.parentElement.appendChild(clone);
+  });
+</script>
 
 </body>
 </html>
