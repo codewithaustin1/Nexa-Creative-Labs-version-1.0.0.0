@@ -868,6 +868,27 @@ Explore Digital Products
 </script>
 
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.querySelector(".product-grid");
+    const cards = document.querySelectorAll(".product-card");
+
+    if (window.innerWidth <= 768 && grid && cards.length > 1) {
+      let currentIndex = 0;
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        const scrollTo = cards[currentIndex].offsetLeft;
+        grid.scrollTo({ left: scrollTo, behavior: "smooth" });
+      }, 5000); // 5 seconds
+    }
+  });
+</script>
+
+
+  
+
+
   <!-- Handling form success message onsubmit -->
 
 <script>
