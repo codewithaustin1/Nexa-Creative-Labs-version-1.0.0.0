@@ -52,4 +52,31 @@
       }
     });
   </script>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('nav');
+
+  // Toggle menu open/close
+  hamburger.addEventListener('click', (e) => {
+    navMenu.classList.toggle('show');
+    e.stopPropagation(); // Prevent click from bubbling to document
+  });
+
+  // Close menu when clicking outside of it
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('show') && !navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      navMenu.classList.remove('show');
+    }
+  });
+
+  // Optional: Close menu on nav link click (mobile experience)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('show');
+    });
+  });
+</script>
+
+
 </header>
