@@ -931,8 +931,8 @@ Explore Digital Products
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const logos = document.querySelector(".powered-logos");
-    const clone = logos.cloneNode(true);
-    logos.parentElement.appendChild(clone);
+    const logoItems = logos.innerHTML;
+    logos.innerHTML += logoItems; // Only duplicate the logos, not the wrapper
   });
 </script>
 
