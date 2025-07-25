@@ -707,12 +707,32 @@ Explore Digital Products
  </section>
 </section>
 
-<form name="freebie" method="POST" data-netlify="true" class="freebie-form">
+<section class="freebie-wrapper">
+  <form name="freebie" method="POST" data-netlify="true" class="freebie-form" onsubmit="return handleSuccess(event)">
+  
   <input type="hidden" name="form-name" value="freebie" />
   <label for="email">✨ Get your free download</label>
   <input type="email" name="email" id="email" required placeholder="Enter your email" />
   <button type="submit">Send Me the Freebie</button>
 </form>
+  <input type="hidden" name="form-name" value="freebie" />
+  <label for="email">✨ Get your free download</label>
+  <input type="email" name="email" id="email" required placeholder="Enter your email" />
+  <button type="submit">Send Me the Freebie</button>
+</form>
+    <input type="hidden" name="form-name" value="freebie" />
+    <label for="email">✨ Get your free download</label>
+    <div class="input-group">
+      <input type="email" name="email" id="email" required placeholder="Enter your email" />
+      <button type="submit">Send Me the Freebie</button>
+    </div>
+  </form>
+</section>
+
+    
+<div class="freebie-success hidden" id="freebie-success">
+  ✅ Your freebie is on the way! Check your inbox 📥
+</div>
 
 
 
@@ -863,6 +883,29 @@ Explore Digital Products
   });
 </script>
 
+
+  <!-- Handling form success message onsubmit -->
+<script>
+  function handleSuccess(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString()
+    })
+      .then(() => {
+        form.reset();
+        document.getElementById("freebie-success").classList.remove("hidden");
+        document.getElementById("freebie-success").classList.add("show");
+      })
+      .catch((error) => alert("Oops! Something went wrong."));
+    
+    return false;
+  }
+</script>
 
   
 
