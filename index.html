@@ -981,7 +981,7 @@ Explore Digital Products
   });
 </script>
 
-// Firebase SDK to handle Signup and login
+
 
   
   <script type="module">
@@ -1046,7 +1046,44 @@ Explore Digital Products
   });
 </script>
 
-  
+ <script type="module">
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+  const auth = getAuth();
+
+  // DOM Elements
+  const loginLink = document.getElementById("login-link");
+  const signupLink = document.getElementById("signup-link");
+  const dashboardLink = document.getElementById("dashboard-link");
+  const logoutLink = document.getElementById("logout-link");
+
+  // Show/hide based on auth status
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      loginLink.style.display = "none";
+      signupLink.style.display = "none";
+      dashboardLink.style.display = "inline-block";
+      logoutLink.style.display = "inline-block";
+    } else {
+      loginLink.style.display = "inline-block";
+      signupLink.style.display = "inline-block";
+      dashboardLink.style.display = "none";
+      logoutLink.style.display = "none";
+    }
+  });
+
+  // Logout logic
+  logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "index.html";
+    });
+  });
+</script>
+ 
+
+
+
 
   
 </body>
