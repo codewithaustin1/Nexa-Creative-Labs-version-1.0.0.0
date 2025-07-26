@@ -1,7 +1,5 @@
 <!-- header.html -->
-<header>
-  <link rel="stylesheet" href="styles/header.css" />
-
+<header class="main-header">
   <div class="header-container">
     <div class="logo">
       <a href="/index.html">
@@ -28,20 +26,19 @@
       </div>
     </nav>
   </div>
+</header>
 
- <script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
 
-    // Toggle menu
     hamburger.addEventListener('click', (e) => {
       navMenu.classList.toggle('show');
       hamburger.classList.toggle('open');
       e.stopPropagation();
     });
 
-    // Close on outside click
     document.addEventListener('click', (e) => {
       if (navMenu.classList.contains('show') &&
           !navMenu.contains(e.target) &&
@@ -51,7 +48,6 @@
       }
     });
 
-    // Close on link click (optional for mobile UX)
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('show');
@@ -59,13 +55,11 @@
       });
     });
 
-    // Dark mode load
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       document.documentElement.setAttribute('data-theme', savedTheme);
     }
 
-    // Toggle dark mode
     window.toggleDarkMode = function () {
       const current = document.documentElement.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
@@ -73,7 +67,4 @@
       localStorage.setItem('theme', next);
     };
   });
-</script>
-
-
-</header>
+        </script>
