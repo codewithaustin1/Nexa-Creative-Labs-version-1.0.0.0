@@ -68,6 +68,12 @@
       text-decoration: none;
     }
 
+    #signup-message {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
     :root[data-theme='dark'] {
       --bg-color: #121212;
       --text-color: #f3f3f3;
@@ -83,18 +89,47 @@
 </head>
 <body>
   <div class="form-card">
-    <h2>Login</h2>
-    <form id="login-form">
+    <h2>Create Account</h2>
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Full Name" required />
       <input type="email" id="email" placeholder="Email" required />
       <input type="password" id="password" placeholder="Password" required />
-      <button type="submit">Log In</button>
+      <button type="submit">Sign Up</button>
     </form>
-    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    <div id="signup-message"></div>
+    <p>Already have an account? <a href="login.html">Sign In</a></p>
   </div>
 
+  <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
   <script src="firebase-config.js"></script>
-  <script src="login.js"></script>
+
+  <script>
+    const auth = firebase.auth();
+    const signupForm = document.getElementById('signup-form');
+    const messageBox = document.getElementById('signup-message');
+
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          return userCredential.user.updateProfile({ displayName: name });
+        })
+        .then(() => {
+          messageBox.style.color = 'green';
+          messageBox.textContent = 'Account created successfully! Redirecting...';
+          setTimeout(() => window.location.href = 'dashboard.html', 1500);
+        })
+        .catch((error) => {
+          messageBox.style.color = 'red';
+          messageBox.textContent = error.message;
+        });
+    });
+  </script>
 </body>
 </html>
