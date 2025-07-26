@@ -479,6 +479,28 @@
 </head>
 
 <body>
+
+  <form id="signup-form">
+  <h3>Create Account</h3>
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Password" required />
+  <button type="submit">Sign Up</button>
+</form>
+  
+<form id="login-form">
+  <h3>Log In</h3>
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="password" name="password" placeholder="Password" required />
+  <button type="submit">Log In</button>
+</form>
+
+<button id="logout-btn">Logout</button>
+
+
+  
+
+
+  
   <div id="header-container"></div>
   <!-- Accessibility: Skip Link -->
   <a href="#main-content" class="skip-link" style="
@@ -959,5 +981,73 @@ Explore Digital Products
   });
 </script>
 
+// Firebase SDK to handle Signup and login
+
+  
+  <script type="module">
+  // Import Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyCA6tCgXGwjJKJ8ewBwrQdWJMzw4TBlQRs",
+    authDomain: "nexa-auth-e9e2e.firebaseapp.com",
+    projectId: "nexa-auth-e9e2e",
+    storageBucket: "nexa-auth-e9e2e.firebasestorage.app",
+    messagingSenderId: "470482843400",
+    appId: "1:470482843400:web:4ecae871788fd9b7a81ebd",
+    measurementId: "G-SRGZFPMJGR"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+
+  // Signup
+  document.getElementById("signup-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Signup successful! You can now log in.");
+        e.target.reset();
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+
+  // Login
+  document.getElementById("login-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Login successful! Welcome.");
+        // You can redirect the user or show a logged-in UI
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+
+  // Optional: Logout
+  document.getElementById("logout-btn")?.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logged out.");
+    });
+  });
+</script>
+
+  
+
+  
 </body>
 </html>
