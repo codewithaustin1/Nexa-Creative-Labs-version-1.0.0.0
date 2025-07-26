@@ -10,8 +10,13 @@
     <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
 
     <nav id="nav-menu">
-      <a href="/index.html">Home</a>
-      <a href="/shop.html">Shop</a>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+    <!-- These will be toggled -->
+      <li id="login-link"><a href="login.html">Login</a></li>
+      <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+      <li id="dashboard-link" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+      <li id="logout-link" style="display: none;"><a href="#">Logout</a></li>
       <div class="darkmode-toggle">
         <div class="toggle-switch"
              role="switch"
@@ -65,4 +70,4 @@
       localStorage.setItem('theme', next);
     };
   });
-        </script>
+</script>
