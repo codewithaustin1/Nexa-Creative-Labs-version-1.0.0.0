@@ -709,13 +709,29 @@ Explore Digital Products
 
     
 
-<form name="freebie" method="POST" data-netlify="true" class="freebie-form" onsubmit="return handleSuccess(event)">
+<form name="freebie" method="POST" data-netlify="true" class="freebie-form" onsubmit="return handleSuccess(event)"
+  style="max-width: 500px; margin: 3rem auto; padding: 2rem; border-radius: 12px; background: #f9f9f9; box-shadow: 0 8px 20px rgba(0,0,0,0.08); display: flex; flex-direction: column; gap: 1rem; font-family: 'Segoe UI', sans-serif;">
+
   <input type="hidden" name="form-name" value="freebie" />
-  <label for="email">✨ Get your free download</label>
-  <input type="email" name="email" id="email" required placeholder="Enter your email" />
-  <button type="submit">Send Me the Freebie</button>
-  <div class="success-message" id="successMessage">✅ Your freebie is on the way!</div>
+
+  <label for="email" style="font-size: 1.1rem; font-weight: 600; color: #222;">
+    ✨ Want to try our Service? Get free download Now
+  </label>
+
+  <input type="email" name="email" id="email" required placeholder="Enter your email"
+    style="padding: 0.75rem 1rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;" />
+
+  <button type="submit"
+    style="padding: 0.75rem 1rem; background: #007bff; color: white; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s;">
+    Send Me the Freebie
+  </button>
+
+  <div class="success-message" id="successMessage"
+    style="display: none; padding: 0.5rem; background: #e6ffed; color: #2a7c4f; border: 1px solid #b2f0c0; border-radius: 6px; font-size: 0.95rem;">
+    ✅ Your freebie is on the way! Check your Email
+  </div>
 </form>
+
 
 <section class="powered-by">
   <h2>Powered By</h2>
