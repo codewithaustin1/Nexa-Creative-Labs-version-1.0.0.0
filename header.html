@@ -1,5 +1,8 @@
-<!-- header.html -->
-<header class="main-header">
+<!-- Link to external header stylesheet -->
+<link rel="stylesheet" href="/styles/header.css" />
+
+<!-- HEADER HTML -->
+<header>
   <div class="header-container">
     <div class="logo">
       <a href="/index.html">
@@ -7,38 +10,34 @@
       </a>
     </div>
 
- <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
+    <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
 
-  <nav id="nav-menu">
- 
-  <li id="home-link"><a href="index.html">Home</a></li>
-  <li id="shop-link"><a href="shop.html">Digital Products</a></li>
-  <li id="donate-link"><a href="donate.html" class="donate-btn">Support Our Mission</a></li>
+    <nav id="nav-menu">
+      <li id="home-link"><a href="index.html">Home</a></li>
+      <li id="shop-link"><a href="shop.html">Digital Products</a></li>
+      <li id="donate-link"><a href="donate.html" class="donate-btn">Support Our Mission</a></li>
 
-  <!-- Auth-based links -->
-  <li id="login-link"><a href="login.html">Log In</a></li>
-  <li id="signup-link"><a href="signup.html">Get Started Free</a></li>
-  <li id="dashboard-link" style="display: none;"><a href="dashboard.html">My Account</a></li>
-  <li id="logout-link" style="display: none;"><a href="#">Log Out</a></li>
+      <!-- Auth-based links -->
+      <li id="login-link"><a href="login.html">Log In</a></li>
+      <li id="signup-link"><a href="signup.html">Get Started Free</a></li>
+      <li id="dashboard-link" style="display: none;"><a href="dashboard.html">My Account</a></li>
+      <li id="logout-link" style="display: none;"><a href="#">Log Out</a></li>
 
-
-  <div class="darkmode-toggle">
-    <div class="toggle-switch"
-         role="switch"
-         aria-checked="false"
-         tabindex="0"
-         aria-label="Toggle dark mode"
-         onclick="toggleDarkMode()"
-         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); toggleDarkMode();}">
-    </div>
-  </div>
-</nav>
+      <div class="darkmode-toggle">
+        <div class="toggle-switch"
+             role="switch"
+             aria-checked="false"
+             tabindex="0"
+             aria-label="Toggle dark mode"
+             onclick="toggleDarkMode()"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); toggleDarkMode();}">
+        </div>
       </div>
     </nav>
   </div>
 </header>
 
-<!-- Menu & dark mode behavior -->
+<!-- MENU & DARK MODE SCRIPT -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('menu-toggle');
@@ -72,15 +71,19 @@
     }
 
     window.toggleDarkMode = function () {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      const toggle = document.querySelector('.toggle-switch');
+      toggle.setAttribute('aria-checked', newTheme === 'dark');
     };
   });
 </script>
 
-<!-- Firebase Auth Integration -->
+<!-- FIREBASE AUTH SCRIPT -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
   import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
@@ -98,7 +101,6 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // Auth state logic
   onAuthStateChanged(auth, (user) => {
     const loginLink = document.getElementById('login-link');
     const signupLink = document.getElementById('signup-link');
@@ -118,13 +120,10 @@
     }
   });
 
-  // Logout functionality
   document.getElementById('logout-link').addEventListener('click', (e) => {
     e.preventDefault();
     signOut(auth)
       .then(() => window.location.href = "index.html")
-      .catch((error) => {
-        alert("Logout failed: " + error.message);
-      });
+      .catch((error) => alert("Logout failed: " + error.message));
   });
 </script>
