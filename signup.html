@@ -48,6 +48,19 @@
       text-align: center;
       font-weight: bold;
     }
+    .signin-prompt {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .signin-prompt a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .signin-prompt a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -60,6 +73,11 @@
       <button type="submit">Sign Up</button>
       <div id="signup-message"></div>
     </form>
+
+    <div class="signin-prompt">
+      Already have an account?
+      <a href="login.html">Log in here</a>
+    </div>
   </div>
 
   <!-- Firebase SDK: Modular version -->
