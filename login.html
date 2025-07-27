@@ -48,6 +48,19 @@
       text-align: center;
       font-weight: bold;
     }
+    .signup-prompt {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .signup-prompt a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .signup-prompt a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -59,6 +72,10 @@
       <button type="submit">Log In</button>
       <div id="login-message"></div>
     </form>
+
+    <div class="signup-prompt">
+      Don’t have an account? <a href="signup.html">Create one for free</a>
+    </div>
   </div>
 
   <!-- Firebase Auth Logic -->
