@@ -83,11 +83,26 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Load header and footer
-      fetch('header.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('header-container').innerHTML = html;
-        });
+      // Load header and execute embedded scripts
+fetch('header.html')
+  .then(res => res.text())
+  .then(html => {
+    const container = document.getElementById('header-container');
+    container.innerHTML = html;
+
+    // Execute embedded scripts
+    const scripts = container.querySelectorAll('script');
+    scripts.forEach(oldScript => {
+      const newScript = document.createElement('script');
+      if (oldScript.src) {
+        newScript.src = oldScript.src;
+      } else {
+        newScript.textContent = oldScript.textContent;
+      }
+      document.body.appendChild(newScript);
+    });
+  });
+
 
       fetch('footer.html')
         .then(res => res.text())
