@@ -9,15 +9,16 @@
 
     <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
 
-    <nav id="nav-menu" class="nav-menu">
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li id="login-link"><a href="login.html">Login</a></li>
-        <li id="signup-link"><a href="signup.html">Sign Up</a></li>
-        <li id="dashboard-link" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
-        <li id="logout-link" style="display: none;"><a href="#">Logout</a></li>
-      </ul>
+    <nav id="nav-menu">
+      <li id="home-link"><a href="index.html">Home</a></li>
+      <li id="shop-link"><a href="shop.html">Shop</a></li>
+
+      <!-- Auth-based links -->
+      <li id="login-link"><a href="login.html">Login</a></li>
+      <li id="signup-link"><a href="signup.html">Sign Up</a></li>
+      <li id="dashboard-link" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+      <li id="logout-link" style="display: none;"><a href="#">Logout</a></li>
+
       <div class="darkmode-toggle">
         <div class="toggle-switch"
              role="switch"
@@ -32,8 +33,7 @@
   </div>
 </header>
 
-
-<!-- Script for toggle and auth -->
+<!-- Menu & dark mode behavior -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('menu-toggle');
@@ -41,6 +41,7 @@
 
     hamburger.addEventListener('click', (e) => {
       navMenu.classList.toggle('show');
+      hamburger.classList.toggle('open');
       e.stopPropagation();
     });
 
@@ -49,12 +50,14 @@
           !navMenu.contains(e.target) &&
           !hamburger.contains(e.target)) {
         navMenu.classList.remove('show');
+        hamburger.classList.remove('open');
       }
     });
 
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('show');
+        hamburger.classList.remove('open');
       });
     });
 
@@ -90,6 +93,7 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  // Auth state logic
   onAuthStateChanged(auth, (user) => {
     const loginLink = document.getElementById('login-link');
     const signupLink = document.getElementById('signup-link');
@@ -109,10 +113,13 @@
     }
   });
 
+  // Logout functionality
   document.getElementById('logout-link').addEventListener('click', (e) => {
     e.preventDefault();
     signOut(auth)
       .then(() => window.location.href = "index.html")
-      .catch((error) => alert("Logout failed: " + error.message));
+      .catch((error) => {
+        alert("Logout failed: " + error.message);
+      });
   });
 </script>
