@@ -7,124 +7,31 @@
       </a>
     </div>
 
- <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
+    <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
 
-  <nav id="nav-menu">
- <ul>
-  <li id="home-link"><a href="index.html">Home</a></li>
-  <li id="shop-link"><a href="shop.html">Digital Products</a></li>
-  <li id="donate-link"><a href="donate.html" class="donate-btn">Support Our Mission</a></li>
+    <nav id="nav-menu">
+      <ul>
+        <li id="home-link"><a href="index.html">Home</a></li>
+        <li id="shop-link"><a href="shop.html">Digital Products</a></li>
+        <li id="donate-link"><a href="donate.html" class="donate-btn">Support Our Mission</a></li>
 
-  <!-- Auth-based links -->
-  <li id="login-link"><a href="login.html">Log In</a></li>
-  <li id="signup-link"><a href="signup.html">Get Started Free</a></li>
-  <li id="dashboard-link" style="display: none;"><a href="dashboard.html">My Account</a></li>
-  <li id="logout-link" style="display: none;"><a href="#">Log Out</a></li>
- </ul>
+        <!-- Auth-based links -->
+        <li id="login-link"><a href="login.html">Log In</a></li>
+        <li id="signup-link"><a href="signup.html">Get Started Free</a></li>
+        <li id="dashboard-link" style="display: none;"><a href="dashboard.html">My Account</a></li>
+        <li id="logout-link" style="display: none;"><a href="#">Log Out</a></li>
+      </ul>
 
-  <div class="darkmode-toggle">
-    <div class="toggle-switch"
-         role="switch"
-         aria-checked="false"
-         tabindex="0"
-         aria-label="Toggle dark mode"
-         onclick="toggleDarkMode()"
-         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); toggleDarkMode();}">
-    </div>
-  </div>
-</nav>
+      <div class="darkmode-toggle">
+        <div class="toggle-switch"
+             role="switch"
+             aria-checked="false"
+             tabindex="0"
+             aria-label="Toggle dark mode"
+             onclick="toggleDarkMode()"
+             onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); toggleDarkMode();}">
+        </div>
       </div>
     </nav>
   </div>
 </header>
-
-<!-- Menu & dark mode behavior -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('menu-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    hamburger.addEventListener('click', (e) => {
-      navMenu.classList.toggle('show');
-      hamburger.classList.toggle('open');
-      e.stopPropagation();
-    });
-
-    document.addEventListener('click', (e) => {
-      if (navMenu.classList.contains('show') &&
-          !navMenu.contains(e.target) &&
-          !hamburger.contains(e.target)) {
-        navMenu.classList.remove('show');
-        hamburger.classList.remove('open');
-      }
-    });
-
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('show');
-        hamburger.classList.remove('open');
-      });
-    });
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-
-    window.toggleDarkMode = function () {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    };
-  });
-</script>
-
-<!-- Firebase Auth Integration -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyCA6tCgXGwjJKJ8ewBwrQdWJMzw4TBlQRs",
-    authDomain: "nexa-auth-e9e2e.firebaseapp.com",
-    projectId: "nexa-auth-e9e2e",
-    storageBucket: "nexa-auth-e9e2e.firebasestorage.app",
-    messagingSenderId: "470482843400",
-    appId: "1:470482843400:web:4ecae871788fd9b7a81ebd",
-    measurementId: "G-SRGZFPMJGR"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // Auth state logic
-  onAuthStateChanged(auth, (user) => {
-    const loginLink = document.getElementById('login-link');
-    const signupLink = document.getElementById('signup-link');
-    const dashboardLink = document.getElementById('dashboard-link');
-    const logoutLink = document.getElementById('logout-link');
-
-    if (user) {
-      loginLink.style.display = 'none';
-      signupLink.style.display = 'none';
-      dashboardLink.style.display = 'list-item';
-      logoutLink.style.display = 'list-item';
-    } else {
-      loginLink.style.display = 'list-item';
-      signupLink.style.display = 'list-item';
-      dashboardLink.style.display = 'none';
-      logoutLink.style.display = 'none';
-    }
-  });
-
-  // Logout functionality
-  document.getElementById('logout-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    signOut(auth)
-      .then(() => window.location.href = "index.html")
-      .catch((error) => {
-        alert("Logout failed: " + error.message);
-      });
-  });
-</script>
