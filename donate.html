@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate | Nexa Creative Labs</title>
+  <meta name="description" content="Support Nexa Creative Labs to empower digital creators and small businesses worldwide. Every donation fuels accessible tools and resources for innovation.">
+  <link rel="stylesheet" href="styles/donate.css" />
+
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="donate-page">
+    <section class="donate-hero">
+      <h1>Support the Future of Digital Creativity</h1>
+      <p>Your contribution helps us build free, powerful tools for creators, founders, and small businesses worldwide. Be part of the change — one donation at a time.</p>
+    </section>
+
+    <section class="donate-options">
+      <h2>Choose a Donation Amount</h2>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.com/donate?business=upfrontretaile@gmail.com&item_name=Support+Nexa+Creative+Labs&currency_code=USD&amount=5"
+           target="_blank" class="donate-cta-btn" rel="noopener noreferrer">💛 Give $5</a>
+        <a href="https://www.paypal.com/donate?business=upfrontretaile@gmail.com&item_name=Support+Nexa+Creative+Labs&currency_code=USD&amount=10"
+           target="_blank" class="donate-cta-btn" rel="noopener noreferrer">💛 Give $10</a>
+        <a href="https://www.paypal.com/donate?business=upfrontretaile@gmail.com&item_name=Support+Nexa+Creative+Labs&currency_code=USD&amount=25"
+           target="_blank" class="donate-cta-btn" rel="noopener noreferrer">💛 Give $25</a>
+      </div>
+
+      <form action="https://www.paypal.com/donate" method="get" target="_blank" class="custom-donation-form">
+        <input type="hidden" name="business" value="upfrontretaile@gmail.com">
+        <input type="hidden" name="item_name" value="Support Nexa Creative Labs">
+        <input type="hidden" name="currency_code" value="USD">
+
+        <label for="amount" class="custom-label">Prefer a custom amount?</label>
+        <input type="number" name="amount" id="amount" min="1" step="0.1" placeholder="$100" required>
+        <button type="submit" class="donate-cta-btn">💛 Donate Custom Amount</button>
+      </form>
+    </section>
+
+    <section class="donate-impact">
+      <h3>Where Your Donation Goes</h3>
+      <ul>
+        <li>🚀 Builds free tools and templates for creators</li>
+        <li>📚 Offers free digital education to solo entrepreneurs</li>
+        <li>🌍 Helps small businesses go online affordably</li>
+        <li>🔧 Keeps Nexa Creative Labs independent and ad-free</li>
+      </ul>
+    </section>
+
+    <p class="donate-footer-note">
+      💡 Even $5 makes a difference. Thank you for believing in open, accessible digital tools for all.
+    </p>
+  </main>
+
+  <div id="footer-container"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("header.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("header-container").innerHTML = data);
+
+      fetch("footer.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("footer-container").innerHTML = data);
+    });
+  </script>
+</body>
+</html>
 
