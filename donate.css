@@ -1,1 +1,142 @@
+/* donate.css */
+
+/* Base Styles */
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --primary: #0055ff;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+}
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.donate-hero {
+  text-align: center;
+  padding: 4rem 1.5rem 2rem;
+  background: linear-gradient(135deg, var(--primary), #0077ff);
+  color: white;
+}
+
+.donate-hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.donate-hero p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Donation Options */
+.donate-options {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.donation-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.donate-cta-btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.donate-cta-btn:hover {
+  background-color: #003fcc;
+}
+
+/* Custom Amount Form */
+.custom-donation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.custom-donation-form input[type="number"] {
+  padding: 0.6rem;
+  width: 200px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Impact Section */
+.donate-impact {
+  max-width: 600px;
+  margin: 3rem auto 2rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.donate-impact h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.donate-impact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.donate-impact li {
+  background: var(--card-shadow);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  margin: 0.5rem auto;
+  font-size: 1rem;
+  max-width: 450px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* Footer Note */
+.donate-footer-note {
+  text-align: center;
+  font-size: 0.95rem;
+  margin: 2rem 1rem 3rem;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .donate-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .donate-cta-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .custom-donation-form input[type="number"] {
+    width: 100%;
+    max-width: 250px;
+  }
+}
 
