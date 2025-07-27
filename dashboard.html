@@ -1,51 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | NEXA Creative Labs</title>
+  <link rel="stylesheet" href="sections.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .welcome-message {
+      margin-bottom: 2rem;
+    }
+
+    button.logout-btn {
+      padding: 0.8rem 1.5rem;
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button.logout-btn:hover {
+      background-color: #dc2626;
+    }
+
+    :root[data-theme='dark'] {
+      --bg-color: #121212;
+      --text-color: #f3f3f3;
+      --card-bg: #1e1e1e;
+    }
+
+    :root[data-theme='light'] {
+      --bg-color: #f3f3f3;
+      --text-color: #111;
+      --card-bg: white;
+    }
+  </style>
 </head>
 <body>
-  <h2>Welcome to Your Dashboard</h2>
-  <p id="user-info"></p>
-  <button id="logout-btn">Logout</button>
+  <!-- Shared Header -->
+  <div id="header-container"></div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+  <main>
+    <h1>Welcome to Your Dashboard</h1>
+    <div class="welcome-message" id="user-greeting">Loading user...</div>
+    <button class="logout-btn" id="logout-btn">Logout</button>
+  </main>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCA6tCgXGwjJKJ8ewBwrQdWJMzw4TBlQRs",
-      authDomain: "nexa-auth-e9e2e.firebaseapp.com",
-      projectId: "nexa-auth-e9e2e",
-      storageBucket: "nexa-auth-e9e2e.firebasestorage.app",
-      messagingSenderId: "470482843400",
-      appId: "1:470482843400:web:4ecae871788fd9b7a81ebd",
-      measurementId: "G-SRGZFPMJGR"
-    };
+  <!-- Shared Footer -->
+  <div id="footer-container"></div>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
 
-    const userInfo = document.getElementById("user-info");
-    const logoutBtn = document.getElementById("logout-btn");
+  <script>
+    // Load header and footer
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('header.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('header-container').innerHTML = html;
+        });
 
-    // Check if user is logged in
-    onAuthStateChanged(auth, (user) => {
+      fetch('footer.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('footer-container').innerHTML = html;
+        });
+    });
+
+    const auth = firebase.auth();
+    const greeting = document.getElementById('user-greeting');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    // Protect dashboard route
+    auth.onAuthStateChanged((user) => {
       if (user) {
-        userInfo.textContent = `Logged in as ${user.displayName || "Anonymous"} (${user.email})`;
+        greeting.textContent = `Hello, ${user.displayName || user.email}!`;
       } else {
-        // Redirect if not logged in
-        window.location.href = "login.html";
+        window.location.href = 'login.html';
       }
     });
 
-    // Handle logout
-    logoutBtn.addEventListener("click", async () => {
-      await signOut(auth);
-      window.location.href = "login.html";
+    logoutBtn.addEventListener('click', () => {
+      auth.signOut().then(() => {
+        window.location.href = 'login.html';
+      });
     });
   </script>
 </body>
 </html>
-
