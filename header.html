@@ -10,8 +10,8 @@
     <button class="hamburger" id="menu-toggle" aria-label="Toggle menu">☰</button>
 
     <nav id="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="shop.html">Shop</a></li>
+      <li id="home-link"><a href="index.html">Home</a></li>
+      <li id="shop-link"><a href="shop.html">Shop</a></li>
 
       <!-- Auth-based links -->
       <li id="login-link"><a href="login.html">Login</a></li>
@@ -93,7 +93,7 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // UI toggle based on auth state
+  // Auth state logic
   onAuthStateChanged(auth, (user) => {
     const loginLink = document.getElementById('login-link');
     const signupLink = document.getElementById('signup-link');
@@ -113,11 +113,13 @@
     }
   });
 
-  // Logout
+  // Logout functionality
   document.getElementById('logout-link').addEventListener('click', (e) => {
     e.preventDefault();
     signOut(auth)
       .then(() => window.location.href = "index.html")
-      .catch(() => alert("Logout failed"));
+      .catch((error) => {
+        alert("Logout failed: " + error.message);
+      });
   });
 </script>
