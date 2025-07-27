@@ -1,135 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up | NEXA Creative Labs</title>
-  <link rel="stylesheet" href="sections.css" />
+  <title>Sign Up | NEXA</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .form-card {
-      background: var(--card-bg);
+      background-color: #f5f5f5;
       padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      width: 100%;
+    }
+    .form-container {
       max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-
-    .form-card h2 {
-      margin-bottom: 1.5rem;
+    h2 {
       text-align: center;
+      margin-bottom: 1.5rem;
     }
-
-    .form-card input {
+    input {
       width: 100%;
-      padding: 0.8rem;
+      padding: 0.75rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      font-size: 1rem;
+      border-radius: 5px;
     }
-
-    .form-card button {
+    button {
       width: 100%;
-      padding: 0.8rem;
-      background: var(--primary-color, #2563eb);
+      padding: 0.75rem;
+      background-color: #2563eb;
       color: white;
       border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.2s;
+      font-weight: bold;
     }
-
-    .form-card button:hover {
-      background: #1d4ed8;
+    button:hover {
+      background-color: #1d4ed8;
     }
-
-    .form-card p {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .form-card a {
-      color: var(--primary-color, #2563eb);
-      text-decoration: none;
-    }
-
     #signup-message {
-      text-align: center;
-      font-size: 0.9rem;
       margin-top: 1rem;
-    }
-
-    :root[data-theme='dark'] {
-      --bg-color: #121212;
-      --text-color: #f3f3f3;
-      --card-bg: #1e1e1e;
-    }
-
-    :root[data-theme='light'] {
-      --bg-color: #f3f3f3;
-      --text-color: #111;
-      --card-bg: white;
+      text-align: center;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="form-card">
+  <div class="form-container">
     <h2>Create Account</h2>
     <form id="signup-form">
       <input type="text" id="name" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email" required />
+      <input type="email" id="email" placeholder="Email Address" required />
       <input type="password" id="password" placeholder="Password" required />
       <button type="submit">Sign Up</button>
+      <div id="signup-message"></div>
     </form>
-    <div id="signup-message"></div>
-    <p>Already have an account? <a href="login.html">Sign In</a></p>
   </div>
 
-  <!-- Firebase Scripts -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-  <script src="firebase-config.js"></script>
-  
+  <!-- Firebase SDK: Modular version -->
+  <script type="module">
+    import { auth } from './firebase-config.js';
+    import {
+      createUserWithEmailAndPassword,
+      updateProfile
+    } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
 
-  <script>
-    const auth = firebase.auth();
     const signupForm = document.getElementById('signup-form');
     const messageBox = document.getElementById('signup-message');
 
-    signupForm.addEventListener('submit', (e) => {
+    signupForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
 
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          return userCredential.user.updateProfile({ displayName: name });
-        })
-        .then(() => {
-          messageBox.style.color = 'green';
-          messageBox.textContent = 'Account created successfully! Redirecting...';
-          setTimeout(() => window.location.href = 'dashboard.html', 1500);
-        })
-        .catch((error) => {
-          messageBox.style.color = 'red';
-          messageBox.textContent = error.message;
-        });
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: name });
+
+        messageBox.style.color = 'green';
+        messageBox.textContent = 'Account created successfully! Redirecting...';
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1500);
+      } catch (error) {
+        messageBox.style.color = 'red';
+        messageBox.textContent = error.message;
+      }
     });
   </script>
 </body>
