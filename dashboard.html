@@ -81,8 +81,8 @@
   <script src="firebase-config.js"></script>
 
   <script>
-    // Load header and footer
     document.addEventListener('DOMContentLoaded', () => {
+      // Load header and footer
       fetch('header.html')
         .then(res => res.text())
         .then(html => {
@@ -94,24 +94,25 @@
         .then(html => {
           document.getElementById('footer-container').innerHTML = html;
         });
-    });
 
-    const auth = firebase.auth();
-    const greeting = document.getElementById('user-greeting');
-    const logoutBtn = document.getElementById('logout-btn');
+      const auth = firebase.auth();
+      const greeting = document.getElementById('user-greeting');
+      const logoutBtn = document.getElementById('logout-btn');
 
-    // Protect dashboard route
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        greeting.textContent = `Hello, ${user.displayName || user.email}!`;
-      } else {
-        window.location.href = 'login.html';
-      }
-    });
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          greeting.textContent = `Hello, ${user.displayName || user.email}!`;
+        } else {
+          window.location.href = 'login.html';
+        }
+      });
 
-    logoutBtn.addEventListener('click', () => {
-      auth.signOut().then(() => {
-        window.location.href = 'login.html';
+      logoutBtn.addEventListener('click', () => {
+        auth.signOut().then(() => {
+          window.location.href = 'login.html';
+        }).catch((error) => {
+          alert('Error signing out: ' + error.message);
+        });
       });
     });
   </script>
