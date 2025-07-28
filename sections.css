@@ -354,6 +354,38 @@
 }
 
 
+@media (prefers-color-scheme: dark) {
+  .featured-products {
+    background: #111827;
+  }
+
+  .featured-products .section-title {
+    color: #f3f4f6;
+  }
+
+  .product-card {
+    background: #1f2937;
+    color: #f9fafb;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.03);
+  }
+
+  .product-card h3 {
+    color: #ffffff;
+  }
+
+  .product-card p {
+    color: #d1d5db;
+  }
+
+  .view-btn {
+    background: #2563eb;
+    color: #ffffff;
+  }
+
+  .view-btn:hover {
+    background: #f59e0b;
+  }
+}
 
 
 
