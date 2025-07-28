@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-p...your_hash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
   <meta name="author" content="NEXA Creative Labs" />
   <title>NEXA |Digital Products for Passive Income</title>
@@ -312,6 +312,32 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+  .features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+  
 /* Dark mode */
 [data-theme="dark"] .product-card {
   background-color: #1e1e1e;
@@ -325,7 +351,13 @@
   border-color: rgba(255, 255, 255, 0.2);
 }
 
+.feature-card i {
+  transition: transform 0.3s ease;
+}
 
+.feature-card:hover i {
+  transform: scale(1.2) rotate(3deg);
+}
   
 
 
@@ -669,19 +701,19 @@ See What’s Hot
 </section>
 
 <section class="section scroll-fade">
-      <h2>Our offering</h2>
+      <h2>What We Offer</h2>
       <h3 style="font-size:1.5rem; text-align:center; justify-content:center; padding:1rem;">
-    We offer digital downloads, web design, and creative assets built for creators, small businesses, and online sellers.
+    Premium digital downloads, high-converting websites, and creative tools—designed to help creators and solo brands grow faster.
   </h3>
   <div class="features">
         <div class="feature-card">
-          <h3>📅 Digital Downloads</h3>
-          <p>Get 5-star rated templates, tools, audio, and guides with guaranteed results – ready to use instantly.</p>
+          <h3><i class="fas fa-download" style="color:#0055ff; margin-right:8px;"></i> Ready-to-Use Digital Products</h3>
+          <p>Unlock 5-star templates, audio kits, and growth tools—trusted by creators and optimized for instant results.</p>
         </div>
         <div class="feature-card">
-          <h3>💻 Web Development</h3>
-          <p>Custom websites and stores built for high conversion.</p>
-        </div>
+          <h3><i class="fas fa-laptop-code" style="color:#0055ff; margin-right:8px;"></i> Custom Web Design & Development</h3>
+          <p>Get fast, conversion-optimized websites and eCommerce stores tailored for growth and performance.</p>
+    </div>
       </div>
  </section>
 
