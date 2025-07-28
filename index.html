@@ -456,25 +456,41 @@
     transform: translateX(8px);
   }
 
-  .testimonial-slider {
-    position: relative;
-    margin-top: 0.1rem;
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-  }
+.testimonial-slider {
+  max-width: 800px;
+  margin: 3rem auto;
+  text-align: center;
+  position: relative;
+}
 
-  .testimonial {
-    display: none;
-    font-style: italic;
-    transition: opacity 0.5s ease;
-    opacity: 0;
-  }
+.testimonial {
+  display: none;
+  font-size: 1.1rem;
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: opacity 0.5s ease-in-out;
+}
 
-  .testimonial.active {
-    display: block;
-    opacity: 1;
-  }
+.testimonial.active {
+  display: block;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.testimonial p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.testimonial strong {
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
   .slider-controls {
     margin-top: 1rem;
@@ -783,24 +799,30 @@ See What’s Hot
   </ul>
 </section>
 
-<div class="testimonial-slider">
+<section class="section scroll-fade testimonial-slider">
+  <h2>What Creators Are Saying</h2>
+
   <div class="testimonial active">
-    <p>“With Nexa, we got to launch much quicker than we thought. Having a clear direction early on really helped us stay focused and move faster.”</p>
-    <p><strong>— L. Chen, Founder, LaunchLab</strong></p>
+    <p>“NEXA helped us launch faster than expected. Their clear direction early on gave us focus and momentum.”</p>
+    <p><strong>— L. Chen, Founder @ LaunchLab</strong></p>
   </div>
+
   <div class="testimonial">
-    <p>“The assets were solid—definitely saved me weeks I would've spent building from scratch.”</p>
+    <p>“The assets were a total time-saver—weeks of design work done in minutes. Super efficient.”</p>
     <p><strong>— D. Rivera, UI Designer</strong></p>
   </div>
+
   <div class="testimonial">
-    <p>“The support was genuinely helpful—felt like NEXA really understood and cared about what creators actually need.”</p>
+    <p>“The support felt personal. NEXA gets creators—and actually delivers what we need.”</p>
     <p><strong>— M. Okafor, Course Creator</strong></p>
   </div>
+
   <div class="testimonial">
-    <p>“Useful tools, everything ran smoothly. Really solid experience overall.”</p>
+    <p>“Everything just worked. Clean, smart tools that made my workflow smoother.”</p>
     <p><strong>— A. Patel, Marketing Consultant</strong></p>
   </div>
-</div>
+</section>
+
 
 
 <div class="slider-controls">
@@ -1210,9 +1232,24 @@ See What’s Hot
     });
   });
 </script>
- 
-
 
 <script src="header.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const testimonials = document.querySelectorAll(".testimonial");
+    let index = 0;
+
+    setInterval(() => {
+      testimonials[index].classList.remove("active");
+      index = (index + 1) % testimonials.length;
+      testimonials[index].classList.add("active");
+    }, 7000); // 7-second rotation
+  });
+</script>
+
+
+
+  
 </body>
 </html>
