@@ -50,42 +50,82 @@
 </script>
 
 
-  <style>
-  :root {
-    --bg: #f9f9f9;
-    --text: #222;
-    --primary: #1D4ED8;
-    --card-bg: #fff;
-    --card-shadow: rgba(0, 0, 0, 0.06);
-  }
+<style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --primary: #0055ff;
+      --accent: #f5f7ff;
+    }
 
-  [data-theme="dark"] {
-    --bg: #1d1f23;
-    --text: #f0f0f0;
-    --primary: #4a90e2;
-    --card-bg: #2a2d34;
-    --card-shadow: rgba(255, 255, 255, 0.05);
-  }
-  *, html {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-  }
+    [data-theme="dark"] {
+      --bg: #0d0d0d;
+      --text: #f0f0f0;
+      --accent: #1a1a1a;
+    }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    padding-top: 80px;
-    color: var(--text);
-    line-height: 1.6;
-    transition: background 0.3s, color 0.3s;
-  }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
 
-  main {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
+
+   .donate-container {
+      max-width: 500px;
+      width: 100%;
+      background: var(--accent);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .donate-btn {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .donate-btn:hover {
+      background: #003fcc;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 </style>
 
    <!-- Google Analytics -->
@@ -141,37 +181,16 @@
   });
 </script>
 
-  <main class="donate-page">
-    <section class="donate-hero">
-      <h1>Support the Future of Digital Creativity</h1>
-      <p>Your contribution helps us build free, powerful tools for creators, founders, and small businesses worldwide. Be part of the change — one donation at a time.</p>
-    </section>
-
-    <section class="donate-options">
-      
-<form action="https://www.paypal.com/donate" method="post" target="_top" onsubmit="trackFlexibleDonation();">
-  <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
-  <label class="custom-label">Choose your amount on PayPal</label>
-  <button type="submit" class="donate-cta-btn">💛 Donate via PayPal</button>
-</form>
-
+  <div class="donate-container">
+    <h1>❤️ Support the Creative Movement</h1>
+    <p>Your donation helps us equip creators and dreamers with premium resources, tools, and inspiration to thrive. Even $1 makes a difference.</p>
     
-
-
-    <section class="donate-impact">
-      <h3>Where Your Donation Goes</h3>
-      <ul>
-        <li>🚀 Builds free tools and templates for creators</li>
-        <li>📚 Offers free digital education to solo entrepreneurs</li>
-        <li>🌍 Helps small businesses go online affordably</li>
-        <li>🔧 Keeps Nexa Creative Labs independent and ad-free</li>
-      </ul>
-    </section>
-
-    <p class="donate-footer-note">
-      💡 Even $5 makes a difference. Thank you for believing in open, accessible digital tools for all.
-    </p>
-  </main>
+    <!-- PayPal Custom Button Redirect -->
+    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+      <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
+      <button type="submit" class="donate-btn">Donate Securely with PayPal</button>
+    </form>
+  </div>
 
   <div id="footer-container"></div>
   
