@@ -184,15 +184,53 @@
   </main>
 
   <div id="footer-container"></div>
+  
+  <!-- JavaScript to Load Header and Footer -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      fetch("header.html")
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load header
+      fetch('header.html')
         .then(res => res.text())
-        .then(data => document.getElementById("header-container").innerHTML = data);
+        .then(html => {
+          document.getElementById('header-container').innerHTML = html;
 
+          // Dark mode setup
+          const toggle = document.querySelector(".toggle-switch");
+          const menuToggle = document.getElementById("menu-toggle");
+          const navMenu = document.getElementById("nav-menu");
+
+          if (toggle) {
+            const current = document.documentElement.getAttribute('data-theme');
+            toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
+          }
+
+          window.toggleDarkMode = function () {
+            const html = document.documentElement;
+            const toggle = document.querySelector(".toggle-switch");
+            const current = html.getAttribute('data-theme');
+            const next = current === "dark" ? "light" : "dark";
+            html.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            if (toggle) {
+              toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+            }
+          };
+
+          // Hamburger menu toggle
+          if (menuToggle && navMenu) {
+            menuToggle.addEventListener("click", () => {
+              navMenu.classList.toggle("show");
+            });
+          }
+        })
+        .catch(err => console.error('Failed to load header:', err));
+
+      // Load footer
       fetch("footer.html")
         .then(res => res.text())
-        .then(data => document.getElementById("footer-container").innerHTML = data);
+        .then(data => {
+          document.getElementById("footer-container").innerHTML = data;
+        });
     });
   </script>
 </body>
