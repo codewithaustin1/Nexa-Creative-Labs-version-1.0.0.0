@@ -215,6 +215,50 @@
     font-size: 2rem;
   }
 }
+
+.benefits {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+}
+
+.benefits li:hover {
+  background: #f0f8ff;
+}
+
+.benefits i {
+  font-size: 1.5rem;
+  color: #0055ff;
+  margin-right: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.benefits li:hover i {
+  transform: scale(1.2) rotate(5deg);
+  color: #0077ff;
+}
+
+
+
+
+  
+
+
   
 
   @keyframes slideFade {
@@ -718,13 +762,27 @@ See What’s Hot
  </section>
 
 <section class="section scroll-fade">
-    <h2>Why Creators Choose Us</h2>
-<ul class="benefits">
-  <li>⚡ Instant & secure digital downloads</li>
-  <li>🧠 Strategy-first development approach</li>
-  <li>🤝 Trusted by over 10,000 creators worldwide</li>
-  <li>🌍 Shop anytime, anywhere — fully remote access</li>
-</ul>
+  <h2>Why Creators Choose Us</h2>
+  <ul class="benefits">
+    <li>
+      <i class="fas fa-bolt"></i>
+      Instant, secure digital downloads—no delays, no stress.
+    </li>
+    <li>
+      <i class="fas fa-brain"></i>
+      Strategy-first web design that converts traffic into sales.
+    </li>
+    <li>
+      <i class="fas fa-handshake"></i>
+      Trusted by 10,000+ creators, coaches, and online sellers.
+    </li>
+    <li>
+      <i class="fas fa-globe"></i>
+      Shop anytime, anywhere—with seamless remote access.
+    </li>
+  </ul>
+</section>
+
 <div class="testimonial-slider">
   <div class="testimonial active">
     <p>“With Nexa, we got to launch much quicker than we thought. Having a clear direction early on really helped us stay focused and move faster.”</p>
