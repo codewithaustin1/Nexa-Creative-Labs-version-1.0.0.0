@@ -14,11 +14,13 @@
     gtag('js', new Date());
     gtag('config', 'G-LNM66V8R71');
 
-    // Fixed event for donation confirmation
-    gtag('event', 'donation_received', {
-      event_category: 'Donations',
-      event_label: 'Standard Donation',
-      value: 1
+    // Wait for DOM before firing custom event
+    window.addEventListener('DOMContentLoaded', () => {
+      gtag('event', 'donation_received', {
+        event_category: 'Donations',
+        event_label: 'Standard Donation',
+        value: 1
+      });
     });
   </script>
 
@@ -67,4 +69,3 @@
   </div>
 </body>
 </html>
-
