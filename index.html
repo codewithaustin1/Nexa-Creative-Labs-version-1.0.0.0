@@ -277,6 +277,60 @@
     text-align: center;
   }
 
+
+
+
+  /* Product card animation */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+  .product-card {
+  background-color: var(--bg);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+
+
+/* Light mode (default) */
+.product-card {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode */
+[data-theme="dark"] .product-card {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .product-card .view-btn {
+  background-color: #333;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+  
+
+
+  
+
   .features {
     display: flex;
     flex-wrap: wrap;
@@ -588,28 +642,28 @@ See What’s Hot
 <!-- Hero Section End -->
 
 <section class="featured-products" id="featured-products">
-  <h2 class="section-title">Featured Products of the Week</h2>
+  <h2 class="section-title">This Week's Top-Selling Digital Tools</h2>
 
   <div class="product-grid">
     <div class="product-card">
       <img src="https://i.postimg.cc/ZRGmSnQc/Chat-GPT-Image-Jul-24-2025-08-07-09-PM.png" alt="AI-Ready Caption Hooks" />
       <h3>AI-Ready Caption Hooks</h3>
-      <p>100 high-converting hooks for Reels and TikTok that sell effortlessly.</p>
-      <a href="shop.html" class="view-btn">View Product</a>
+      <p>Turn views into sales with scroll-stopping captions made for Reels and TikTok.</p>
+      <a href="shop.html" class="view-btn">Unlock Now</a>
     </div>
 
     <div class="product-card">
       <img src="https://i.postimg.cc/XqKDZY24/Chat-GPT-Image-Jul-24-2025-08-33-40-PM.png" alt="Product 2" />
       <h3>Ultimate Biz Starter Vault</h3>
-      <p>Guides, templates, and prompts to launch your solo business fast.</p>
-      <a href="shop.html"" class="view-btn">View Product</a>
+      <p>Everything you need to launch your solo brand—templates, guides, prompts & more.</p>
+      <a href="shop.html"" class="view-btn">Access the Vault</a>
     </div>
 
     <div class="product-card">
       <img src="https://i.postimg.cc/90gdx4QW/Chat-GPT-Image-Jul-24-2025-09-10-15-PM-removebg-preview-1.jpg" alt="Product 3" />
       <h3>Content Planner Toolkit</h3>
-      <p>Plan, schedule & grow with 50+ templates for creators and marketers.</p>
-      <a href="shop.html"" class="view-btn">View Product</a>
+      <p>Plan, schedule, and grow on autopilot with 50+ done-for-you creator templates.</p>
+      <a href="shop.html"" class="view-btn">Start Planning</a>
     </div>
   </div>
 </section>
