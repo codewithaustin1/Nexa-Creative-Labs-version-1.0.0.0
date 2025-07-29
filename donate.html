@@ -223,10 +223,16 @@
     <p>Your donation helps us equip creators and dreamers with premium resources, tools, and inspiration to thrive. Every bit counts!</p>
     
     <!-- PayPal Custom Button Redirect -->
-    <form action="https://www.paypal.com/donate" method="post" target="_blank">
-      <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
-      <button type="submit" class="donate-btn">Donate Securely with PayPal</button>
-    </form>
+ <form action="https://www.paypal.com/donate" method="post" target="_blank">
+  <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
+  <button 
+    type="submit" 
+    class="donate-btn"
+    onclick="trackFlexibleDonation()"
+  >
+    Donate Securely with PayPal
+  </button>
+</form>
   </div>
 
   <div id="footer-container"></div>
@@ -297,7 +303,6 @@
     label: 'Flexible Amount Button'
   });
   }
-</script>
 </script>
 
   
