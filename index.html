@@ -563,6 +563,31 @@
     vertical-align: middle;
   }
 
+/* General animation starter */
+.scroll-animate {
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+/* Fade up for about-blocks */
+.about-block.scroll-animate {
+  transform: translateY(30px);
+}
+
+/* Slide in from left for image */
+.about-image.scroll-animate {
+  transform: translateX(-30px);
+}
+
+/* When element becomes visible */
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+
+
+  
 
 
   footer {
@@ -853,7 +878,7 @@ See What’s Hot
         </p>
       </div>
 
-      <div class="about-block">
+      <div class="about-block scroll-animate">
         <h3>🌟 What Drives Us</h3>
         <ul class="about-values">
           <li>🎯 Creativity that serves a purpose</li>
@@ -863,7 +888,7 @@ See What’s Hot
         </ul>
       </div>
 
-      <div class="about-block">
+      <div class="about-block scroll-animate">
         <h3>🧭 From Hustle to Hub</h3>
         <p>
           Started by <strong>Austin</strong>, a developer with a passion for helping creators win online,
@@ -874,7 +899,7 @@ See What’s Hot
       <p class="signature">— Austin, Founder</p>
     </div>
 
-    <div class="about-image">
+    <div class="about-image scroll-animate">
   <img 
     src="https://i.postimg.cc/DzNJqKwN/efdd5988-21f1-436e-8bfb-4e9309611185-20250725-053110-0000.jpg" 
     alt="Portrait of Austin, founder of NEXA Creative Labs, standing confidently as the creative force behind the brand." 
