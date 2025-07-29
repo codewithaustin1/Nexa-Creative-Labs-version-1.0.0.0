@@ -1,381 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About NEXA | Empowering Digital Creators & Businesses</title>
-  <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn about NEXA Creative Labs – a digital innovation studio empowering creators and small businesses with tailored web solutions and premium downloads." />
+    <title>About | NEXA Creative Labs</title>
+    <link rel="stylesheet" href="/header.css" />
+    <link rel="stylesheet" href="/sections.css" />
+    <link rel="stylesheet" href="/about.css" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+    <script defer src="/header.js"></script>
+    <script defer src="/scripts/darkmode-toggle.js"></script>
+  </head>
 
-  <meta name="description" content="Learn about NEXA — our mission, values, and innovations powering intuitive digital tools for creators, entrepreneurs, and modern businesses." />
-  <meta name="keywords" content="About NEXA, Digital Creator Tools, Ecommerce, Entrepreneur Resources, Mission, Values" />
-  <meta name="author" content="NEXA Creative Labs" />
-  <link rel="canonical" href="https://yourdomain.com/about.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  <link rel="stylesheet" href="/styles/theme.css" />
-<link rel="stylesheet" href="header.css">
-    <!-- Inside your main HTML file -->
-<link rel="stylesheet" href="footer.css">
+  <body>
+    <header id="header-container"></header>
 
- <!-- JSON-LD Schema Markup -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About NEXA",
-  "url": "https://nexacreativelabs.netlify.app/about.html",
-  "description": "NEXA empowers creators and entrepreneurs with intuitive tools to grow online.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "NEXA",
-    "url": "https://nexacreativelabs.netlify.app",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://nexacreativelabs.netlify.app/assets/logo.png"
-    }
-  }
-}
-</script>
+    <main class="about-page" style="padding: 4rem 1rem; max-width: 1000px; margin: auto;">
+      <section class="intro" style="text-align: center;">
+        <h1 style="font-size: 2.5rem; font-weight: 800;">Our Mission</h1>
+        <p style="font-size: 1.125rem; margin-top: 1rem; max-width: 700px; margin-inline: auto;">
+          At <strong>NEXA Creative Labs</strong>, we’re building a future where creators, startups, and small businesses thrive with the right tools. From stunning digital products to powerful web experiences, we exist to help you monetize your craft with confidence.
+        </p>
+      </section>
 
+      <section class="founder-section" style="margin-top: 4rem; display: flex; flex-direction: column; gap: 2rem; align-items: center; text-align: center;">
+        <img src="/assets/founder.jpg" alt="Founder Photo" style="width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 4px solid var(--primary);" />
+        <div>
+          <h2 style="font-size: 1.75rem; font-weight: 700;">Meet the Founder</h2>
+          <p style="font-size: 1rem; margin-top: 0.75rem; max-width: 600px;">
+            Hi, I’m <strong>Austin Makachola</strong> — a passionate developer, digital product creator, and problem-solver. I founded NEXA Creative Labs to bridge the gap between creative ambition and real digital success. Whether you're launching your first product or scaling your audience, I’m here to build with you.
+          </p>
+        </div>
+      </section>
 
-  <style>
-:root {
-      --bg: #f9fafb;
-      --text: #111827;
-      --primary: #2563eb;
-      --card-bg: #ffffff;
-      --accent: #fcd34d;
-      --card-shadow: rgba(0, 0, 0, 0.04);
-    }
-    [data-theme="dark"] {
-      --bg: #111827;
-      --text: #f3f4f6;
-      --primary: #3b82f6;
-      --card-bg: #1f2937;
-      --accent: #fbbf24;
-      --card-shadow: rgba(255, 255, 255, 0.05);
-    }
+      <section class="why-nexa" style="margin-top: 4rem;">
+        <h2 style="font-size: 2rem; text-align: center; font-weight: 700;">Why NEXA?</h2>
+        <ul style="margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+          <li style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+            <i class="fas fa-bolt" style="font-size: 1.5rem; color: var(--primary);"></i>
+            <h3 style="margin-top: 0.75rem; font-size: 1.25rem;">Built for Speed</h3>
+            <p>Our websites and products are fast, reliable, and optimized for conversion across all devices.</p>
+          </li>
+          <li style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+            <i class="fas fa-lock" style="font-size: 1.5rem; color: var(--primary);"></i>
+            <h3 style="margin-top: 0.75rem; font-size: 1.25rem;">Privacy & Security</h3>
+            <p>We partner with trusted platforms like Gumroad and Render to ensure your experience is safe and seamless.</p>
+          </li>
+          <li style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+            <i class="fas fa-rocket" style="font-size: 1.5rem; color: var(--primary);"></i>
+            <h3 style="margin-top: 0.75rem; font-size: 1.25rem;">Tools That Scale</h3>
+            <p>From free resources to custom web builds, everything we create grows with you.</p>
+          </li>
+        </ul>
+      </section>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: background 0.4s ease, color 0.4s ease;
-    }
+      <section class="mission-cta" style="margin-top: 4rem; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: 700;">You Create. We Power That.</h2>
+        <p style="font-size: 1.125rem; margin-top: 0.75rem; max-width: 700px; margin-inline: auto;">
+          NEXA Creative Labs is more than a platform — it's a movement empowering creatives in Africa and beyond.
+        </p>
+        <a href="/shop.html" class="cta-button" style="margin-top: 1.5rem; display: inline-block; padding: 0.75rem 1.5rem; background: var(--primary); color: white; font-weight: 600; border-radius: 8px; text-decoration: none; transition: background 0.3s;">
+          Explore Our Products
+        </a>
+      </section>
+    </main>
 
-    
-    .hero {
-      text-align: center;
-      padding: 5rem 1.5rem;
-      background: linear-gradient(to right, #fefce8, #ecfccb);
-    }
-    .hero h1 {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 700px;
-      margin: 0 auto;
-      color: #374151;
-    }
+    <footer id="footer-container" style="margin-top: 4rem;"></footer>
 
-    .section {
-      padding: 4rem 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    .section p {
-      color: var(--text);
-      font-size: 1.1rem;
-    }
-    .values {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .value-card {
-      background: var(--card-bg);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 12px var(--card-shadow);
-      transition: transform 0.3s;
-    }
-    .value-card:hover {
-      transform: translateY(-4px);
-    }
-    .value-card h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .cta {
-      text-align: center;
-      padding: 5rem 1.5rem;
-      background: var(--primary);
-      color: white;
-    }
-    .cta h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .cta a {
-      display: inline-block;
-      margin-top: 1rem;
-      background: white;
-      color: var(--primary);
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .cta a:hover {
-      background: #f3f4f6;
-    }
-
-    
-   .team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.team-member {
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 12px var(--card-shadow);
-  text-align: center;
-  transition: transform 0.3s;
-  position: relative;
-  cursor: pointer;
-}
-
-.team-member:hover {
-  transform: translateY(-4px);
-}
-
-.team-member img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-}
-
-.team-member h3 {
-  margin: 0.5rem 0 0.25rem;
-  font-size: 1.2rem;
-  color: var(--text);
-}
-
-.team-member .title {
-  font-weight: 600;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.team-bio {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: var(--text);
-  display: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.team-member.active .team-bio {
-  display: block;
-}
-
-  </style>
-
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-LNM66V8R71');
-</script>
-
-</head>
-<body>
-  <!-- Accessibility: Skip Link -->
-  <a href="#main-content" class="skip-link" style="
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #000;
-    color: #fff;
-    padding: 8px 16px;
-    z-index: 1000;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: top 0.3s ease;
-  ">Skip to main content</a>
-
-<div id="header-container"></div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-container').innerHTML = html;
-
-        // re-bind toggle functionality after injecting header
-        const toggle = document.querySelector(".toggle-switch");
-        const menuToggle = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (toggle) {
-          const current = document.documentElement.getAttribute('data-theme');
-          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
-
-          toggle.addEventListener('click', () => {
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            toggle.setAttribute("aria-checked", next === 'dark' ? 'true' : 'false');
-          });
-        }
-
-        if (menuToggle && navMenu) {
-          menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-          });
-        }
-      })
-      .catch(err => console.error('Failed to load header:', err));
-  });
-</script>
-
-
-  <main id="main-content">
- <section class="hero" data-aos="fade-up">
-      <h1>About NEXA</h1>
-      <p>Providing digital solutions and professional web design services for solo creators, brands, and small businesses.</p></section>
-
-    <section class="section" data-aos="fade-up">
-      <h2>Mission & Purpose</h2>
-      <p>NEXA empowers creators and entrepreneurs with smart, accessible tools that simplify digital growth and unlock freedom, creativity, and commerce.</p>
-    </section>
-
-    <section class="section" data-aos="fade-up">
-  <h2>Our Core Values</h2>
-  <div class="values">
-    <div class="value-card">
-      <h3>🚀 Innovation</h3>
-      <p>We shape the future by turning bold ideas into real-world solutions.</p>
-    </div>
-    <div class="value-card">
-      <h3>🎯 Clarity</h3>
-      <p>We simplify complexity, prioritizing ease, honesty, and seamless experiences.</p>
-    </div>
-    <div class="value-card">
-      <h3>🛡️ Integrity</h3>
-      <p>We earn trust by making choices rooted in transparency and long-term value.</p>
-    </div>
-  </div>
-</section>
-
-    <section class="cta" data-aos="zoom-in">
-      <h3>Let’s shape the future of digital creativity together.</h3>
-      <p>Start your journey with NEXA today.</p>
-      <a href="signup.html">Create Your Free Account</a>
-    </section>
-    
-    <section class="section team" data-aos="fade-up">
-  <h2>Our Team</h2>
-  <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">
-    We’re a crew of curious builder, creators, and problem-solvers on a mission to make digital entrepreneurship easier, smarter, and more fun for everyone.
-  </p>
-  <div class="team-grid">
-    <div class="team-member" onclick="toggleBio(this)" data-aos="fade-up" data-aos-delay="100">
-      <img src="https://i.postimg.cc/XqM4g0p1/Image-Editor-1.png" alt="Austin Makachola" />
-      <h3>Austin Makachola</h3>
-      <p class="title">Chief Executive Officer</p>
-      <div class="team-bio">
-  <p>Driven by a passion for helping others succeed, Mr. Austin leads Nexa’s strategic vision to create practical tools that support creatives, entrepreneurs, and small teams worldwide. His background in statistics and programming shapes solutions that bring clarity and lasting value to those building online. He believes in empowering others through structure, purpose, and accessible innovation.</p>
-</div>
-    </div>
-
-    <div class="team-member" onclick="toggleBio(this)" data-aos="fade-up" data-aos-delay="200">
-      <img src="https://i.postimg.cc/3rpKxWcs/Image-Editor-2.png" alt="Evans Otieno" />
-      <h3>Evans Otieno</h3>
-      <p class="title">Chief Technology Officer</p>
-   <div class="team-bio">
-  <p>Evans is passionate about building future-ready solutions that make technology more accessible and scalable for businesses and communities. As the founder of Elite Telecommunications, he applies his deep engineering expertise to develop platforms that empower growth, simplify systems, and support digital transformation where it’s needed most.</p>
-</div>
-
-    </div>
-
-    <div class="team-member" onclick="toggleBio(this)" data-aos="fade-up" data-aos-delay="300">
-      <img src="https://i.postimg.cc/2SqYg6h9/retouch-2025070105153981-1.png" alt="Sabi Sandorova" />
-      <h3>Sabi Sandorova</h3>
-      <p class="title">Design Lead</p>
-      <div class="team-bio">
-        <p>Sabi, formerly the Lead Designer at GrowthBond, has a sharp eye for user behavior and interaction—transforming complex ideas into intuitive, engaging digital experiences rooted in clarity, creativity, and human-centered design.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-    
-    
-    
-  </main>
-
-
-
-  <!-- AOS Animation -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      document.querySelector('.toggle-switch').setAttribute('aria-checked', savedTheme === 'dark');
-    });
-
-    function toggleBio(element) {
-      const members = document.querySelectorAll('.team-member');
-      members.forEach(member => {
-        if (member !== element) {
-          member.classList.remove('active');
-        }
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        fetch('/header.html').then(res => res.text()).then(data => {
+          document.getElementById('header-container').innerHTML = data;
+        });
+        fetch('/footer.html').then(res => res.text()).then(data => {
+          document.getElementById('footer-container').innerHTML = data;
+        });
       });
-      element.classList.toggle('active');
-    }
-  </script>
-  
-  
-    <!-- main.html -->
-<div id="footer-container"></div>
-
-<script>
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer-container').innerHTML = html;
-    })
-    .catch(err => console.error('Failed to load footer:', err));
-</script>
-
-</body>
-      </html>
+    </script>
+  </body>
+</html>
