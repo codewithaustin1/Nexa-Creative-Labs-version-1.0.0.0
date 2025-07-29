@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Find answers to frequently asked questions about digital products, licensing, support, payments, and services from Nexa Creative Labs.">
+  <title>FAQs | Nexa Creative Labs</title>
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    details {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: var(--card-bg, #f9f9f9);
+      transition: background 0.3s;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    details[open] {
+      background-color: var(--highlight, #e6f0ff);
+    }
+
+    summary::marker {
+      display: none;
+    }
+
+    summary i {
+      margin-right: 0.5rem;
+      color: var(--primary, #0055ff);
+      transition: transform 0.3s ease;
+    }
+
+    details[open] summary i {
+      transform: rotate(90deg);
+    }
+
+    p {
+      margin-top: 0.5rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+
+    @media (prefers-color-scheme: dark), [data-theme="dark"] {
+      body {
+        background: #0d0d0d;
+        color: #f0f0f0;
+      }
+      details {
+        background-color: #1a1a1a;
+        border-color: #333;
+      }
+      details[open] {
+        background-color: #111827;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <h1>Frequently Asked Questions</h1>
+
+  <details>
+    <summary><i class="fas fa-download"></i>How do I receive my digital downloads?</summary>
+    <p>Immediately after checkout, a secure download link is provided on-screen and sent to your email. All files are available in high-quality formats and ready for use instantly.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-lock"></i>Are my payments secure?</summary>
+    <p>Yes. We use trusted payment gateways like PayPal and Stripe to ensure all transactions are encrypted and secure.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-sync"></i>Can I redownload my product later?</summary>
+    <p>Yes. Once purchased, your download links remain active in your email. If you lose access, just reach out and we’ll resend your files.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-copyright"></i>Can I use these products commercially?</summary>
+    <p>Yes! Most assets come with a commercial license unless otherwise noted. You’re free to use them in client work, content creation, and digital products.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-code"></i>Do you build custom websites?</summary>
+    <p>We specialize in high-conversion websites for creators and small businesses. Just reach out through our contact page and we’ll walk you through the process.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-headset"></i>What if I need help with my purchase?</summary>
+    <p>We’re here to support you. Simply message us via the contact form or email and we’ll respond within 24 hours.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-globe"></i>Do you serve clients outside Kenya?</summary>
+    <p>Absolutely. Nexa is a fully remote company. We serve global clients and creators across time zones, languages, and industries.</p>
+  </details>
+
+  <details>
+    <summary><i class="fas fa-credit-card"></i>What currencies do you accept?</summary>
+    <p>All purchases are processed in USD. However, your local currency may be converted automatically based on your card provider or PayPal account settings.</p>
+  </details>
+
+  <p class="footer-note">
+    Still have a question? <br>Use our <a href="/contact.html">contact form</a> or connect with us on social media — we're here to help!
+  </p>
+
+  <div id="footer-container"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("/partials/header.html").then(res => res.text()).then(data => {
+        document.getElementById("header-container").innerHTML = data;
+      });
+      fetch("/partials/footer.html").then(res => res.text()).then(data => {
+        document.getElementById("footer-container").innerHTML = data;
+      });
+    });
+  </script>
+</body>
+</html>
 
