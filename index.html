@@ -252,13 +252,6 @@
   transform: scale(1.2) rotate(5deg);
   color: #0077ff;
 }
-
-
-
-
-  
-
-
   
 
   @keyframes slideFade {
@@ -878,7 +871,7 @@ See What’s Hot
         </p>
       </div>
 
-      <div class="about-block scroll-animate">
+      <div class="about-block">
         <h3>🌟 What Drives Us</h3>
         <ul class="about-values">
           <li>🎯 Creativity that serves a purpose</li>
@@ -888,7 +881,7 @@ See What’s Hot
         </ul>
       </div>
 
-      <div class="about-block scroll-animate">
+      <div class="about-block">
         <h3>🧭 From Hustle to Hub</h3>
         <p>
           Started by <strong>Austin</strong>, a developer with a passion for helping creators win online,
@@ -899,7 +892,7 @@ See What’s Hot
       <p class="signature">— Austin, Founder</p>
     </div>
 
-    <div class="about-image scroll-animate">
+    <div class="about-image">
   <img 
     src="https://i.postimg.cc/DzNJqKwN/efdd5988-21f1-436e-8bfb-4e9309611185-20250725-053110-0000.jpg" 
     alt="Portrait of Austin, founder of NEXA Creative Labs, standing confidently as the creative force behind the brand." 
@@ -1274,24 +1267,6 @@ See What’s Hot
       index = (index + 1) % testimonials.length;
       testimonials[index].classList.add("active");
     }, 6000); // 6-second rotation
-  });
-</script>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const elements = document.querySelectorAll('.scroll-animate');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Animate only once
-        }
-      });
-    }, { threshold: 0.1 });
-
-    elements.forEach(el => observer.observe(el));
   });
 </script>
 
