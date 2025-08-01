@@ -1,1 +1,375 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Website Order Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg:#f5f7fa;
+      --card:#ffffff;
+      --radius:12px;
+      --shadow:0 10px 30px -5px rgba(0,0,0,0.1);
+      --text:#1f2d3a;
+      --muted:#6e7a8a;
+      --primary:#1d72f3;
+      --radius-sm:6px;
+      --transition:.25s cubic-bezier(.4,.2,.2,1);
+      --focus-ring:3px solid rgba(29,114,243,.35);
+    }
+
+    [data-theme="dark"] {
+      --bg:#0f172a;
+      --card:#1f2d44;
+      --text:#e6e8ff;
+      --muted:#8b98b8;
+      --primary:#5c9eff;
+    }
+
+    * {box-sizing:border-box;}
+    body {
+      margin:0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.45;
+      min-height:100vh;
+      padding:2rem 1rem;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .form-wrapper {
+      max-width: 800px;
+      margin: auto;
+      padding:2rem 2.5rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background:none;
+      border:2px solid var(--primary);
+      padding:6px 14px;
+      font-size:.75rem;
+      border-radius:999px;
+      cursor:pointer;
+      color: var(--primary);
+      font-weight:600;
+      transition: all var(--transition);
+    }
+    .toggle-theme:focus {outline: none; box-shadow: var(--focus-ring);}
+
+    h2 {
+      margin-top:0;
+      font-size:1.9rem;
+      letter-spacing:0.5px;
+    }
+    p.subtitle {
+      margin:4px 0 1.5rem;
+      color: var(--muted);
+      font-size:.95rem;
+    }
+
+    fieldset {
+      border:1px solid rgba(0,0,0,0.08);
+      padding:1.25rem 1.5rem;
+      margin-bottom:1.5rem;
+      border-radius:8px;
+    }
+    legend {
+      font-weight:600;
+      padding:0 .5rem;
+      font-size:1rem;
+    }
+
+    .grid {
+      display:grid;
+      gap:1rem;
+    }
+
+    label {
+      display:block;
+      margin-bottom:6px;
+      font-size:.85rem;
+      font-weight:600;
+    }
+
+    .required {color:#d44; margin-left:2px; font-size:1rem;}
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width:100%;
+      padding:12px 14px;
+      font-size:1rem;
+      border:1px solid rgba(0,0,0,0.15);
+      border-radius:8px;
+      background: #fff;
+      transition: border var(--transition), box-shadow var(--transition);
+      resize: vertical;
+      color: inherit;
+    }
+    [data-theme="dark"] input,
+    [data-theme="dark"] select,
+    [data-theme="dark"] textarea {
+      background: #1e2f5a;
+      border:1px solid rgba(255,255,255,0.1);
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(29,114,243,.25);
+    }
+
+    .inline-group {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+      gap:8px;
+    }
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap:8px;
+      font-size:.9rem;
+    }
+    .checkbox-wrapper input {
+      margin-top:4px;
+      flex-shrink:0;
+    }
+
+    .radio-row {
+      display:flex;
+      flex-direction: column;
+      gap:6px;
+    }
+
+    .small {
+      font-size:.75rem;
+      color: var(--muted);
+    }
+
+    .submit-btn {
+      background: var(--primary);
+      color: #fff;
+      padding:14px 24px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1rem;
+      font-weight:600;
+      width:100%;
+      transition: filter var(--transition);
+    }
+    .submit-btn:hover {filter:brightness(1.05);}
+    .submit-btn:focus {outline: none; box-shadow: var(--focus-ring);}
+
+    .budget-wrapper {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .budget-wrapper input {
+      flex:1;
+      min-width:150px;
+    }
+
+    .notes {
+      min-height:120px;
+    }
+
+    @media (min-width: 800px){
+      .two-col {grid-template-columns:1fr 1fr;}
+    }
+
+    .hint {
+      font-size:.65rem;
+      margin-top:4px;
+      color: var(--muted);
+    }
+
+    .required-star::after { content: " *"; color: #d44; }
+
+    .hidden { display:none !important; }
+  </style>
+</head>
+<body>
+  <div class="form-wrapper" aria-label="Website order form">
+    <button class="toggle-theme" aria-label="Toggle dark/light theme">Toggle theme</button>
+    <h2>Website Order Form</h2>
+    <p class="subtitle">Fill in the details to help us scope your project accurately.</p>
+
+    <form name="website-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
+      <!-- Netlify hidden fields -->
+      <input type="hidden" name="form-name" value="website-order" />
+      <p class="hidden">
+        <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+
+      <fieldset>
+        <legend>Client Information</legend>
+        <div class="grid two-col" style="gap:1.5rem;">
+          <div>
+            <label for="name" class="required-star">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Jane Doe" />
+          </div>
+          <div>
+            <label for="email" class="required-star">Email</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com" />
+          </div>
+          <div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" />
+          </div>
+          <div>
+            <label for="brand">Business / Brand Name</label>
+            <input type="text" id="brand" name="brand" placeholder="Acme Co." />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Project Basics</legend>
+        <div class="grid" style="gap:1.5rem;">
+          <div>
+            <label for="website_type" class="required-star">Type of Website</label>
+            <select id="website_type" name="website_type" required>
+              <option value="">Select one</option>
+              <option>Business</option>
+              <option>Portfolio</option>
+              <option>eCommerce</option>
+              <option>Blog</option>
+              <option>Landing Page</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="required-star">Pages Needed</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-wrapper"><input type="checkbox" name="pages[]" value="Home"> Home</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="pages[]" value="About"> About</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="pages[]" value="Services"> Services</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="pages[]" value="Shop"> Shop</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="pages[]" value="Contact"> Contact</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="pages[]" value="Custom"> Other</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="colors">Preferred Color Scheme / Brand Colors</label>
+            <input type="text" id="colors" name="colors" placeholder="e.g., Blue & white, Bold contrasts" />
+          </div>
+
+          <div>
+            <label for="style">Design Style</label>
+            <input type="text" id="style" name="style" placeholder="Modern, minimal, elegant..." />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Functionality & Technical</legend>
+        <div class="grid" style="gap:1.5rem;">
+          <div>
+            <label>Functionality Needed</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="Contact Form"> Contact Form</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="Booking System"> Booking System</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="Payment Integration"> Payment Integration</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="Live Chat"> Live Chat</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="Newsletter"> Newsletter Signup</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="User Login"> User Login</label>
+              <label class="checkbox-wrapper"><input type="checkbox" name="features[]" value="Blog"> Blog</label>
+            </div>
+          </div>
+
+          <div>
+            <label class="required-star">Domain & Hosting</label>
+            <div class="radio-row">
+              <label><input type="radio" name="domain_hosting" value="Need Both" required> I need both</label>
+              <label><input type="radio" name="domain_hosting" value="I have my own"> I have my own</label>
+              <label><input type="radio" name="domain_hosting" value="Not sure yet"> Not sure</label>
+            </div>
+          </div>
+
+          <div>
+            <label for="deadline">Project Deadline</label>
+            <input type="date" id="deadline" name="deadline" />
+          </div>
+
+          <div>
+            <label for="budget">Estimated Budget (USD)</label>
+            <div class="budget-wrapper">
+              <input type="number" id="budget" name="budget" min="50" step="10" placeholder="e.g., 500"/>
+            </div>
+            <div class="hint">Give a realistic range so we can tailor scope accordingly.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Extras & Notes</legend>
+        <div>
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" name="notes" rows="5" class="notes" placeholder="Tell us anything else that matters..."></textarea>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="submit-btn">Submit Order</button>
+    </form>
+  </div>
+
+  <script>
+    // Theme persistence
+    const toggle = document.querySelector('.toggle-theme');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('site-form-theme');
+    if (stored) document.documentElement.setAttribute('data-theme', stored);
+    function updateButton() {
+      const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'Light' : 'Dark';
+      toggle.textContent = `Switch to ${current} Mode`;
+    }
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('site-form-theme', isDark ? 'light' : 'dark');
+      updateButton();
+    });
+    updateButton();
+
+    // Basic client-side validation enhancement (optional)
+    document.querySelector('form').addEventListener('submit', (e) => {
+      const required = [...document.querySelectorAll('[required]')];
+      let invalid = false;
+      required.forEach(el => {
+        if (!el.value) {
+          invalid = true;
+          el.style.borderColor = 'crimson';
+        }
+      });
+      if (invalid) {
+        e.preventDefault();
+        alert('Please fill out the required fields.');
+      }
+    });
+  </script>
+</body>
+</html>
