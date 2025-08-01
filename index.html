@@ -1437,20 +1437,12 @@ See What’s Hot
   }
 </style>
 
-Here is the **refactored, self-contained JavaScript** with your requested changes applied:
-
-* Delay before showing: **3 seconds**
-* Guards against missing DOM
-* Close (×), “Maybe later”, and ESC all dismiss and throttle re-show for 15 minutes
-* Focus trapping and restoration
-* Clean structure
-
 <script>
 (function(){
   const POPUP_KEY = "needs-popup-closed-timestamp";
   const DISMISS_DELAY = 15 * 60 * 1000; // 15 minutes
-  const SHOW_DELAY = 3000; // 3 seconds before showing
-  const AUTO_CLOSE_MS = 4000; // auto-close after 4 seconds
+  const SHOW_DELAY = 3000; // 3 seconds
+  const AUTO_CLOSE_MS = 4000; // 4 seconds
   const popup = document.getElementById("needs-popup");
   if (!popup) return;
 
@@ -1460,6 +1452,7 @@ Here is the **refactored, self-contained JavaScript** with your requested change
   let lastFocused = null;
   let hasOpenedThisLoad = false;
   let autoCloseTimer = null;
+  let focusTrapBound = false;
 
   function shouldShow() {
     const stored = localStorage.getItem(POPUP_KEY);
@@ -1480,7 +1473,11 @@ Here is the **refactored, self-contained JavaScript** with your requested change
     popup.hidden = false;
     document.body.style.overflow = "hidden";
     optionButtons[0]?.focus();
-    trapFocus();
+
+    if (!focusTrapBound) {
+      bindFocusTrap();
+      focusTrapBound = true;
+    }
 
     // schedule auto-close
     clearTimeout(autoCloseTimer);
@@ -1512,6 +1509,8 @@ Here is the **refactored, self-contained JavaScript** with your requested change
   optionButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const choice = btn.getAttribute("data-choice");
+      // optionally mark dismissed so it doesn't flash again immediately
+      markDismissed();
       if (choice === "web-design") {
         window.location.href = "/order.html";
       } else if (choice === "digital-goods") {
@@ -1527,7 +1526,7 @@ Here is the **refactored, self-contained JavaScript** with your requested change
     }
   });
 
-  function trapFocus() {
+  function bindFocusTrap() {
     const focusableSelectors = [
       'a[href]',
       'button:not([disabled])',
@@ -1536,14 +1535,14 @@ Here is the **refactored, self-contained JavaScript** with your requested change
       'textarea:not([disabled])',
       '[tabindex]:not([tabindex="-1"])'
     ];
-    const focusable = Array.from(popup.querySelectorAll(focusableSelectors.join(',')))
-      .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
-    if (!focusable.length) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
     popup.addEventListener("keydown", function(e){
       if (e.key !== "Tab") return;
+      const focusable = Array.from(popup.querySelectorAll(focusableSelectors.join(',')))
+        .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
       if (e.shiftKey) {
         if (document.activeElement === first) {
           e.preventDefault();
@@ -1558,11 +1557,13 @@ Here is the **refactored, self-contained JavaScript** with your requested change
     });
   }
 
-  window.addEventListener("load", () => {
+  // Kickoff after DOM ready
+  document.addEventListener("DOMContentLoaded", () => {
     setTimeout(openPopup, SHOW_DELAY);
   });
 })();
 </script>
+
 
   
 </body>
