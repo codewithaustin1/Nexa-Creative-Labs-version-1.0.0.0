@@ -1437,14 +1437,25 @@ See What’s Hot
   }
 </style>
 
+Here is the **refactored, self-contained JavaScript** with your requested changes applied:
+
+* Delay before showing: **3 seconds**
+* Guards against missing DOM
+* Close (×), “Maybe later”, and ESC all dismiss and throttle re-show for 15 minutes
+* Focus trapping and restoration
+* Clean structure
+
 <script>
 (function(){
   const POPUP_KEY = "needs-popup-closed-timestamp";
   const DISMISS_DELAY = 15 * 60 * 1000; // 15 minutes in ms
+  const SHOW_DELAY = 3000; // 3 seconds
   const popup = document.getElementById("needs-popup");
+  if (!popup) return; // safety guard
+
   const closeBtn = popup.querySelector(".popup-close");
-  const later = popup.querySelector(".later-btn");
-  const options = popup.querySelectorAll(".option-btn");
+  const laterBtn = popup.querySelector(".later-btn");
+  const optionButtons = popup.querySelectorAll(".option-btn");
   let lastFocused = null;
   let hasOpenedThisLoad = false;
 
@@ -1467,7 +1478,7 @@ See What’s Hot
     popup.hidden = false;
     document.body.style.overflow = "hidden";
     // focus first actionable element
-    options[0]?.focus();
+    optionButtons[0]?.focus();
     trapFocus();
   }
 
@@ -1477,24 +1488,22 @@ See What’s Hot
     if (lastFocused) lastFocused.focus();
   }
 
-  closeBtn.addEventListener("click", () => {
+  // Event handlers
+  closeBtn?.addEventListener("click", () => {
     markDismissed();
     closePopup();
   });
 
-  later.addEventListener("click", (e)=> {
+  laterBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     markDismissed();
     closePopup();
   });
 
-  options.forEach(btn => {
+  optionButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const choice = btn.getAttribute("data-choice");
-      // Persist choice if desired (example: analytics)
-      // e.g., localStorage.setItem("nexa-last-choice", choice);
-
-      // Navigate accordingly
+      // Navigation logic
       if (choice === "web-design") {
         window.location.href = "/order.html";
       } else if (choice === "digital-goods") {
@@ -1503,7 +1512,7 @@ See What’s Hot
     });
   });
 
-  // ESC to close
+  // ESC closes popup
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !popup.hidden) {
       markDismissed();
@@ -1511,12 +1520,22 @@ See What’s Hot
     }
   });
 
-  // Focus trap logic
+  // Focus trap inside popup
   function trapFocus() {
-    const focusable = [...popup.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ];
+    const focusable = Array.from(popup.querySelectorAll(focusableSelectors.join(',')))
+      .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0); // visible
     if (!focusable.length) return;
+
     const first = focusable[0];
-    const last = focusable[focusable.length -1];
+    const last = focusable[focusable.length - 1];
 
     popup.addEventListener("keydown", function(e){
       if (e.key !== "Tab") return;
@@ -1534,13 +1553,12 @@ See What’s Hot
     });
   }
 
-  // Attempt to open after delay if allowed
+  // Show popup after delay if allowed
   window.addEventListener("load", () => {
-    setTimeout(openPopup, 1200);
+    setTimeout(openPopup, SHOW_DELAY);
   });
 })();
 </script>
-
   
 </body>
 </html>
