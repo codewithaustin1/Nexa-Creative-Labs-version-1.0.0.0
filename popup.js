@@ -1,7 +1,7 @@
 // popup.js
 export function initPopup({ showDelay = 3000, autoCloseMs = 4000 } = {}) {
   const POPUP_KEY = "needs-popup-closed-timestamp";
-  const DISMISS_DELAY = 15 * 60 * 1000;
+  const DISMISS_DELAY = 1 * 60 * 1000;
   const popup = document.getElementById("needs-popup");
   if (!popup) return;
 
