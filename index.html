@@ -1438,44 +1438,31 @@ See What’s Hot
 </style>
 
 <script>
-(() => {
+// popup.js
+export function initPopup({ showDelay = 3000, autoCloseMs = 4000 } = {}) {
   const POPUP_KEY = "needs-popup-closed-timestamp";
-  const DISMISS_DELAY = 15 * 60 * 1000; // 15 minutes
-  const SHOW_DELAY = 3000; // 3 seconds
-  const AUTO_CLOSE_MS = 4000; // 4 seconds
-
+  const DISMISS_DELAY = 15 * 60 * 1000;
   const popup = document.getElementById("needs-popup");
-  if (!popup) {
-    console.warn("Popup element not found.");
-    return;
-  }
+  if (!popup) return;
 
   const closeBtn = popup.querySelector(".popup-close");
   const laterBtn = popup.querySelector(".later-btn");
   const optionButtons = popup.querySelectorAll(".option-btn");
-  let lastFocused = null;
-  let hasOpenedThisLoad = false;
   let autoCloseTimer = null;
-  let focusTrapBound = false;
+  let hasOpened = false;
+  let lastFocused = null;
+
+  function elapsed() {
+    const stored = localStorage.getItem(POPUP_KEY);
+    if (!stored) return Infinity;
+    const t = parseInt(stored, 10);
+    if (isNaN(t)) return Infinity;
+    return Date.now() - t;
+  }
 
   function shouldShow() {
-    const stored = localStorage.getItem(POPUP_KEY);
-    if (!stored) {
-      console.log("No suppression timestamp found; popup is allowed to show.");
-      return true;
-    }
-    const ts = parseInt(stored, 10);
-    if (isNaN(ts)) {
-      console.warn("Invalid stored timestamp, ignoring."); 
-      return true;
-    }
-    const elapsed = Date.now() - ts;
-    if (elapsed >= DISMISS_DELAY) {
-      console.log("Suppression expired; popup may show.");
-      return true;
-    }
-    console.log(`Suppression active (${Math.round((DISMISS_DELAY - elapsed)/1000)}s remaining).`);
-    return false;
+    if (new URLSearchParams(window.location.search).has("force")) return true;
+    return elapsed() >= DISMISS_DELAY;
   }
 
   function markDismissed() {
@@ -1483,114 +1470,65 @@ See What’s Hot
   }
 
   function openPopup() {
-    if (!shouldShow()) return;
-    if (hasOpenedThisLoad) {
-      console.log("Popup already opened this load; skipping.");
-      return;
-    }
-    hasOpenedThisLoad = true;
+    if (!shouldShow() || hasOpened) return;
+    hasOpened = true;
     lastFocused = document.activeElement;
     popup.hidden = false;
+    popup.style.display = "flex";
     document.body.style.overflow = "hidden";
-    console.log("Popup opened.");
     optionButtons[0]?.focus();
-
-    if (!focusTrapBound) {
-      bindFocusTrap();
-      focusTrapBound = true;
-    }
 
     clearTimeout(autoCloseTimer);
     autoCloseTimer = setTimeout(() => {
-      console.log("Auto-closing popup after timeout.");
       markDismissed();
       closePopup();
-    }, AUTO_CLOSE_MS);
+    }, autoCloseMs);
   }
 
   function closePopup() {
     if (popup.hidden) return;
     popup.hidden = true;
+    popup.style.display = "none";
     document.body.style.overflow = "";
     clearTimeout(autoCloseTimer);
-    console.log("Popup closed.");
-    if (lastFocused) lastFocused.focus();
+    if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
   }
 
-  // Button handlers
   closeBtn?.addEventListener("click", () => {
-    console.log("Close (×) clicked.");
     markDismissed();
     closePopup();
   });
 
   laterBtn?.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("Maybe later clicked.");
     markDismissed();
     closePopup();
   });
 
   optionButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const choice = btn.getAttribute("data-choice");
-      console.log("Option chosen:", choice);
+      const choice = btn.dataset.choice;
       markDismissed();
       if (choice === "web-design") {
         window.location.href = "/order.html";
       } else if (choice === "digital-goods") {
         window.location.href = "/shop.html";
-      } else {
-        closePopup();
       }
     });
   });
 
-  // ESC closes
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !popup.hidden) {
-      console.log("Escape pressed.");
       markDismissed();
       closePopup();
     }
   });
 
-  function bindFocusTrap() {
-    const selectors = [
-      'a[href]',
-      'button:not([disabled])',
-      'input:not([disabled])',
-      'select:not([disabled])',
-      'textarea:not([disabled])',
-      '[tabindex]:not([tabindex="-1"])'
-    ];
-    popup.addEventListener("keydown", function(e) {
-      if (e.key !== "Tab") return;
-      const focusable = Array.from(popup.querySelectorAll(selectors.join(',')))
-        .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    });
-  }
-
-  // Kick off after DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(openPopup, SHOW_DELAY);
+    setTimeout(openPopup, showDelay);
   });
-})();
+}
+
 </script>
 
 
