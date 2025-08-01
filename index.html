@@ -1439,19 +1439,35 @@ See What’s Hot
 
 <script>
 (function(){
+  const POPUP_KEY = "needs-popup-closed-timestamp";
+  const DISMISS_DELAY = 15 * 60 * 1000; // 15 minutes in ms
   const popup = document.getElementById("needs-popup");
   const closeBtn = popup.querySelector(".popup-close");
   const later = popup.querySelector(".later-btn");
   const options = popup.querySelectorAll(".option-btn");
   let lastFocused = null;
+  let hasOpenedThisLoad = false;
+
+  function shouldShow() {
+    const stored = localStorage.getItem(POPUP_KEY);
+    if (!stored) return true;
+    const ts = parseInt(stored, 10);
+    if (isNaN(ts)) return true;
+    return Date.now() - ts >= DISMISS_DELAY;
+  }
+
+  function markDismissed() {
+    localStorage.setItem(POPUP_KEY, Date.now().toString());
+  }
 
   function openPopup() {
-    if (popup.hasAttribute("data-dismissed")) return; // don't re-show if dismissed
+    if (!shouldShow() || hasOpenedThisLoad) return;
+    hasOpenedThisLoad = true;
     lastFocused = document.activeElement;
     popup.hidden = false;
     document.body.style.overflow = "hidden";
-    // focus first option
-    options[0].focus();
+    // focus first actionable element
+    options[0]?.focus();
     trapFocus();
   }
 
@@ -1461,13 +1477,24 @@ See What’s Hot
     if (lastFocused) lastFocused.focus();
   }
 
-  closeBtn.addEventListener("click", closePopup);
-  later.addEventListener("click", (e)=>{ e.preventDefault(); popup.setAttribute("data-dismissed","1"); closePopup(); });
+  closeBtn.addEventListener("click", () => {
+    markDismissed();
+    closePopup();
+  });
+
+  later.addEventListener("click", (e)=> {
+    e.preventDefault();
+    markDismissed();
+    closePopup();
+  });
 
   options.forEach(btn => {
     btn.addEventListener("click", () => {
       const choice = btn.getAttribute("data-choice");
-      // Replace these with your actual navigation or tracking logic
+      // Persist choice if desired (example: analytics)
+      // e.g., localStorage.setItem("nexa-last-choice", choice);
+
+      // Navigate accordingly
       if (choice === "web-design") {
         window.location.href = "/order.html";
       } else if (choice === "digital-goods") {
@@ -1479,15 +1506,18 @@ See What’s Hot
   // ESC to close
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !popup.hidden) {
+      markDismissed();
       closePopup();
     }
   });
 
-  // Basic focus trap
+  // Focus trap logic
   function trapFocus() {
     const focusable = [...popup.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')].filter(el => !el.disabled);
+    if (!focusable.length) return;
     const first = focusable[0];
     const last = focusable[focusable.length -1];
+
     popup.addEventListener("keydown", function(e){
       if (e.key !== "Tab") return;
       if (e.shiftKey) {
@@ -1504,12 +1534,13 @@ See What’s Hot
     });
   }
 
-  // Show after short delay if not seen
+  // Attempt to open after delay if allowed
   window.addEventListener("load", () => {
     setTimeout(openPopup, 1200);
   });
 })();
 </script>
+
   
 </body>
 </html>
