@@ -1438,13 +1438,17 @@ See What’s Hot
 </style>
 
 <script>
-(function(){
+(() => {
   const POPUP_KEY = "needs-popup-closed-timestamp";
   const DISMISS_DELAY = 15 * 60 * 1000; // 15 minutes
   const SHOW_DELAY = 3000; // 3 seconds
   const AUTO_CLOSE_MS = 4000; // 4 seconds
+
   const popup = document.getElementById("needs-popup");
-  if (!popup) return;
+  if (!popup) {
+    console.warn("Popup element not found.");
+    return;
+  }
 
   const closeBtn = popup.querySelector(".popup-close");
   const laterBtn = popup.querySelector(".later-btn");
@@ -1456,10 +1460,22 @@ See What’s Hot
 
   function shouldShow() {
     const stored = localStorage.getItem(POPUP_KEY);
-    if (!stored) return true;
+    if (!stored) {
+      console.log("No suppression timestamp found; popup is allowed to show.");
+      return true;
+    }
     const ts = parseInt(stored, 10);
-    if (isNaN(ts)) return true;
-    return Date.now() - ts >= DISMISS_DELAY;
+    if (isNaN(ts)) {
+      console.warn("Invalid stored timestamp, ignoring."); 
+      return true;
+    }
+    const elapsed = Date.now() - ts;
+    if (elapsed >= DISMISS_DELAY) {
+      console.log("Suppression expired; popup may show.");
+      return true;
+    }
+    console.log(`Suppression active (${Math.round((DISMISS_DELAY - elapsed)/1000)}s remaining).`);
+    return false;
   }
 
   function markDismissed() {
@@ -1467,11 +1483,16 @@ See What’s Hot
   }
 
   function openPopup() {
-    if (!shouldShow() || hasOpenedThisLoad) return;
+    if (!shouldShow()) return;
+    if (hasOpenedThisLoad) {
+      console.log("Popup already opened this load; skipping.");
+      return;
+    }
     hasOpenedThisLoad = true;
     lastFocused = document.activeElement;
     popup.hidden = false;
     document.body.style.overflow = "hidden";
+    console.log("Popup opened.");
     optionButtons[0]?.focus();
 
     if (!focusTrapBound) {
@@ -1479,29 +1500,33 @@ See What’s Hot
       focusTrapBound = true;
     }
 
-    // schedule auto-close
     clearTimeout(autoCloseTimer);
     autoCloseTimer = setTimeout(() => {
+      console.log("Auto-closing popup after timeout.");
       markDismissed();
       closePopup();
     }, AUTO_CLOSE_MS);
   }
 
   function closePopup() {
+    if (popup.hidden) return;
     popup.hidden = true;
     document.body.style.overflow = "";
     clearTimeout(autoCloseTimer);
+    console.log("Popup closed.");
     if (lastFocused) lastFocused.focus();
   }
 
-  // Handlers
+  // Button handlers
   closeBtn?.addEventListener("click", () => {
+    console.log("Close (×) clicked.");
     markDismissed();
     closePopup();
   });
 
   laterBtn?.addEventListener("click", (e) => {
     e.preventDefault();
+    console.log("Maybe later clicked.");
     markDismissed();
     closePopup();
   });
@@ -1509,25 +1534,29 @@ See What’s Hot
   optionButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       const choice = btn.getAttribute("data-choice");
-      // optionally mark dismissed so it doesn't flash again immediately
+      console.log("Option chosen:", choice);
       markDismissed();
       if (choice === "web-design") {
         window.location.href = "/order.html";
       } else if (choice === "digital-goods") {
         window.location.href = "/shop.html";
+      } else {
+        closePopup();
       }
     });
   });
 
+  // ESC closes
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !popup.hidden) {
+      console.log("Escape pressed.");
       markDismissed();
       closePopup();
     }
   });
 
   function bindFocusTrap() {
-    const focusableSelectors = [
+    const selectors = [
       'a[href]',
       'button:not([disabled])',
       'input:not([disabled])',
@@ -1535,9 +1564,9 @@ See What’s Hot
       'textarea:not([disabled])',
       '[tabindex]:not([tabindex="-1"])'
     ];
-    popup.addEventListener("keydown", function(e){
+    popup.addEventListener("keydown", function(e) {
       if (e.key !== "Tab") return;
-      const focusable = Array.from(popup.querySelectorAll(focusableSelectors.join(',')))
+      const focusable = Array.from(popup.querySelectorAll(selectors.join(',')))
         .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
       if (!focusable.length) return;
       const first = focusable[0];
@@ -1557,7 +1586,7 @@ See What’s Hot
     });
   }
 
-  // Kickoff after DOM ready
+  // Kick off after DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(openPopup, SHOW_DELAY);
   });
