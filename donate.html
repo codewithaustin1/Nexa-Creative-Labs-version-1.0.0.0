@@ -3,93 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
+  <meta name="description" content="Support Nexa Creative Labs to empower digital creators and small businesses worldwide. Every donation fuels accessible tools and resources for innovation." />
   <meta name="author" content="NEXA Creative Labs" />
   <title>Donate | Nexa Creative Labs</title>
-  <meta name="description" content="Support Nexa Creative Labs to empower digital creators and small businesses worldwide. Every donation fuels accessible tools and resources for innovation.">
 
-    <!-- Fonts and preload -->
+  <!-- Fonts and preload -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Inside your main HTML file -->
-<link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
-<link rel="stylesheet" href="/styles/theme.css" />
-<link rel="stylesheet" href="header.css">  
-<link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="sections.css">
-<link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
-<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-  
-<!-- JSON-LD Schema for Homepage -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "NEXA Creative Labs",
-  "url": "https://nexacreativelabs.netlify.app/",
-  "description": "NEXA Creative Labs helps content creators and entrepreneurs grow with high-impact digital tools, templates, and resources.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "NEXA",
+  <link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/styles/theme.css" />
+  <link rel="stylesheet" href="header.css" />  
+  <link rel="stylesheet" href="footer.css" />
+  <link rel="stylesheet" href="sections.css" />
+  <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin/>
+
+  <!-- JSON-LD Schema for Homepage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NEXA Creative Labs",
     "url": "https://nexacreativelabs.netlify.app/",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://nexacreativelabs.netlify.app/assets/logo.png"
+    "description": "NEXA Creative Labs helps content creators and entrepreneurs grow with high-impact digital tools, templates, and resources.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NEXA",
+      "url": "https://nexacreativelabs.netlify.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nexacreativelabs.netlify.app/assets/logo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://nexacreativelabs.netlify.app/search?query={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://nexacreativelabs.netlify.app/search?query={search_term_string}",
-    "query-input": "required name=search_term_string"
   }
-}
-</script>
+  </script>
 
-
-<style>
+  <style>
     :root {
       --bg: #ffffff;
       --text: #1a1a1a;
       --primary: #0055ff;
       --accent: #f5f7ff;
     }
-
     [data-theme="dark"] {
       --bg: #0d0d0d;
       --text: #f0f0f0;
       --accent: #1a1a1a;
     }
-
-     body {
+    body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       padding: clamp(1rem, 4vw, 1.5rem);
     }
-          
-
-
     html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  width: 100%;
-}
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+    }
+    * { box-sizing: border-box; }
 
-* {
-  box-sizing: border-box;
-}
- 
-
-
-
-
-
-   .donate-container {
+    .donate-container {
       max-width: 600px;
       background: var(--bg);
       margin: 4rem auto;
@@ -100,9 +84,6 @@
       animation: fadeInUp 1s ease-in-out;
     }
 
-
-  
-
     h1 {
       color: var(--primary);
       font-size: 2rem;
@@ -111,9 +92,10 @@
 
     p {
       font-size: 1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       line-height: 1.6;
     }
+
     .donate-btn {
       background: var(--primary);
       color: #fff;
@@ -131,113 +113,103 @@
       background: #003fcc;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .input-inline {
+      margin: 0.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      align-items: center;
     }
 
+    .input-inline input {
+      padding: 0.6rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+    }
 
+    #mobile-money-status {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      min-height: 1.2em;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     @media (max-width: 768px) {
-  header {
-    padding: 0.75rem 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
+      header {
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .logo {
+        max-width: 100%;
+      }
+    }
+  </style>
 
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .logo {
-    max-width: 100%;
-  }
-}
-
-
-
-</style>
-
-   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-LNM66V8R71');
-</script>
-
-  
-  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-LNM66V8R71');
+  </script>
 </head>
+
 <body>
   <div id="header-container"></div>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    fetch('header.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('header-container').innerHTML = html;
-
-        // Re-bind header interactions after injection
-        const toggle = document.querySelector(".toggle-switch");
-        const menuToggle = document.getElementById("menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (toggle) {
-          const current = document.documentElement.getAttribute('data-theme');
-          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
-        }
-      window.toggleDarkMode = function () {
-          const html = document.documentElement;
-          const toggle = document.querySelector(".toggle-switch");
-          const current = html.getAttribute('data-theme');
-          const next = current === "dark" ? "light" : "dark";
-          html.setAttribute("data-theme", next);
-          localStorage.setItem("theme", next);
-          if (toggle) {
-            toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
-          }
-        };
-
-        if (menuToggle && navMenu) {
-          menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("show");
-          });
-        }
-      })
-      .catch(err => console.error('Failed to load header:', err));
-  });
-</script>
 
   <div class="donate-container">
     <h1>❤️ Support the Creative Movement</h1>
     <p>Your donation helps us equip creators and dreamers with premium resources, tools, and inspiration to thrive. Every bit counts!</p>
-    
+
     <!-- PayPal Custom Button Redirect -->
- <form action="https://www.paypal.com/donate" method="post" target="_blank">
-  <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
-  <button 
-    type="submit" 
-    class="donate-btn"
-    onclick="trackFlexibleDonation()"
-  >
-    Donate Securely with PayPal
-  </button>
-</form>
+    <form action="https://www.paypal.com/donate" method="post" target="_blank" style="margin-bottom:1rem;">
+      <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
+      <button 
+        type="submit" 
+        class="donate-btn"
+        onclick="trackFlexibleDonation()"
+      >
+        Donate Securely with PayPal
+      </button>
+    </form>
+
+    <!-- Mobile Money via Paystack -->
+    <div id="mobile-money-section" style="margin-top:1.5rem;">
+      <div class="input-inline">
+        <div>
+          <label for="donation-amount" style="display:block; margin-bottom:4px;">Amount (KES):</label>
+          <input id="donation-amount" type="number" min="1" step="0.01" placeholder="500" aria-label="Donation amount in Kenyan Shillings" />
+        </div>
+        <div>
+          <label for="donor-email" style="display:block; margin-bottom:4px;">Email (optional):</label>
+          <input id="donor-email" type="email" placeholder="you@example.com" aria-label="Donor email" />
+        </div>
+      </div>
+      <button id="paystack-mobile-money-btn" class="donate-btn" type="button" aria-label="Donate via Mobile Money">
+        Donate via Mobile Money (M-PESA / Airtel)
+      </button>
+      <div id="mobile-money-status" aria-live="polite"></div>
+      <p style="font-size:0.9rem; margin-top:0.5rem;">
+        Support us instantly with M-PESA or Airtel Money—secure, no redirect.
+      </p>
+    </div>
   </div>
 
   <div id="footer-container"></div>
-  
-  <!-- JavaScript to Load Header and Footer -->
+
+  <!-- Consolidated header/footer loader -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Load header
@@ -246,7 +218,7 @@
         .then(html => {
           document.getElementById('header-container').innerHTML = html;
 
-          // Dark mode setup
+          // Re-bind interactions
           const toggle = document.querySelector(".toggle-switch");
           const menuToggle = document.getElementById("menu-toggle");
           const navMenu = document.getElementById("nav-menu");
@@ -257,18 +229,17 @@
           }
 
           window.toggleDarkMode = function () {
-            const html = document.documentElement;
-            const toggle = document.querySelector(".toggle-switch");
-            const current = html.getAttribute('data-theme');
+            const htmlEl = document.documentElement;
+            const toggleEl = document.querySelector(".toggle-switch");
+            const current = htmlEl.getAttribute('data-theme');
             const next = current === "dark" ? "light" : "dark";
-            html.setAttribute("data-theme", next);
+            htmlEl.setAttribute("data-theme", next);
             localStorage.setItem("theme", next);
-            if (toggle) {
-              toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+            if (toggleEl) {
+              toggleEl.setAttribute("aria-checked", next === "dark" ? "true" : "false");
             }
           };
 
-          // Hamburger menu toggle
           if (menuToggle && navMenu) {
             menuToggle.addEventListener("click", () => {
               navMenu.classList.toggle("show");
@@ -285,26 +256,95 @@
         });
     });
   </script>
+
   <script src="header.js"></script>
-<script>
-  // Track donation page view
-  gtag('event', 'page_view', {
-    page_title: 'Donate to Nexa Creative Labs',
-    page_path: '/donate.html'
-  });
+  <script>
+    // Track donation page view
+    gtag('event', 'page_view', {
+      page_title: 'Donate to Nexa Creative Labs',
+      page_path: '/donate.html'
+    });
 
-  // Track flexible donation form submission
+    function trackFlexibleDonation() {
+      gtag('event', 'donation_click', {
+        value: 1,
+        currency: 'USD',
+        method: 'hosted_button',
+        label: 'Flexible Amount Button'
+      });
+    }
+  </script>
 
-  function trackFlexibleDonation() {
-  gtag('event', 'donation_click', {
-    value: 1,
-    currency: 'USD',
-    method: 'hosted_button',
-    label: 'Flexible Amount Button'
-  });
-  }
-</script>
+  <!-- Paystack inline script (test key placeholder) -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("paystack-mobile-money-btn");
+      const amountInput = document.getElementById("donation-amount");
+      const emailInput = document.getElementById("donor-email");
+      const statusDiv = document.getElementById("mobile-money-status");
 
-  
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        btn.disabled = true;
+        statusDiv.textContent = "";
+
+        const amountVal = parseFloat(amountInput.value);
+        if (isNaN(amountVal) || amountVal <= 0) {
+          statusDiv.textContent = "Please enter a valid amount in KES.";
+          btn.disabled = false;
+          return;
+        }
+
+        const email = emailInput.value.trim() || undefined;
+        // Convert to smallest currency unit: assuming 100 subunits per KES
+        const amountInSmallest = Math.round(amountVal * 100);
+
+        const handler = PaystackPop.setup({
+          key: "pk_test_xxxxxxxxxxxxxxxxxxxxx", // TODO: replace with your real public key
+          email: email,
+          amount: amountInSmallest,
+          channels: ["mobile_money"],
+          onClose() {
+            statusDiv.textContent = "Donation window closed. No payment was made.";
+            btn.disabled = false;
+          },
+          callback(response) {
+            // Verify server-side
+            fetch("/verify-paystack-donation", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ reference: response.reference })
+            })
+            .then(res => res.json())
+            .then(data => {
+              if (data.status === "success") {
+                statusDiv.textContent = `Thank you! Your donation of KES ${amountVal.toFixed(2)} was received.`;
+                if (window.gtag) {
+                  gtag('event', 'donation_complete', {
+                    method: 'mobile_money',
+                    currency: 'KES',
+                    value: amountVal,
+                    reference: response.reference
+                  });
+                }
+              } else {
+                statusDiv.textContent = "Payment verification failed. Please contact support if funds were deducted.";
+              }
+            })
+            .catch(() => {
+              statusDiv.textContent = "Network error verifying payment. If you were charged, contact support.";
+            })
+            .finally(() => {
+              btn.disabled = false;
+            });
+          }
+        });
+
+        handler.openIframe();
+      });
+    });
+  </script>
 </body>
 </html>
