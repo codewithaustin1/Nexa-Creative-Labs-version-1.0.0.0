@@ -302,9 +302,10 @@
         const amountInSmallest = Math.round(amountVal * 100);
 
         const handler = PaystackPop.setup({
-          key: "pk_test_b95d1b74a1aa1ba6143227c67fdbdb09e1524b32", // TODO: replace with your real public key
+          key: "pk_test_b95d1b74a1aa1ba6143227c67fdbdb09e1524b32", // TODO: replace with your real public key / swap to live
           email: email,
           amount: amountInSmallest,
+          currency: "KES", // explicitly specify KES
           channels: ["mobile_money"],
           onClose() {
             statusDiv.textContent = "Donation window closed. No payment was made.";
