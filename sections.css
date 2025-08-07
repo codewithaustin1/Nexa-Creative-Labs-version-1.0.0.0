@@ -538,6 +538,86 @@
   }
 }
 
+/* --- Why Choose Us Section --- */
+.why-nexa-section {
+  padding: 5rem 1rem;
+  background-color: var(--section-bg, #f9f9f9);
+  color: var(--text-color, #1a1a1a);
+}
+
+.why-nexa-section .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.why-nexa-section .section-subtitle {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--text-muted, #555);
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-nexa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.why-nexa-card {
+  background-color: var(--card-bg, #fff);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-nexa-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+.why-nexa-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--accent-color, #1d4ed8);
+}
+
+.why-nexa-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-color, #333);
+}
+
+@media (prefers-color-scheme: dark) {
+  .why-nexa-section {
+    background-color: #111;
+    color: #eee;
+  }
+
+  .why-nexa-section .section-subtitle {
+    color: #bbb;
+  }
+
+  .why-nexa-card {
+    background-color: #1a1a1a;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.03);
+  }
+
+  .why-nexa-card h3 {
+    color: #60a5fa;
+  }
+
+  .why-nexa-card p {
+    color: #ccc;
+  }
+}
+
 
 
 
