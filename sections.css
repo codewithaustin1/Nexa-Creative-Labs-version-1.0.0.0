@@ -678,11 +678,23 @@
 }
 
 
+/* 🌙 Dark mode support via system preference */
+@media (prefers-color-scheme: dark) {
+  .why-nexa-section {
+    --card-bg: #1e1e1e;
+    --text-color: #f5f5f5;
+    --subtitle-color: #bbb;
+    --accent-color: #60a5fa;
+  }
+}
 
-
-
-
-
+/* 🌙 Dark mode support via .dark-mode class (optional override) */
+.dark-mode .why-nexa-section {
+  --card-bg: #1e1e1e;
+  --text-color: #f5f5f5;
+  --subtitle-color: #bbb;
+  --accent-color: #60a5fa;
+}
 
 
 
