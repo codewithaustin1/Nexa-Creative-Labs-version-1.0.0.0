@@ -1,31 +1,124 @@
-/* === Featured Products Section === */
+/* ========================
+   THEME VARIABLES
+======================== */
+:root {
+  /* Colors */
+  --color-primary: #1d72f3;
+  --color-primary-hover: #0047cc;
+  --color-accent: #60a5fa;
+  --color-secondary: #f59e0b;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9f9f9;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555;
+  --color-heading: #111;
+  --color-card-bg: #fff;
+  --color-success-bg: #e6ffed;
+  --color-success-text: #2a7c4f;
 
-.featured-products {
-  padding: 4rem 1rem;
-  background: var(--section-bg, #f9f9f9);
+  /* Shadows */
+  --shadow-light: 0 5px 20px rgba(0, 0, 0, 0.05);
+  --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+}
+
+/* Dark Mode Override */
+[data-theme="dark"],
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0d0d0d;
+    --color-bg-alt: #111827;
+    --color-text: #f3f4f6;
+    --color-text-muted: #bbb;
+    --color-heading: #ffffff;
+    --color-card-bg: #1f2937;
+    --shadow-light: 0 4px 10px rgba(255, 255, 255, 0.03);
+    --color-success-bg: #065f46;
+    --color-success-text: #d1fae5;
+  }
+}
+
+/* ========================
+   UTILITIES
+======================== */
+.section {
+  padding: var(--space-xl) var(--space-sm);
+  background: var(--color-bg-alt);
   text-align: center;
 }
 
-.featured-products .section-title {
+.section-title {
   font-size: 2rem;
-  margin-bottom: 2rem;
-  color: var(--primary-color, #1a1a1a);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--color-heading);
 }
 
-/* Grid view for desktop */
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.btn-accent:hover {
+  background: var(--color-secondary);
+}
+
+/* ========================
+   FEATURED PRODUCTS
+======================== */
+.featured-products {
+  composes: section;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: var(--space-lg);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .product-card {
-  background: #fff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-light);
   transition: transform 0.3s ease;
 }
 
@@ -35,70 +128,49 @@
 
 .product-card img {
   max-width: 100%;
-  border-radius: 0.75rem;
-  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
 }
 
 .product-card h3 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  color: var(--heading-color, #111);
+  color: var(--color-heading);
 }
 
 .product-card p {
   font-size: 0.95rem;
-  margin-bottom: 1rem;
-  color: #555;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
 }
 
-.view-btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--primary-color, #0077ff);
-  color: #fff;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.1s;
-}
-
-.view-btn:hover {
-  background: #FF9900;
-}
-
-/* Mobile carousel */
+/* Mobile Carousel */
 @media (max-width: 768px) {
   .product-grid {
     display: flex;
     overflow-x: auto;
+    gap: var(--space-sm);
     scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding-bottom: 1rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
-
   .product-grid::-webkit-scrollbar {
     display: none;
   }
-
   .product-card {
     flex: 0 0 80%;
-    scroll-snap-align: start;
     min-width: 80%;
-    background: var(--bg);
-    border-radius: 1rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    scroll-snap-align: start;
   }
 }
 
-/* ABOUT NEXA EXTENDED */
+/* ========================
+   ABOUT NEXA
+======================== */
 .about-nexa {
-  padding: 5rem 1.5rem;
-  background: var(--background);
-  color: var(--text);
-  scroll-margin-top: 4rem;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .about-wrapper {
@@ -106,238 +178,176 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: var(--space-lg);
   align-items: center;
 }
 
 .about-text h2 {
   font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-md);
 }
 
 .about-text h2 span {
-  color: var(--primary);
+  color: var(--color-primary);
 }
 
 .about-block {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-md);
 }
 
 .about-block h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--color-primary);
   margin-bottom: 0.5rem;
 }
 
 .about-block p {
   line-height: 1.7;
-  color: var(--text);
   font-size: 1rem;
 }
 
 .about-values {
   list-style: none;
-  padding-left: 0;
-  margin: 0;
+  padding: 0;
 }
 
 .about-values li {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.signature {
-  margin-top: 2rem;
-  font-style: italic;
-  color: var(--secondary);
 }
 
 .about-image img {
   width: 100%;
   max-width: 500px;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   object-fit: cover;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-dark);
 }
 
-/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
   .about-wrapper {
     grid-template-columns: 1fr;
     text-align: center;
   }
-
-  .about-text h2 {
-    font-size: 1.75rem;
-  }
-
-  .about-block h3 {
-    font-size: 1.1rem;
-  }
-
-  .about-block p,
-  .about-values li {
-    font-size: 0.95rem;
-  }
-
   .about-image {
-    margin-top: 2rem;
-  }
-
-  .about-image img {
-    max-width: 90%;
-    margin: 0 auto;
+    margin-top: var(--space-md);
   }
 }
 
-
-
- .freebie-form {
-    max-width: 480px;
-    margin: 3rem auto;
-    padding: 2rem;
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    font-family: "Segoe UI", sans-serif;
-  }
-
-  .form-label {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #1a1a1a;
-  }
-
-  .form-input {
-    padding: 0.75rem 1rem;
-    border: 1.5px solid #ccc;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: border-color 0.2s ease-in-out;
-  }
-
-  .form-input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-
-  .form-button {
-    padding: 0.75rem 1rem;
-    background-color: #0055ff;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .form-button:hover {
-    background-color: #003ecf;
-  }
-
-  .success-message {
-    display: none;
-    background-color: #e6ffed;
-    color: #2a7c4f;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    border: 1px solid #b2f0c0;
-  }
-
-  @media (max-width: 600px) {
-    .freebie-form {
-      padding: 1.5rem;
-      margin: 2rem 1rem;
-    }
-
-    .form-label {
-      font-size: 1.05rem;
-    }
-
-    .form-button {
-      font-size: 0.95rem;
-    }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .freebie-form {
-      padding: 1rem;
-    }
-  }
- /* Dark Mode Support */
-  @media (prefers-color-scheme: dark) {
-    .freebie-form {
-      --form-bg: #1f2937;
-      color: #f9fafb;
-    }
-
-    .freebie-form input,
-    .freebie-form button {
-      background-color: #374151;
-      color: #f9fafb;
-      border-color: #4b5563;
-    }
-
-    .success-message {
-      background-color: #065f46;
-      color: #d1fae5;
-    }
-  }
-
-/* Section Container */
-
-/* Powered By Section */
-.powered-by {
-  padding: 4rem 1rem;
-  background: var(--bg);
-  color: var(--text);
-  text-align: center;
+/* ========================
+   WHY NEXA
+======================== */
+.why-nexa-section {
+  composes: section;
 }
 
-.powered-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+.why-nexa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
 }
 
-.powered-subtext {
+.why-nexa-card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-nexa-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-dark);
+}
+
+.why-nexa-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.why-nexa-card p {
   font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  color: var(--subtle-text, #555);
+  line-height: 1.6;
 }
 
-.powered-logos-container {
-  overflow: hidden;
-  width: 100%;
+/* ========================
+   FORM STYLES
+======================== */
+.freebie-form {
+  max-width: 480px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: var(--color-card-bg);
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.form-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.form-input {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.form-button {
+  composes: btn btn-primary;
+  border: none;
+}
+
+.success-message {
+  display: none;
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .freebie-form {
+    padding: var(--space-md);
+    margin: var(--space-md);
+  }
+  .form-label {
+    font-size: 1.05rem;
+  }
+}
+
+/* ========================
+   POWERED BY SECTION
+======================== */
+.powered-by {
+  composes: section;
+  background: var(--color-bg);
 }
 
 .powered-logos {
   display: flex;
-  align-items: center;
-  gap: 3rem;
+  gap: var(--space-lg);
   animation: scroll-logos 30s linear infinite;
   min-width: 200%;
 }
 
 .powered-logos img {
   height: 40px;
-  width: auto;
-  filter: var(--logo-filter, none);
   transition: transform 0.3s ease;
 }
 
@@ -346,356 +356,14 @@
 }
 
 @keyframes scroll-logos {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-/* Responsive Logo Scaling */
 @media (max-width: 768px) {
-  .powered-logos {
-    gap: 2rem;
-  }
-
-  .powered-logos img {
-    height: 32px;
-  }
+  .powered-logos img { height: 32px; }
 }
 
 @media (max-width: 480px) {
-  .powered-heading {
-    font-size: 1.5rem;
-  }
-
-  .powered-subtext {
-    font-size: 0.9rem;
-  }
-
-  .powered-logos img {
-    height: 28px;
-  }
+  .powered-logos img { height: 28px; }
 }
-
-/* Dark Mode Variables */
-[data-theme="dark"] {
-  --bg: #0d0d0d;
-  --text: #f2f2f2;
-  --subtle-text: #cccccc;
-  --logo-filter: brightness(0.9) invert(0.9);
-}
-
-
-
-
-
-
-
-@media (prefers-color-scheme: dark) {
-  .featured-products {
-    background: #111827;
-  }
-
-  .featured-products .section-title {
-    color: #f3f4f6;
-  }
-
-  .product-card {
-    background: #1f2937;
-    color: #f9fafb;
-    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.03);
-  }
-
-  .product-card h3 {
-    color: #ffffff;
-  }
-
-  .product-card p {
-    color: #d1d5db;
-  }
-
-  .view-btn {
-    background: #2563eb;
-    color: #ffffff;
-  }
-
-  .view-btn:hover {
-    background: #f59e0b;
-  }
-}
-
-
-/* CTA Section */
-.cta-section {
-  padding: 4rem 1rem;
-  background: var(--bg);
-  color: var(--text);
-  text-align: center;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="dark"] .cta-section {
-  background: #111;
-  color: #f2f2f2;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.cta-content h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary);
-}
-
-.cta-subtext {
-  font-size: 1.125rem;
-  margin-bottom: 2rem;
-}
-
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--primary);
-  color: white;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s;
-}
-
-.cta-button:hover {
-  background: #0047cc;
-  transform: translateY(-2px);
-}
-
-.cta-badge {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.cta-badge i {
-  font-size: 0.9rem;
-}
-
-.cta-note {
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  background: linear-gradient(90deg, rgba(0,85,255,0.05), rgba(102,170,255,0.08));
-  padding: 1rem;
-  border-left: 4px solid var(--primary);
-  border-radius: 6px;
-  color: var(--text);
-}
-
-[data-theme="dark"] .cta-note {
-  background: rgba(0, 85, 255, 0.08);
-  color: #ddd;
-}
-
-
-.adaptive-cta {
-  display: block;
-  margin: 2rem auto;
-  width: fit-content;
-  padding: .75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: .95rem;
-  text-decoration: none;
-  transition: background .3s, color .3s, filter .2s;
-  box-shadow: 0 6px 18px rgba(29,114,243,.3);
-  background: #1d72f3;
-  color: #fff;
-}
-
-/* If you use a data-theme attribute to control dark mode */
-[data-theme="dark"] .adaptive-cta {
-  background: #e2e8ff;
-  color: #1d72f3;
-  box-shadow: 0 6px 18px rgba(226,232,255,.4);
-}
-
-/* Fallback based on system preference */
-@media (prefers-color-scheme: dark) {
-  .adaptive-cta {
-    background: #e2e8ff;
-    color: #1d72f3;
-    box-shadow: 0 6px 18px rgba(226,232,255,.4);
-  }
-}
-@media (prefers-color-scheme: light) {
-  .adaptive-cta {
-    background: #1d72f3;
-    color: #fff;
-  }
-}
-
-/* --- Why Choose Us Section --- */
-.why-nexa-section {
-  padding: 5rem 1rem;
-  background-color: var(--section-bg, #f9f9f9);
-  color: var(--text-color, #1a1a1a);
-}
-
-.why-nexa-section .section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.why-nexa-section .section-subtitle {
-  font-size: 1.1rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--text-muted, #555);
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.why-nexa-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-}
-
-.why-nexa-card {
-  background-color: var(--card-bg, #fff);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.why-nexa-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-
-.why-nexa-card h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--accent-color, #1d4ed8);
-}
-
-.why-nexa-card p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-color, #333);
-}
-
-@media (prefers-color-scheme: dark) {
-  .why-nexa-section {
-    background-color: #111;
-    color: #eee;
-  }
-
-  .why-nexa-section .section-subtitle {
-    color: #bbb;
-  }
-
-  .why-nexa-card {
-    background-color: #1a1a1a;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.03);
-  }
-
-  .why-nexa-card h3 {
-    color: #60a5fa;
-  }
-
-  .why-nexa-card p {
-    color: #ccc;
-  }
-}
-
-
-.why-nexa-section {
-  text-align: center;
-  padding: 4rem 1rem;
-}
-
-.why-nexa-section .section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.why-nexa-section .section-subtitle {
-  font-size: 1.125rem;
-  color: #666;
-  margin-bottom: 3rem;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-.benefit-card {
-  background-color: var(--card-bg, #f9f9f9);
-  border-radius: 1rem;
-  padding: 2rem;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-5px);
-}
-
-.benefit-icon {
-  width: 3rem;
-  height: 3rem;
-  margin: 0 auto 1rem;
-  color: var(--accent-color, #3b82f6); /* Use your brand color */
-}
-
-.benefit-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.benefit-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.benefit-card p {
-  font-size: 1rem;
-  color: #444;
-}
-
-
-/* 🌙 Dark mode support via system preference */
-@media (prefers-color-scheme: dark) {
-  .why-nexa-section {
-    --card-bg: #1e1e1e;
-    --text-color: #f5f5f5;
-    --subtitle-color: #bbb;
-    --accent-color: #60a5fa;
-  }
-}
-
-/* 🌙 Dark mode support via .dark-mode class (optional override) */
-.dark-mode .why-nexa-section {
-  --card-bg: #1e1e1e;
-  --text-color: #f5f5f5;
-  --subtitle-color: #bbb;
-  --accent-color: #60a5fa;
-}
-
-
-
-
