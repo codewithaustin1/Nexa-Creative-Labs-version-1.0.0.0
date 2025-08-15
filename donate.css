@@ -1,6 +1,17 @@
 /* donate.css */
 
-/* Base Reset & Theme Variables */
+/* ===============================
+   Base Reset & Theme Variables
+================================= */
+:root {
+  --primary: #0077ff;
+  --primary-gradient: linear-gradient(145deg, var(--primary), #005fcc);
+  --card-bg: var(--card-shadow, #fff);
+  --card-shadow-color: rgba(0, 0, 0, 0.05);
+  --border-color: #ccc;
+  --text-muted: #888;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg);
@@ -10,11 +21,12 @@ body {
   text-align: center;
 }
 
-/* Hero Section */
+/* ===============================
+   Hero Section
+================================= */
 .donate-hero {
-  text-align: center;
   padding: 3rem 1rem 2rem;
-  background: linear-gradient(145deg, var(--primary), #0077ff);
+  background: var(--primary-gradient);
   color: white;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
@@ -32,9 +44,10 @@ body {
   max-width: 90%;
 }
 
-/* Donation Section */
+/* ===============================
+   Donation Options
+================================= */
 .donate-options {
-  text-align: center;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -44,7 +57,9 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Buttons */
+/* ===============================
+   Buttons
+================================= */
 .donation-buttons {
   display: flex;
   flex-direction: column;
@@ -69,10 +84,12 @@ body {
 
 .donate-cta-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 14px var(--card-shadow-color);
 }
 
-/* Custom Amount Form */
+/* ===============================
+   Custom Amount Form
+================================= */
 .custom-donation-form {
   display: flex;
   flex-direction: column;
@@ -87,7 +104,7 @@ body {
   padding: 0.75rem;
   font-size: 1rem;
   border-radius: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   text-align: center;
 }
 
@@ -96,10 +113,11 @@ body {
   margin-bottom: 0.3rem;
 }
 
-/* Impact Section */
+/* ===============================
+   Impact Section
+================================= */
 .donate-impact {
   margin: 3rem auto 2rem;
-  text-align: center;
   padding: 0 1rem;
 }
 
@@ -114,49 +132,40 @@ body {
 }
 
 .donate-impact li {
-  background: var(--card-shadow);
+  background: var(--card-bg);
   border-radius: 12px;
   margin: 0.5rem auto;
   padding: 1rem;
   font-size: 1rem;
   max-width: 90%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px var(--card-shadow-color);
 }
 
-/* Final Note */
+/* ===============================
+   Final Note
+================================= */
 .donate-footer-note {
-  text-align: center;
   font-size: 0.9rem;
   margin: 2rem 1rem 3rem;
-  color: #888;
+  color: var(--text-muted);
 }
 
-/* Button Animation */
+/* ===============================
+   Button Animation
+================================= */
 @keyframes pop-in {
-  0% {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(1.05);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  0% { transform: scale(0.95); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* Optional: Desktop Responsiveness (fallback only) */
+/* ===============================
+   Desktop Responsiveness
+================================= */
 @media (min-width: 768px) {
-  .donate-hero h1 {
-    font-size: 2.2rem;
-  }
-
+  .donate-hero h1 { font-size: 2.2rem; }
   .donate-options h2,
-  .donate-impact h3 {
-    font-size: 1.5rem;
-  }
+  .donate-impact h3 { font-size: 1.5rem; }
 
   .donation-buttons {
     flex-direction: row;
@@ -167,11 +176,5 @@ body {
   .donate-cta-btn {
     width: auto;
     min-width: 160px;
-  }
-
-  .donate-impact ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 }
