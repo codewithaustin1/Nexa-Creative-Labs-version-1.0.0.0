@@ -3,81 +3,1299 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | NEXA Creative Labs</title>
-  <meta name="description" content="Learn about NEXA Creative Labs — empowering creators and small businesses with bold, effective digital solutions." />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    /* Footer width fix */
-    #footer-container {
-      width: 100%;
-      max-width: none;
-      padding: 0;
-      margin: 0;
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-p...your_hash..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta name="description" content="NEXA empowers creators and businesses with premium digital downloads and custom web development services." />
+  <meta name="author" content="NEXA Creative Labs" />
+  <title>NEXA |Digital Products for Passive Income</title>
+
+  <!-- Fonts and preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Inside your main HTML file -->
+<link rel="icon" href="/assets/nexa%20favicon.png" type="image/png" />
+<link rel="stylesheet" href="/styles/theme.css" />
+<link rel="stylesheet" href="header.css">  
+<link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="sections.css">
+<link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
+<link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+
+  
+<!-- JSON-LD Schema for Homepage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "NEXA Creative Labs",
+  "url": "https://nexacreativelabs.netlify.app/",
+  "description": "NEXA Creative Labs helps content creators and entrepreneurs grow with high-impact digital tools, templates, and resources.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "NEXA",
+    "url": "https://nexacreativelabs.netlify.app/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://nexacreativelabs.netlify.app/assets/logo.png"
     }
-  </style>
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nexacreativelabs.netlify.app/search?query={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+
+  
+<style>
+  :root {
+    --bg: #f9f9f9;
+    --text: #222;
+    --primary: #1D4ED8;
+    --card-bg: #fff;
+    --card-shadow: rgba(0, 0, 0, 0.06);
+  }
+
+  [data-theme="dark"] {
+    --bg: #1d1f23;
+    --text: #f0f0f0;
+    --primary: #4a90e2;
+    --card-bg: #2a2d34;
+    --card-shadow: rgba(255, 255, 255, 0.05);
+  }
+
+  *, html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* --- KEEP FROM HERE DOWN (Non-header styles) --- */
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 120px 20px 100px;
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+
+
+.hero-bg {
+  background: linear-gradient(-45deg, #1d4ed8, #9333ea, #06b6d4, #10b981);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Base Styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient Background */
+.gradient-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #0f172a, #1e3a8a, #4f46e5, #0ea5e9);
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease infinite;
+  z-index: 0;
+}
+
+/* Hero Image with Ken Burns effect */
+.hero-image {
+  background-image: url('assets/Gemini_Generated_Image_4zeit94zeit94zei.webp'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: kenburns 20s ease-in-out infinite alternate;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+  /* 🌐 Mobile Background Swap */
+@media (max-width: 768px) {
+  .hero {
+    background: url('assets/Add a heading.png') center center / cover no-repeat;
+  }
+}
+
+/* Glass Overlay */
+.glass-overlay {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 3rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.brand-name {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+/* Particle Container */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.2) translate(10px, 10px);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .glass-overlay {
+    padding: 1rem 2rem;
+  }
+  .brand-name {
+    font-size: 2rem;
+  }
+}
+
+.benefits {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease;
+}
+
+.benefits li:hover {
+  background: #f0f8ff;
+}
+
+.benefits i {
+  font-size: 1.5rem;
+  color: #0055ff;
+  margin-right: 1rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.benefits li:hover i {
+  transform: scale(1.2) rotate(5deg);
+  color: #0077ff;
+}
+  
+
+  @keyframes slideFade {
+    0%, 100% { opacity: 0; }
+    10%, 30% { opacity: 1; }
+    40%, 90% { opacity: 0; }
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+    z-index: -1;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease forwards;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1.2s ease forwards;
+  }
+
+  .hero a {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .hero a:hover {
+    background: #1749b4;
+    transform: translateY(-2px);
+  }
+
+  .section {
+    padding: 60px 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s ease-out;
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    text-align: center;
+  }
+
+
+
+
+  /* Product card animation */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+  .product-card {
+  background-color: var(--bg);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+
+
+
+/* Light mode (default) */
+.product-card {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+  .features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid #e0e0e0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+  
+/* Dark mode */
+[data-theme="dark"] .product-card {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .product-card .view-btn {
+  background-color: #333;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-card i {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover i {
+  transform: scale(1.2) rotate(3deg);
+}
+  
+
+
+  
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+
+  .feature-card {
+    flex: 1 1 280px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 16px var(--card-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+
+  .feature-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+  }
+
+  .benefits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 3rem
+  }
+
+  .benefits li {
+    background: var(--card-bg);
+    padding: 18px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px var(--card-shadow);
+    list-style: none;
+    transition: transform 0.3s ease;
+  }
+
+  .benefits li:hover {
+    transform: translateX(8px);
+  }
+
+.testimonial-slider {
+  max-width: 800px;
+  margin: 3rem auto;
+  text-align: center;
+  position: relative;
+}
+
+.testimonial {
+  display: none;
+  font-size: 1.1rem;
+  background: var(--bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.testimonial.active {
+  display: block;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.testimonial p {
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.testimonial strong {
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  .slider-controls {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .arrow-btn {
+    background-color: #111;
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .arrow-btn:hover {
+    background-color: #333;
+    transform: scale(1.2);
+    color: #555;
+  }
+
+  .arrow-btn svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .cta {
+    text-align: center;
+    padding: 5rem 1.5rem;
+    background: var(--primary);
+    color: white;
+  }
+
+  .cta h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: white;
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+
+  .cta a:hover {
+    background: #e2e8f0;
+  }
+
+  .secure-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #4B5563;
+    background: #E5E7EB;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+#footer-container {
+  width: 100%;
+  margin: 0;
+  padding: 0; /* Keep footer flush with edges */
+}
+
+  
+
+  
+
+  .socials a {
+    display: inline-block;
+    margin: 0 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-LNM66V8R71');
+</script>
+  
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js" defer></script>
+<script>
+  tsParticles.load("tsparticles", {
+    particles: {
+      number: { value: 25 },
+      size: { value: 2 },
+      move: { speed: 0.3 },
+      opacity: { value: 0.2 },
+      links: { enable: false }
+    },
+    background: { color: "#0f172a" }
+  });
+</script>
+<div id="tsparticles" style="position:absolute; width:100%; height:100%; z-index:-1;"></div>
+
+  
+
+  
 </head>
+
 <body>
-  <!-- Header -->
+
+
+
+  
+
+
+  
   <div id="header-container"></div>
+  <!-- Accessibility: Skip Link -->
+  <a href="#main-content" class="skip-link" style="
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: top 0.3s ease;
+  ">Skip to main content</a>
 
-  <!-- Main About Section -->
-  <main>
-    <section class="about-hero">
-      <div class="container">
-        <h1>About NEXA Creative Labs</h1>
-        <p>We exist to fuel the next generation of creators and solo entrepreneurs with digital products that don’t just look good—they work hard. Our mission is to help you grow confidently with resources that are smart, bold, and ready to sell.</p>
-      </div>
-    </section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('header.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('header-container').innerHTML = html;
 
-    <section class="about-values">
-      <div class="container">
-        <h2>What We Stand For</h2>
-        <div class="values-grid">
-          <div class="value-card">
-            <h3>Innovation</h3>
-            <p>We believe in building solutions that anticipate the needs of tomorrow’s creators.</p>
-          </div>
-          <div class="value-card">
-            <h3>Empowerment</h3>
-            <p>Our resources are designed to give you the confidence and clarity to grow your business.</p>
-          </div>
-          <div class="value-card">
-            <h3>Accessibility</h3>
-            <p>We make professional-grade tools and guidance affordable and easy to use.</p>
-          </div>
+        // Re-bind header interactions after injection
+        const toggle = document.querySelector(".toggle-switch");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (toggle) {
+          const current = document.documentElement.getAttribute('data-theme');
+          toggle.setAttribute("aria-checked", current === 'dark' ? 'true' : 'false');
+        }
+
+        window.toggleDarkMode = function () {
+          const html = document.documentElement;
+          const toggle = document.querySelector(".toggle-switch");
+          const current = html.getAttribute('data-theme');
+          const next = current === "dark" ? "light" : "dark";
+          html.setAttribute("data-theme", next);
+          localStorage.setItem("theme", next);
+          if (toggle) {
+            toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+          }
+        };
+
+        if (menuToggle && navMenu) {
+          menuToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+          });
+        }
+      })
+      .catch(err => console.error('Failed to load header:', err));
+  });
+</script>
+  
+
+  <main id="main-content">
+  <!-- Hero Section Start -->
+<section class="hero-section">
+  <!-- Gradient Background -->
+  <div class="gradient-bg"></div>
+
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Ken Burns Animated Image -->
+  <div class="hero-image"></div>
+
+  <!-- Glassmorphism Overlay -->
+  <div class="glass-overlay">
+    <h1 class="brand-name">Power Your Vision with NEXA</h1>
+    <span style="display: block; font-size: 1.2rem; font-weight: 400; margin-top: 0.5rem; color: #cbd5e1;">
+      Bold digital products and solutions for creators, entrepreneurs, and businesses. From templates to hooks that sell — We’ve got you sorted.
+    </span>
+    <!-- CTA Button -->
+<a href="https://paystack.shop/nexa-creative-labs" style="
+  margin-top: 1.8rem;
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 28px rgba(0,0,0,0.3)'" 
+   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0, 0, 0, 0.25)'">
+See What’s Hot
+</a>
+
+    
+  </div>
+</section>
+<!-- Hero Section End -->
+
+<section class="featured-products" id="featured-products">
+  <h2 class="section-title">This Week's Top-Selling Digital Tools</h2>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="https://i.postimg.cc/ZRGmSnQc/Chat-GPT-Image-Jul-24-2025-08-07-09-PM.png" alt="AI-Ready Caption Hooks" />
+      <h3>AI-Ready Caption Hooks</h3>
+      <p>Turn views into sales with scroll-stopping captions made for Reels and TikTok.</p>
+      <a href="shop.html" class="view-btn">Unlock Now</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.postimg.cc/XqKDZY24/Chat-GPT-Image-Jul-24-2025-08-33-40-PM.png" alt="Product 2" />
+      <h3>Ultimate Biz Starter Vault</h3>
+      <p>Everything you need to launch your solo brand—templates, guides, prompts & more.</p>
+      <a href="shop.html"" class="view-btn">Access the Vault</a>
+    </div>
+
+    <div class="product-card">
+      <img src="https://i.postimg.cc/90gdx4QW/Chat-GPT-Image-Jul-24-2025-09-10-15-PM-removebg-preview-1.jpg" alt="Product 3" />
+      <h3>Content Planner Toolkit</h3>
+      <p>Plan, schedule, and grow on autopilot with 50+ done-for-you creator templates.</p>
+      <a href="shop.html"" class="view-btn">Start Planning</a>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-fade">
+      <h2>What We Offer</h2>
+      <h3 style="font-size:1.5rem; text-align:center; justify-content:center; padding:1rem;">
+    Premium digital downloads, high-converting websites, and creative tools—designed to help creators and solo brands grow faster.
+  </h3>
+  <div class="features">
+        <div class="feature-card">
+          <h3><i class="fas fa-download" style="color:#0055ff; margin-right:8px;"></i> Ready-to-Use Digital Products</h3>
+          <p>Unlock 5-star templates, audio kits, and growth tools—trusted by creators and optimized for instant results.</p>
         </div>
+        <div class="feature-card">
+          <h3><i class="fas fa-laptop-code" style="color:#0055ff; margin-right:8px;"></i> Custom Web Design & Development</h3>
+          <p>Get fast, conversion-optimized websites and eCommerce stores tailored for growth and performance.</p>
+    </div>
       </div>
-    </section>
+ </section>
 
-    <section class="about-team">
-      <div class="container">
-        <h2>Meet the Team</h2>
-        <p>We’re a passionate group of developers, designers, and strategists dedicated to helping creators succeed. Our expertise spans across web development, digital marketing, e-commerce optimization, and branding.</p>
+<section class="section scroll-fade why-nexa-section" id="why-nexa">
+  <div class="container">
+    <h2 class="section-title">Why Choose Us</h2>
+    <p class="section-subtitle">We build digital products that help you grow smarter, faster, and bolder.</p>
+    
+    <div class="benefits-grid">
+      <!-- Speed -->
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <!-- Lightning Bolt Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h3>Speed</h3>
+        <p>From ideation to launch, we work fast—so your brand never misses a beat.</p>
       </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <div id="footer-container"></div>
+      <!-- Pricing -->
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <!-- Wallet Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a4 4 0 00-4-4H5a2 2 0 00-2 2v10a2 2 0 002 2h8a4 4 0 004-4v-2a2 2 0 00-2-2H7" />
+          </svg>
+        </div>
+        <h3>Pricing</h3>
+        <p>Affordable and transparent—get high-quality design without breaking the bank.</p>
+      </div>
 
-  <!-- Scripts -->
+      <!-- Style -->
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <!-- Sparkles Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l1.5 1.5L8 11m7-4l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2zm-4 9l.5 1 .5-1 1-.5-1-.5-.5-1-.5 1-1 .5 1 .5z" />
+          </svg>
+        </div>
+        <h3>Style</h3>
+        <p>We speak bold, modern, and on-brand. Your visuals won’t just look good—they’ll convert.</p>
+      </div>
+
+      <!-- Strategy -->
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <!-- Chart Bar Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4v10H3V10zm6-6h4v16h-4V4zm6 8h4v8h-4v-8z" />
+          </svg>
+        </div>
+        <h3>Strategy</h3>
+        <p>We don’t just design—we think. Every product we touch is backed by research and real goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section scroll-fade testimonial-slider">
+  <h2>What Creators Are Saying</h2>
+
+  <div class="testimonial active">
+    <p>“NEXA helped us launch faster than expected. Their clear direction early on gave us focus and momentum.”</p>
+    <p><strong>— L. Chen, Founder @ LaunchLab</strong></p>
+  </div>
+
+  <div class="testimonial">
+    <p>“The assets were a total time-saver—weeks of design work done in minutes. Super efficient.”</p>
+    <p><strong>— D. Rivera, UI Designer</strong></p>
+  </div>
+
+  <div class="testimonial">
+    <p>“The support felt personal. NEXA gets creators—and actually delivers what we need.”</p>
+    <p><strong>— M. Okafor, Course Creator</strong></p>
+  </div>
+
+  <div class="testimonial">
+    <p>“Everything just worked. Clean, smart tools that made my workflow smoother.”</p>
+    <p><strong>— A. Patel, Marketing Consultant</strong></p>
+  </div>
+</section>
+
+
+
+<div class="slider-controls">
+  <button class="arrow-btn" onclick="prevTestimonial()">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="arrow-btn" onclick="nextTestimonial()">
+    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+</div>
+
+<section class="about-nexa" id="about-nexa">
+  <div class="about-wrapper">
+    <div class="about-text">
+      <h2>Meet <span>NEXA Creative Labs</span></h2>
+
+      <div class="about-block">
+        <h1 class="headline">Launch. Monetize. Scale. 🚀</h1>
+        <p class="subheadline">Tools, templates, and content that help creators go from idea to income—faster and smarter.</p>
+      </div>
+
+      <div class="about-block">
+        <h3>🌟 What Drives Us</h3>
+        <ul class="about-values">
+          <li>🎯 Creativity that serves a purpose</li>
+          <li>⚡ Simple solutions, powerful results</li>
+          <li>🎨 Smart, strategic design thinking</li>
+          <li>🛠️ Tools built to turn ideas into income</li>
+        </ul>
+      </div>
+
+      <div class="about-block">
+        <h3>🧭 From Hustle to Hub</h3>
+        <p>
+          Started by <strong>Austin</strong>, a developer with a passion for helping creators win online,
+          NEXA was born from a side hustle and grew into a powerhouse for creative tools and digital products.
+        </p>
+      </div>
+
+      <p class="signature">— Austin, Founder</p>
+    </div>
+
+    <div class="about-image">
+  <img 
+    src="https://i.postimg.cc/DzNJqKwN/efdd5988-21f1-436e-8bfb-4e9309611185-20250725-053110-0000.jpg" 
+    alt="Portrait of Austin, founder of NEXA Creative Labs, standing confidently as the creative force behind the brand." 
+  />
+</div>
+    
+  </div>
+ </section>
+</section>
+
+    
+
+<form name="freebie" method="POST" data-netlify="true" onsubmit="return handleSuccess(event)" class="freebie-form">
+  <input type="hidden" name="form-name" value="freebie" />
+
+  <label for="email" class="form-label">
+    🎁 Grab Your Free Resource – Instantly!
+  </label>
+
+  <input type="email" name="email" id="email" required placeholder="Your best email"
+    class="form-input" />
+
+  <button type="submit" class="form-button">
+    Send Me the Freebie →
+  </button>
+
+  <div class="success-message" id="successMessage">
+    ✅ Your freebie is on the way! Check your inbox shortly.
+  </div>
+</form>
+</form>
+
+
+<!-- Powered By Section -->
+<section class="powered-by">
+  <h2 class="powered-heading">Proudly Powered By</h2>
+  <p class="powered-subtext">Our site runs on world-class tools trusted by leading creators and developers.</p>
+  
+  <div class="powered-logos-container">
+    <div class="powered-logos" id="logoTrack">
+      <img src="assets/strapi-2.svg" alt="Strapi" />
+      <img src="assets/netlify.svg" alt="Netlify" loading="lazy" />
+      <img src="assets/gumroad-logo-27361.svg" alt="Gumroad" loading="lazy" />
+      <img src="assets/google-analytics-4.svg" alt="Google Analytics" loading="lazy" />
+      <img src="assets/render-community-large-icon.svg" alt="Render" />
+      <img src="assets/zapier.svg" alt="Zapier" />
+      <!-- Duplicate for seamless loop -->
+      <img src="assets/strapi-2.svg" alt="Strapi" />
+      <img src="assets/netlify.svg" alt="Netlify" loading="lazy" />
+      <img src="assets/gumroad-logo-27361.svg" alt="Gumroad" loading="lazy" />
+      <img src="assets/google-analytics-4.svg" alt="Google Analytics" loading="lazy" />
+      <img src="assets/render-community-large-icon.svg" alt="Render" />
+      <img src="assets/zapier.svg" alt="Zapier" />
+    </div>
+  </div>
+</section>
+
+
+
+<section class="cta-section scroll-fade">
+  <div class="cta-content">
+    <h3>Start Selling Smarter</h3>
+    <p class="cta-subtext">Join over <strong>10,000+ creators</strong> growing their income with Nexa tools & templates.</p>
+    
+    <a href="/shop.html" class="cta-button">
+      Explore Products <span class="cta-badge"><i class="fas fa-lock"></i> Secure Checkout</span>
+    </a>
+
+  
+    <p class="cta-note">
+      We’ve partnered with <strong>Gumroad</strong> to provide instant delivery & secure payments — no hassle, just results.
+    </p>
+  </div>
+</section>
+
+
+<a href="/order.html" role="button" aria-label="Order a professional website" class="adaptive-cta">
+  Need a Professional Website? Order from an Expert →
+</a>
+
+
+
+
+
+  <!-- JS for accessibility and theme toggle -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Load header
-      fetch("header.html")
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById("header-container").innerHTML = data;
-        });
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
 
-      // Load footer
-      fetch("footer.html")
-        .then(res => res.text())
-        .then(data => {
-          document.getElementById("footer-container").innerHTML = data;
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggle = document.querySelector(".toggle-switch");
+      const menuToggle = document.getElementById("menu-toggle");
+      const navMenu = document.getElementById("nav-menu");
+
+      if (toggle) {
+        const theme = document.documentElement.getAttribute('data-theme');
+        toggle.setAttribute("aria-checked", theme === 'dark' ? 'true' : 'false');
+      }
+
+      window.toggleDarkMode = function () {
+        const html = document.documentElement;
+        const toggle = document.querySelector(".toggle-switch");
+        const current = html.getAttribute('data-theme');
+        const next = current === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+        if (toggle) {
+          toggle.setAttribute("aria-checked", next === "dark" ? "true" : "false");
+        }
+      };
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("show");
         });
+      }
+
+      // Reveal scroll sections
+      const sections = document.querySelectorAll('.section');
+      function showOnScroll() {
+        sections.forEach(section => {
+          if (section.getBoundingClientRect().top < window.innerHeight - 80) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', showOnScroll);
+      window.addEventListener('load', showOnScroll);
     });
+    
   </script>
+
+<script>
+  let current = 0;
+  const testimonials = document.querySelectorAll('.testimonial');
+
+  function showTestimonial(index) {
+    testimonials.forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextTestimonial() {
+    current = (current + 1) % testimonials.length;
+    showTestimonial(current);
+  }
+
+  function prevTestimonial() {
+    current = (current - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(current);
+  }
+
+  // Auto-slide every 5 seconds
+  let autoSlide = setInterval(nextTestimonial, 7000);
+
+  // Touch swipe logic
+  const slider = document.querySelector('.testimonial-slider');
+  let startX = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    clearInterval(autoSlide); // pause auto-slide on user interaction
+  });
+
+  slider.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 50) { // swipe threshold
+      if (diff > 0) {
+        nextTestimonial(); // swiped left
+      } else {
+        prevTestimonial(); // swiped right
+      }
+    }
+
+    // Resume auto-slide
+    autoSlide = setInterval(nextTestimonial, 5000);
+  });
+
+  // Initial load
+  showTestimonial(current);
+</script>
+
+
+
+  
+  <!-- main.html -->
+<div id="footer-container"></div>
+
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-container').innerHTML = html;
+    })
+    .catch(err => console.error('Failed to load footer:', err));
+</script>
+
+<!-- Particles.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+<script>
+  tsParticles.load("particles-js", {
+    fullScreen: { enable: false },
+    background: { color: "transparent" },
+    particles: {
+      number: { value: 60 },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.3 },
+      size: { value: 3 },
+      move: { enable: true, speed: 1, direction: "none", outModes: "bounce" },
+    },
+  });
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.querySelector(".product-grid");
+    const cards = document.querySelectorAll(".product-card");
+
+    if (window.innerWidth <= 768 && grid && cards.length > 1) {
+      let currentIndex = 0;
+
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        const scrollTo = cards[currentIndex].offsetLeft;
+        grid.scrollTo({ left: scrollTo, behavior: "smooth" });
+      }, 5000); // 5 seconds
+    }
+  });
+</script>
+
+
+  
+
+
+  <!-- Handling form success message onsubmit -->
+
+<script>
+  function handleSuccess(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      body: data,
+    })
+    .then(() => {
+      const success = document.getElementById("successMessage");
+      success.style.display = "block";
+      setTimeout(() => {
+        success.style.display = "none";
+        form.reset();
+      }, 5000); // Auto-hide after 3 seconds
+    })
+      .catch((error) => alert("Form submission failed: " + error));
+
+    return false;
+  }
+</script>
+  
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const logos = document.querySelector(".powered-logos");
+    const logoItems = logos.innerHTML;
+    logos.innerHTML += logoItems; // Only duplicate the logos, not the wrapper
+  });
+</script>
+
+
+
+  
+  <script type="module">
+  // Import Firebase SDKs
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyCA6tCgXGwjJKJ8ewBwrQdWJMzw4TBlQRs",
+    authDomain: "nexa-auth-e9e2e.firebaseapp.com",
+    projectId: "nexa-auth-e9e2e",
+    storageBucket: "nexa-auth-e9e2e.firebasestorage.app",
+    messagingSenderId: "470482843400",
+    appId: "1:470482843400:web:4ecae871788fd9b7a81ebd",
+    measurementId: "G-SRGZFPMJGR"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+
+  // Signup
+  document.getElementById("signup-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Signup successful! You can now log in.");
+        e.target.reset();
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+
+  // Login
+  document.getElementById("login-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Login successful! Welcome.");
+        // You can redirect the user or show a logged-in UI
+      })
+      .catch((error) => {
+        alert("Error: " + error.message);
+      });
+  });
+
+  // Optional: Logout
+  document.getElementById("logout-btn")?.addEventListener("click", () => {
+    signOut(auth).then(() => {
+      alert("Logged out.");
+    });
+  });
+</script>
+
+ <script type="module">
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+  const auth = getAuth();
+
+  // DOM Elements
+  const loginLink = document.getElementById("login-link");
+  const signupLink = document.getElementById("signup-link");
+  const dashboardLink = document.getElementById("dashboard-link");
+  const logoutLink = document.getElementById("logout-link");
+
+  // Show/hide based on auth status
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      loginLink.style.display = "none";
+      signupLink.style.display = "none";
+      dashboardLink.style.display = "inline-block";
+      logoutLink.style.display = "inline-block";
+    } else {
+      loginLink.style.display = "inline-block";
+      signupLink.style.display = "inline-block";
+      dashboardLink.style.display = "none";
+      logoutLink.style.display = "none";
+    }
+  });
+
+  // Logout logic
+  logoutLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "index.html";
+    });
+  });
+</script>
+
+<script src="header.js"></script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const testimonials = document.querySelectorAll(".testimonial");
+    let index = 0;
+
+    setInterval(() => {
+      testimonials[index].classList.remove("active");
+      index = (index + 1) % testimonials.length;
+      testimonials[index].classList.add("active");
+    }, 6000); // 6-second rotation
+  });
+</script>
+  
 </body>
 </html>
