@@ -21,31 +21,6 @@
   <link rel="preload" href="https://i.postimg.cc/wv75HV9g/2295.jpg" as="image" />
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin/>
 
-  <!-- JSON-LD Schema for Homepage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "NEXA Creative Labs",
-    "url": "https://nexacreativelabs.netlify.app/",
-    "description": "NEXA Creative Labs helps content creators and entrepreneurs grow with high-impact digital tools, templates, and resources.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NEXA",
-      "url": "https://nexacreativelabs.netlify.app/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://nexacreativelabs.netlify.app/assets/logo.png"
-      }
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://nexacreativelabs.netlify.app/search?query={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
   <style>
     :root {
       --bg: #ffffff;
@@ -58,12 +33,13 @@
       --text: #f0f0f0;
       --accent: #1a1a1a;
     }
+
+    /* Base body styles */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
-      padding: clamp(1rem, 4vw, 1.5rem);
     }
     html, body {
       margin: 0;
@@ -73,6 +49,14 @@
     }
     * { box-sizing: border-box; }
 
+    /* Main content wrapper */
+    .main-container {
+      padding: clamp(1rem, 4vw, 1.5rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Donation card */
     .donate-container {
       max-width: 600px;
       background: var(--bg);
@@ -108,7 +92,6 @@
       transition: background 0.3s ease;
       box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
     }
-
     .donate-btn:hover {
       background: #003fcc;
     }
@@ -155,58 +138,48 @@
       }
     }
 
-#footer-container {
-  width: 100%;
-  margin: 0;
-  padding: 0; /* or your desired footer padding */
-}
-    
-    
+    /* Footer full width */
+    #footer-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+    }
   </style>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-LNM66V8R71');
-  </script>
 </head>
 
 <body>
   <div id="header-container"></div>
 
-  <div class="donate-container">
-    <h1>❤️ Support the Creative Movement</h1>
-    <p>Your donation helps us equip creators and dreamers with premium resources, tools, and inspiration to thrive. Every bit counts!</p>
+  <div class="main-container">
+    <div class="donate-container">
+      <h1>❤️ Support the Creative Movement</h1>
+      <p>Your donation helps us equip creators and dreamers with premium resources, tools, and inspiration to thrive. Every bit counts!</p>
 
-    <!-- PayPal Custom Button Redirect -->
-    <form action="https://www.paypal.com/donate" method="post" target="_blank" style="margin-bottom:1rem;">
-      <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
-      <button 
-        type="submit" 
-        class="donate-btn"
-        onclick="trackFlexibleDonation()"
-      >
-        Donate Securely with PayPal
-      </button>
-    </form>
-
+      <!-- PayPal Custom Button Redirect -->
+      <form action="https://www.paypal.com/donate" method="post" target="_blank" style="margin-bottom:1rem;">
+        <input type="hidden" name="hosted_button_id" value="YLXC4XV8RCDS6" />
+        <button 
+          type="submit" 
+          class="donate-btn"
+          onclick="trackFlexibleDonation()"
+        >
+          Donate Securely with PayPal
+        </button>
+      </form>
+    </div>
+  </div>
 
   <div id="footer-container"></div>
-    
 
-  <!-- Consolidated header/footer loader -->
+  <!-- Header/Footer Loader -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Load header
       fetch('header.html')
         .then(res => res.text())
         .then(html => {
           document.getElementById('header-container').innerHTML = html;
 
-          // Re-bind interactions
           const toggle = document.querySelector(".toggle-switch");
           const menuToggle = document.getElementById("menu-toggle");
           const navMenu = document.getElementById("nav-menu");
@@ -233,10 +206,8 @@
               navMenu.classList.toggle("show");
             });
           }
-        })
-        .catch(err => console.error('Failed to load header:', err));
+        });
 
-      // Load footer
       fetch("footer.html")
         .then(res => res.text())
         .then(data => {
@@ -245,9 +216,14 @@
     });
   </script>
 
-  <script src="header.js"></script>
+  <!-- GA Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LNM66V8R71"></script>
   <script>
-    // Track donation page view
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-LNM66V8R71');
+
     gtag('event', 'page_view', {
       page_title: 'Donate to Nexa Creative Labs',
       page_path: '/donate.html'
@@ -263,7 +239,7 @@
     }
   </script>
 
-  <!-- Paystack inline script (test key placeholder) -->
+  <!-- Paystack -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -286,21 +262,19 @@
         }
 
         const email = emailInput.value.trim() || undefined;
-        // Convert to smallest currency unit: assuming 100 subunits per KES
         const amountInSmallest = Math.round(amountVal * 100);
 
         const handler = PaystackPop.setup({
-          key: "pk_test_b95d1b74a1aa1ba6143227c67fdbdb09e1524b32", // TODO: replace with your real public key / swap to live
+          key: "pk_test_b95d1b74a1aa1ba6143227c67fdbdb09e1524b32",
           email: email,
           amount: amountInSmallest,
-          currency: "KES", // explicitly specify KES
+          currency: "KES",
           channels: ["mobile_money"],
           onClose() {
             statusDiv.textContent = "Donation window closed. No payment was made.";
             btn.disabled = false;
           },
           callback(response) {
-            // Verify server-side
             fetch("/verify-paystack-donation", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
