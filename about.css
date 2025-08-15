@@ -1,29 +1,40 @@
-
 /* === BASE VARIABLES === */
 :root {
-  --bg-light: #ffffff;
+  /* Colors */
+  --bg: #ffffff;
+  --bg-alt: #f9f9f9;
   --bg-dark: #0d0d0d;
-  --text-light: #1a1a1a;
-  --text-dark: #f1f1f1;
+  --bg-dark-alt: #1a1a1a;
+
+  --text-primary: #1a1a1a;
+  --text-light: #f1f1f1;
+  --text-muted: #666666;
+  --text-secondary: #555555;
+
   --primary: #0055ff;
   --accent: #f0f4ff;
-  --card-bg-light: #f9f9f9;
-  --card-bg-dark: #1a1a1a;
+
+  /* UI */
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   --radius: 12px;
   --transition: all 0.3s ease;
 }
 
 [data-theme="dark"] {
-  --bg-light: var(--bg-dark);
-  --text-light: var(--text-dark);
-  --card-bg-light: var(--card-bg-dark);
+  --bg: var(--bg-dark);
+  --bg-alt: var(--bg-dark-alt);
+
+  --text-primary: var(--text-light);
+  --text-muted: #b3b3b3;
+  --text-secondary: #a0a0a0;
+
+  --accent: #1f2a48;
 }
 
 /* === BASE STYLES === */
 body {
-  background-color: var(--bg-light);
-  color: var(--text-light);
+  background-color: var(--bg);
+  color: var(--text-primary);
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
@@ -38,7 +49,7 @@ section {
 }
 
 h1, h2, h3 {
-  color: var(--text-light);
+  color: var(--text-primary);
   margin-bottom: 1rem;
   font-weight: 700;
 }
@@ -52,6 +63,7 @@ a {
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
+  transition: var(--transition);
 }
 
 /* === HERO SECTION === */
@@ -67,7 +79,7 @@ a {
 
 .hero-about p {
   font-size: 1.15rem;
-  color: #666;
+  color: var(--text-muted);
 }
 
 /* === MISSION SECTION === */
@@ -93,7 +105,7 @@ a {
 
 /* === VALUES SECTION === */
 .about-values {
-  background: var(--card-bg-light);
+  background: var(--bg-alt);
   padding: 3rem 1rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -108,11 +120,11 @@ a {
 }
 
 .value-card {
-  background: var(--bg-light);
+  background: var(--bg);
   border-radius: var(--radius);
   padding: 1.5rem;
   box-shadow: var(--shadow);
-  transition: transform 0.3s ease;
+  transition: var(--transition);
 }
 
 .value-card:hover {
@@ -125,7 +137,7 @@ a {
 }
 
 .value-card p {
-  color: #555;
+  color: var(--text-secondary);
   font-size: 0.95rem;
 }
 
@@ -142,7 +154,7 @@ a {
 }
 
 .team-card {
-  background: var(--card-bg-light);
+  background: var(--bg-alt);
   padding: 1.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -168,7 +180,7 @@ a {
 
 .team-card p {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-muted);
 }
 
 /* === CTA SECTION === */
@@ -195,7 +207,7 @@ a {
 .about-cta a {
   display: inline-block;
   background: white;
-  color: #0055ff;
+  color: var(--primary);
   padding: 0.75rem 1.5rem;
   font-weight: 700;
   border-radius: var(--radius);
@@ -215,9 +227,5 @@ a {
 
   .about-cta h2 {
     font-size: 1.75rem;
-  }
-
-  .about-mission {
-    flex-direction: column;
   }
 }
